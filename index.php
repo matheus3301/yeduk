@@ -89,11 +89,8 @@
     <div class="row align-items-center">
       <div class="col-lg-6 col-md-7 text-center text-md-left order-md-1 order-2">
         <p class="subtitle">Sobre o Yeduk</p>
-        <h2 class="section-title">Rehenderit volupate velit proident sunt culpa</h2>
-        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud
-          exercitation ullamco laboris nisi aliquip commodo consequat. duis aute.</p>
+        <h2 class="section-title">Faça parte de uma comunidade de professores e alunos de todo o Brasil!</h2>
+        <p class="mb-4">No yeduk você pode trocar conhecimento das mais variadas matérias e estar em contato direto com seus colegas de turma e professores.</p>
         <a href="about.html" class="btn btn-outline-primary">Leia Mais</a>
       </div>
       <div class="col-lg-6 col-md-5 text-center text-md-left order-1 order-md-2 mb-4 mb-md-0">
@@ -127,12 +124,10 @@
       </div>
       
       <div class="col-md-6 px-4">
-        <p class="subtitle">Acompanhe os Vídeos que os Professores Recomendam!</p>
-        <h2 class="section-title">Esborde Conhecimento!</h2>
+        <p class="subtitle">Esborde Conhecimento!</p>
+        <h2 class="section-title">Veja um vídeo feito pelos desenvolvedores!</h2>
         <p class="mb-4">No sistema de recmendações, os professores disponibilizarão mídias para melhorar o seu aprendizado, o professor, por meio de vídeo aulas do YouTube, colocarão na página para você.</p>
-        <p>Reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur excepteur sint
-          occaecat cupidatat non proident.</p>
+        
       </div>
     </div>
   </div>
