@@ -72,3 +72,9 @@
     </nav>
   </div>
 </div>
+<?php 
+include 'modal_login.php';
+ ?>
+ <?php 
+ include 'modal_login_professor.php';
+  ?>

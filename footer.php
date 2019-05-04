@@ -62,7 +62,7 @@
 <!-- venobox -->
 <script src="js/venobox.min.js"></script>
 <!-- google map -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
+
 <script src="js/gmap.js"></script>
 <!-- Main Script -->
 <script src="js/script.js"></script>
@@ -74,12 +74,7 @@
 </script>
 <!-- Modais -->
 
-<?php 
-include 'modal_login.php';
- ?>
- <?php 
- include 'modal_login_professor.php';
-  ?>
+
 </body>
 
 </html>
