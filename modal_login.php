@@ -31,7 +31,7 @@
             <div class="modal-body"> 
                  <form>
                   <div class="form-group">
-                    <center><label for="exampleInputtext1" class=" lbls"><img src="images/icon/teamwork.png"></label></center>
+                    <center><label for="exampleInputtext1"><img src="images/icon/teamwork.png"></label></center>
                     <input  class="form-control inputs text-primary" id="inputs" aria-describedby="emailHelp" placeholder="Email">
                    
                   </div>
@@ -50,4 +50,3 @@
          </div>
      </div>
  </div>
- 

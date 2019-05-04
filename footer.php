@@ -14,7 +14,7 @@
             <li class="mb-3 text-light"><a href="cadastro.php" class="text-light">Cadastre-se</a></li>
             <li class="mb-3 text-light"><a href="#" class="text-light" data-toggle="modal" data-target="#modal-mensagem">Login</a></li>
             <li class="mb-3 text-light"><a href="team.php" class="text-light">Sobre Nós</a></li>
-             <li class="mb-3 text-light"><a href="team.php" class="text-light">Sou professor</a></li>
+             <li class="mb-3 text-light"><a data-toggle="modal" data-target="#modal-login-professor" class="text-light">Sou professor</a></li>
                         
           </ul>
         </div>

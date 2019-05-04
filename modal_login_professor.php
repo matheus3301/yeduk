@@ -31,7 +31,7 @@
             <div class="modal-body"> 
                  <form>
                   <div class="form-group">
-                    <center><label for="exampleInputtext1" class=" lbls"><img src="images/icon/classroom.png"></label></center>
+                    <center><label for="exampleInputtext1"><img src="images/icon/classroom.png"></label></center>
                     <input  class="form-control inputs text-primary" id="inputs" aria-describedby="emailHelp" placeholder="Email">
                    
                   </div>
@@ -44,7 +44,7 @@
                 </form>
              </div>
             <div class="modal-footer" style="background:linear-gradient(to right, #00d2ff,#3a7bd5);">
-                 <i class="fas fa-user-plus text-white"></i> <a href="#" class="text-white">Não é cadastrado?</a> |
+                 <i class="fas fa-user-plus text-white"></i> <a href="cadastro_professor.php" class="text-white">Não é cadastrado?</a> |
                 <i class="fas fa-question-circle text-white" ></i> <a href="#" class="text-white">Esqueceu a senha?</a>
             </div>
          </div>

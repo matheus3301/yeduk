@@ -68,6 +68,10 @@ include 'header.php';
 
           </select>
         </div>
+         <div class="col-lg-12">
+          <label for="exampleInputtext1" class=" lbls">CPF:</label>
+          <input type="text" class="form-control mb-4 inputs"  placeholder="CPF" style="color: #3a7bd5">
+        </div>
         <div class="col-lg-12">
            <label for="exampleInputtext1" class=" lbls">Senha de acesso:</label>
           <input type="password" class="form-control mb-4 inputs" placeholder="Dica: Use senhas fortes">
@@ -79,7 +83,7 @@ include 'header.php';
       </form>
     </div>
     <div class="col-lg-6 text-center p-0">
-      <img src="images/banner/banner-1.png" width="350px" height="350px">
+      <img src="images/banner/banner-2.png" width="350px" height="350px">
     </div>
   </div>
 </div>
