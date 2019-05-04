@@ -175,12 +175,21 @@
       </div>
       <div class="col-lg-4">
         <div class="card px-4 py-5 border-0 rounded-lg shadow text-center card-border-bottom mb-5 mt-3">
-         <img src="images/testemunho/lombrado.jpg" class="mb-4 mx-auto"style="border-radius: 100%; width: 60%">
-          <p class="mb-4">Com o Yeduk agora estou finalmente aprendendo a programar e desenvolver aplicativos Web graças à possibilidade de entrar em turmas variadas.</p>
-          <h4>Alice kelly</h4>
-          <span class="h6">Happy client</span>
+         <img src="images/testemunho/wallace.jpeg" class="mb-4 mx-auto"style="border-radius: 100%; width: 60%">
+          <p class="mb-4">Com a plataforma agora eu posso criar turmas de maneira ilimitada e fornecer conteúdos aos meus alunos de todo o Brasil .</p>
+          <h4>Wallace Monteiro</h4>
+          <span class="h6">Professor</span>
         </div>
       </div>
+      <div class="col-lg-4">
+        <div class="card px-4 py-5 border-0 rounded-lg shadow text-center card-border-bottom mb-5 mt-3">
+         <img src="images/testemunho/talita.jpeg" class="mb-4 mx-auto"style="border-radius: 100%; width: 60%">
+          <p class="mb-4">Estou me preparando para Concursos Federais e Militares graças à plataforma e aos professores que estão de prontidão para me ajudar.</p>
+          <h4>Thalita Batista</h4>
+          <span class="h6">Aluna</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
