@@ -75,7 +75,21 @@
 		public function setSenha($senha){
 			$this->senha = $senha;
 		
-		}		
+		}
+                
+                public function Cadastrar($conexao) {
+                    $sql = "INSERT INTO tb_professor(nome,data_nasc,cpf,escolaridade,email,senha) VALUES('$this->nome','$this->data_nasc','$this->cpf','$this->escolaridade','$this->email','$this->senha')";
+                    
+                    
+                    try {
+                        $conexao->query($sql);
+                        echo "Foi";
+                        
+                    } catch (Exception $ex) {
+                            $ex->getMessage();
+                    }
+                    
+                }
 
 
 	}
