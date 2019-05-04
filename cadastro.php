@@ -69,8 +69,8 @@ include 'header.php';
           </select>
         </div>
         <div class="col-lg-12">
-           <label for="exampleInputtext1" name="senha" required="" class=" lbls">Senha de acesso:</label>
-          <input type="password" class="form-control mb-4 inputs text-primary" placeholder="Dica: Use senhas fortes">
+           <label for="exampleInputtext1"  required="" class=" lbls">Senha de acesso:</label>
+          <input type="password" name="senha" class="form-control mb-4 inputs text-primary" placeholder="Dica: Use senhas fortes">
         </div>
         <div class="col-12">
           <button type="submit" class="btn btn-outline-primary">Cadastrar-se</button>
