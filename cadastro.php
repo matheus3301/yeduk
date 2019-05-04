@@ -10,7 +10,6 @@ include 'header.php';
     color: #3a7bd5;
     float: left;
   }
-
 </style>
 <section class="page-title page-title-overlay " data-background="images/background/about.jpg">
   <div class="container">

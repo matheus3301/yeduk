@@ -61,7 +61,10 @@
           </li>
           <li class="nav-item">
             <a class="nav-link text-white text-capitalize" href="turmas.php">Turmas</a>
+           <li class="nav-item">
+            <a href="#" class="nav-link text-white text-capitalize" data-toggle="modal" data-target="#modal-login-professor">Sou um professor</a>
           </li>
+          
          
         </ul>
         <button class="btn btn btn-outline-primary text-white ml-3" data-toggle="modal" data-target="#modal-mensagem">Login</a></button>
