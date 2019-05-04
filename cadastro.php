@@ -40,22 +40,22 @@ include 'header.php';
         <h2 class="section-title">Cadastre-se Para Desfrutar do Nosso Sistema.</h2>
       </div>
       <div class="col-lg-6 text-center p-0">
-        <form action="#" class="row">
+        <form action="cadastra_aluno.php" method="POST" class="row">
           <div class="col-lg-12">
            <label for="exampleInputtext1" class=" lbls ">Seu nome:</label>
-           <input type="text" class="form-control mb-4 inputs" placeholder="Ex: José da Silva">
+           <input type="text" name="nome" required="" class="form-control mb-4 inputs text-primary" placeholder="Ex: José da Silva">
          </div>
          <div class="col-lg-12">
            <label for="exampleInputtext1" class=" lbls">Seu Email:</label>
-          <input type="text" class="form-control mb-4 inputs" placeholder="Ex: jose@gmail.com">
+          <input type="text" name="email" required="" class="form-control mb-4 inputs text-primary" placeholder="Ex: jose@gmail.com">
         </div>
         <div class="col-lg-6">
           <label for="exampleInputtext1" class=" lbls">Data de Nascimento:</label>
-          <input type="date" class="form-control mb-4 inputs"  placeholder="Data Nasc." style="color: #3a7bd5">
+          <input type="date" name="nascimento" required="" class="form-control mb-4 inputs"  placeholder="Data Nasc." style="color: #3a7bd5">
         </div>
         <div class="col-lg-6">
           <label for="exampleInputtext1" class=" lbls">Nível de Escolaridade:</label>
-          <select class="form-control mb-4 inputs" required="" style="height: 60px; color: #3a7bd5">
+          <select class="form-control mb-4 inputs" name="escolaridade" required="" style="height: 60px; color: #3a7bd5">
             <option value="">Selecione..</option>
             <option>Ensino Fundamental Completo</option>
             <option>Ensino Fundamental Incompleto</option>
@@ -69,8 +69,8 @@ include 'header.php';
           </select>
         </div>
         <div class="col-lg-12">
-           <label for="exampleInputtext1" class=" lbls">Senha de acesso:</label>
-          <input type="password" class="form-control mb-4 inputs" placeholder="Dica: Use senhas fortes">
+           <label for="exampleInputtext1" name="senha" required="" class=" lbls">Senha de acesso:</label>
+          <input type="password" class="form-control mb-4 inputs text-primary" placeholder="Dica: Use senhas fortes">
         </div>
         <div class="col-12">
           <button type="submit" class="btn btn-outline-primary">Cadastrar-se</button>
