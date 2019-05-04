@@ -43,11 +43,11 @@ include 'header.php';
         <form action="#" class="row">
           <div class="col-lg-12">
            <label for="exampleInputtext1" class=" lbls ">Seu nome:</label>
-           <input type="text" class="form-control mb-4 inputs" placeholder="Ex: José da Silva">
+           <input type="text" class="form-control mb-4 inputs text-primary" placeholder="Ex: José da Silva">
          </div>
          <div class="col-lg-12">
            <label for="exampleInputtext1" class=" lbls">Seu Email:</label>
-          <input type="text" class="form-control mb-4 inputs" placeholder="Ex: jose@gmail.com">
+          <input type="text" class="form-control mb-4 inputs text-primary" placeholder="Ex: jose@gmail.com">
         </div>
         <div class="col-lg-6">
           <label for="exampleInputtext1" class=" lbls">Data de Nascimento:</label>
@@ -70,7 +70,7 @@ include 'header.php';
         </div>
          <div class="col-lg-12">
           <label for="exampleInputtext1" class=" lbls">CPF:</label>
-          <input type="text" class="form-control mb-4 inputs"  placeholder="CPF" style="color: #3a7bd5">
+          <input type="text" class="form-control mb-4 inputs cpf"  placeholder="CPF" style="color: #3a7bd5">
         </div>
         <div class="col-lg-12">
            <label for="exampleInputtext1" class=" lbls">Senha de acesso:</label>

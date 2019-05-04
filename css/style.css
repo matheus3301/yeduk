@@ -162,12 +162,12 @@ h6,
   content: '';
   position: absolute;
   top: 0;
-  left: -102%;
-  width: 102%;
-  height: 100%;
+  left: -105%;
+  width: 105%;
+  height: 105%;
   background: linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%);
   z-index: -1;
-  transition: ease 0.3s;
+  transition: ease 0.5s;
 }
 
 .btn-outline-white {
