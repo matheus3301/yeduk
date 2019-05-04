@@ -44,11 +44,11 @@ include 'header.php';
           <div class="col-lg-12">
            <label for="exampleInputtext1" class=" lbls ">Seu nome:</label>
 
-           <input type="text" class="form-control mb-4 inputs" placeholder="Ex: José da Silva" name="nome">
+           <input type="text" class="form-control mb-4 inputs text-primary" placeholder="Ex: José da Silva" name="nome">
          </div>
          <div class="col-lg-12">
-           <label for="exampleInputtext1" class=" lbls">Seu Email:</label>
-           <input type="text" class="form-control mb-4 inputs" placeholder="Ex: jose@gmail.com" name="email">
+           <label for="exampleInputtext1" class=" lbls ">Seu Email:</label>
+           <input type="text" class="form-control mb-4 inputs text-primary" placeholder="Ex: jose@gmail.com" name="email">
 
            
          </div>
@@ -74,7 +74,6 @@ include 'header.php';
         </div>
          <div class="col-lg-12">
           <label for="exampleInputtext1" class=" lbls">CPF:</label>
-
           <input type="text" class="form-control mb-4 inputs cpf"  placeholder="CPF" style="color: #3a7bd5" name="cpf">
 
           
@@ -82,7 +81,7 @@ include 'header.php';
         </div>
         <div class="col-lg-12">
            <label for="exampleInputtext1" class=" lbls">Senha de acesso:</label>
-           <input type="password" class="form-control mb-4 inputs" placeholder="Dica: Use senhas fortes" name="senha">
+           <input type="password" class="form-control mb-4 inputs text-primary" placeholder="Dica: Use senhas fortes" name="senha">
         </div>
         <div class="col-12">
           <button type="submit" class="btn btn-outline-primary">Cadastrar-se</button>
