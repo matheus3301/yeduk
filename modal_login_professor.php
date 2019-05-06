@@ -29,15 +29,15 @@
                  <button type="button" class="close" data-dismiss="modal"><span><i class="fas fa-times-circle text-white"></i></span></button>
              </div>
             <div class="modal-body"> 
-                 <form>
+                 <form  method="post" action="validaloginprof.php">
                   <div class="form-group">
                     <center><label for="exampleInputtext1"><img src="images/icon/classroom.png"></label></center>
-                    <input  class="form-control inputs text-primary" id="inputs" aria-describedby="emailHelp" placeholder="Email">
+                    <input  class="form-control inputs text-primary" id="inputs" aria-describedby="emailHelp" placeholder="Email" type="mail" name="email">
                    
                   </div>
                   <div class="form-group">
                      <center><label for="exampleInputPassword1" class=" lbls"></center>
-                    <input type="password" class="form-control inputs text-primary" id="inputs" placeholder="Senha">
+                    <input type="password" class="form-control inputs text-primary" id="inputs" placeholder="Senha" name="senha">
                   </div>
                   
                   <button type="submit" class=" btn btn-block btn-outline-primary text-primary">Entrar</button>

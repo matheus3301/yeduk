@@ -19,7 +19,7 @@
   </style>
 
 </head>
-<div class="modal fade" id="modal-mensagem">
+<div class="modal fade" id="modal-mensagem" method="post" action="validaloginaluno.php">
     <div class="modal-dialog" >
         <div class="modal-content">
             <div class="modal-header" style="background:linear-gradient(to right, #00d2ff,#3a7bd5);">

@@ -53,7 +53,7 @@
 
 </head>
 <?php
-if (isset($_GET ['op']) && $_GET['op'] == "login_prof") {
+if (isset($_GET ['op']) && $_GET['op'] == "login_prof" || isset($_GET ['op']) && $_GET['op'] == "auth_prof") {
     ?>
    <body onload="prof.click();">
   <?php }else{ 
@@ -63,6 +63,12 @@ if (isset($_GET ['op']) && $_GET['op'] == "login_prof") {
   <?php }else{
     echo "<body>";
   }}?>
+
+
+
+
+
+
 <div class="modal fade" id="modal-login-professor">
     <div class="modal-dialog" >
         <div class="modal-content">
@@ -80,15 +86,23 @@ if (isset($_GET ['op']) && $_GET['op'] == "login_prof") {
                 Professor Cadastrado com Sucesso! Faça seu primeiro login.
               </div>
               <?php } ?> 
-                 <form>
+
+              <?php 
+                if (isset($_GET ['op']) && $_GET['op'] == "auth_prof") {
+                ?>
+               <div class="alert alert-danger" role="alert">
+                Login ou Senha incorretos, por favor tente novamente.
+              </div>
+              <?php } ?> 
+                 <form  method="post" action="validaloginprof.php">
                   <div class="form-group">
                     <center><label for="exampleInputtext1"><img src="images/icon/classroom.png"></label></center>
-                    <input  class="form-control inputs text-primary" id="inputs" aria-describedby="emailHelp" placeholder="Email">
+                    <input  class="form-control inputs text-primary" id="inputs" aria-describedby="emailHelp" placeholder="Email" type="mail" name="email">
                    
                   </div>
                   <div class="form-group">
                      <center><label for="exampleInputPassword1" class=" lbls"></center>
-                    <input type="password" class="form-control inputs text-primary" id="inputs" placeholder="Senha">
+                    <input type="password" class="form-control inputs text-primary" id="inputs" placeholder="Senha" name="senha">
                   </div>
                   
                   <button type="submit" class=" btn btn-block btn-outline-primary text-primary">Entrar</button>
