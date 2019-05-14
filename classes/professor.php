@@ -1,6 +1,7 @@
 <?php 
 class Professor{
 
+	private $id;
 	private $nome;
 	private $data_nasc;
 	private $data_ingresso;
@@ -18,6 +19,14 @@ class Professor{
 
 	public function setNome($nome){
 		$this->nome = $nome;
+	}
+
+	public function getId(){
+		return $this->id;
+	}
+
+	public function setId($id){
+		$this->id = $id;
 	}
 
 	public function getData_nasc(){
@@ -104,10 +113,45 @@ class Professor{
 			return false;
 		}
 
+	}
+	 public function CapturarProfessor($conexao){
+	 	$sql = "SELECT * FROM tb_professor WHERE  idtb_professor = $this->id";
 
+	 	$query = $conexao->query($sql);
+
+		$return = $query->fetch();
+
+		if ($return != null) {
+
+			$this->nome = $return[1];
+			$this->data_nasc = $return[2];
+			$this->data_ingresso = $return[3];
+			$this->cpf = $return[4];
+			$this->biografia = $return[5];
+			$this->escolaridade = $return[6];
+			$this->email = $return[7];
+
+
+
+
+
+		}
+	}
+	public function AlterarProfessor($conexao){
+	 	$sql = "UPDATE tb_professor SET nome = '$this->nome', data_nasc = '$this->data_nasc', cpf = '$this->cpf', biografia = '$this->biografia',  escolaridade = '$this->escolaridade',
+	 		   WHERE  idtb_professor = $this->id";
+
+	 	$query = $conexao->query($sql);
+
+		$return = $query->fetch();
+
+		if ($return != null) {
+			return $return[0];
+		}else{
+			return false;
+		}
 	}
 
 
 }
-
 ?>

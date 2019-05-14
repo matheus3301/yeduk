@@ -57,7 +57,7 @@ if (isset($_GET ['op']) && $_GET['op'] == "login_prof" || isset($_GET ['op']) &&
     ?>
    <body onload="prof.click();">
   <?php }else{ 
-  if (isset($_GET ['op']) && $_GET['op'] == "login_aluno") {
+  if (isset($_GET ['op']) && $_GET['op'] == "login_aluno" || isset($_GET ['op']) && $_GET['op'] == "auth_aluno") {
     ?>
    <body onload="aluno.click();">
   <?php }else{
@@ -155,22 +155,30 @@ if (isset($_GET ['op']) && $_GET['op'] == "login_prof" || isset($_GET ['op']) &&
                 Aluno Cadastrado com Sucesso! Faça seu primeiro login.
               </div>
               <?php } ?> 
-                 <form>
+
+                 <?php 
+                if (isset($_GET ['op']) && $_GET['op'] == "auth_aluno") {
+                ?>
+               <div class="alert alert-danger" role="alert">
+                Login ou Senha incorretos, por favor tente novamente.
+              </div>
+              <?php } ?> 
+                 <form action="validaloginaluno.php" method="POST">
                   <div class="form-group">
                     <center><label for="exampleInputtext1"><img src="images/icon/teamwork.png"></label></center>
-                    <input  class="form-control inputs text-primary" id="inputs" aria-describedby="emailHelp" placeholder="Email">
+                    <input  class="form-control inputs text-primary" name="email" id="inputs" aria-describedby="emailHelp" placeholder="Email">
                    
                   </div>
                   <div class="form-group">
                      <center><label for="exampleInputPassword1" class=" lbls"></center>
-                    <input type="password" class="form-control inputs text-primary" id="inputs" placeholder="Senha">
+                    <input type="password" name="senha" class="form-control inputs text-primary" id="inputs" placeholder="Senha">
                   </div>
                   
                   <button type="submit" class=" btn btn-block btn-outline-primary text-primary">Entrar</button>
                 </form>
              </div>
             <div class="modal-footer" style="background:linear-gradient(to right, #00d2ff,#3a7bd5);">
-                 <i class="fas fa-user-plus text-white"></i> <a href="#" class="text-white">Cadastre-se</a> |
+                 <i class="fas fa-user-plus text-white"></i> <a href="cadastro.php" class="text-white">Cadastre-se</a> |
                 <i class="fas fa-question-circle text-white" ></i> <a href="#" class="text-white">Esqueceu a senha?</a>
             </div>
          </div>

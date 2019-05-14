@@ -14,6 +14,7 @@
 	}else{
 		session_start();
 		$_SESSION['idprof'] = $resultado;
+		echo "Foi";
 		header('location:meuperfilprofessor.php');
 
 	}

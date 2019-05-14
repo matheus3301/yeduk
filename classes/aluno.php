@@ -2,6 +2,7 @@
 <?php 
 class Aluno{
 
+	private $id;
 	private $nome;
 	private $data_nasc;
 	private $data_ingresso;
@@ -12,6 +13,13 @@ class Aluno{
 
 
 
+	public function getId(){
+		return $this->id;
+	}
+
+	public function setId($id){
+		$this->id = $id;
+	}
 	public function getNome(){
 		return $this->nome;
 	}
@@ -83,9 +91,41 @@ class Aluno{
 
 	}
 
-	public function Login($conexao)
-		$sql = "SELECT ";
+	public function Login($conexao){
+		$sql = "SELECT idtb_aluno FROM tb_aluno WHERE email = '$this->email' AND senha = '$this->senha'";
+
+		$query = $conexao->query($sql);
+
+		$return = $query->fetch();
+
+		if ($return != null) {
+			return $return[0];
+		}else{
+			return false;
+		}
+
+
+	}
+	public function CapturarAluno($conexao){
+	 	$sql = "SELECT * FROM tb_aluno WHERE  idtb_aluno = $this->id";
+
+	 	$query = $conexao->query($sql);
+
+		$return = $query->fetch();
+
+		if ($return != null) {
+
+			$this->nome = $return[1];
+			$this->data_nasc = $return[2];
+			$this->data_ingresso = $return[3];
+			$this->biografia = $return[4];
+			$this->escolaridade = $return[5];
+
+
+
+
+		}
+	}
 
 }
-
 ?>

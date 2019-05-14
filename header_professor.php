@@ -32,7 +32,7 @@
     </head>
 
     <body>
-        <!-- preloader start -->
+        <!-- preloader start --> 
         <div class="preloader">
             <img src="images/preloader.gif" alt="preloader">
         </div>
@@ -42,7 +42,7 @@
         <div class="naviagtion fixed-top transition">
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-dark p-0">
-                    <a class="navbar-brand p-0" href="index.php"><img src="images/logo/logo.png" alt="Yeduk"></a>
+                    <a class="navbar-brand p-0" href="meuperfilprofessor.php"><img src="images/logo/logo.png" alt="Yeduk"></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation"
                             aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -56,13 +56,16 @@
                             <li class="nav-item">
                                 <a class="nav-link text-white text-capitalize" href="minhasturmasprofessor.php">Minhas Turmas</a>
                             </li>
+                              <li class="nav-item">
+                                <a class="nav-link text-white text-capitalize" href="minhasturmasprofessor.php">Cadastrar Turmas</a>
+                            </li>
 
 
 
 
 
                         </ul>
-                        <button class="btn btn btn-outline-primary text-white ml-3">Sair</button>
+                        <a href="sair.php"><button class="btn btn btn-outline-primary text-white ml-3">Sair</button></a>
                     </div>
                 </nav>
             </div>
