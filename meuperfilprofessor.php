@@ -21,19 +21,13 @@
     font-weight: bold;
     color: #3a7bd5;
     float: left;
+    padding: 10px;
   }
-  .inpts{
-    border:none;
-    color:rgba(0,0,0,.4);
-    
-    
-  }
-  .inpts:focus{
-    background-color: transparent;
-    border-bottom: : 2px solid #009afa;
-    color:rgba(0,0,0,.4);
-    transition: .4s linear;
-
+  .mod{
+    position: absolute;
+    width: 100%;
+    padding: 50px;
+    background: linear-gradient(45deg, #11998e, #38ef7d);
   }
 
 </style>
@@ -42,7 +36,7 @@
     <div class="row">
       <div class="col-lg-7">
         <h1 class="text-white position-relative">
-        <span class="watermark-sm">Professor: <?php echo($professor->getNome()); ?></span>Professor:<?php echo($professor->getNome()); ?>
+        <span class="watermark-sm">Professor: <?php echo($professor->getNome()); ?></span>Professor: <?php echo ucfirst(($professor->getNome())); ?>
         </h1>
         <p class="text-white pt-4 pb-4"><?php if ($professor->getBiografia() == "") {
           echo "Sem Biografia";
@@ -68,47 +62,99 @@
       <div class="col-lg-6 text-center p-0">
           <form class="row">
           <div class="col-lg-12">
-           <label for="exampleInputtext1" class="lbls ">Seu nome:</label>
+           <label for="exampleInputtext1" class="lbls ">Seu nome: <span class="text-dark"> <?php    echo ucfirst(($professor->getNome()));?> </span></label>
 
-           <input type="text" class="form-control mb-4 inpts" disabled value="<?php echo($professor->getNome());?>">
+          
          </div>
          <div class="col-lg-12">
-           <label for="exampleInputtext1" class="lbls ">Seu Email:</label>
-           <input type="text" class="form-control mb-4 inpts" disabled value="<?php echo($professor->getEmail());?>" >
-
-           
+           <label for="exampleInputtext1" class="lbls ">Seu Email: <span class="text-dark"><?php echo($professor->getEmail());?></span></label>
+         
          </div>
          
-        <div class="col-lg-6">
-          <label for="exampleInputtext1" class=" lbls">Data de Nascimento:</label>
-          <input type="date" class="form-control mb-4 inpts" disabled value="<?php echo($professor->getData_nasc());?>" >
-        </div>
-        <div class="col-lg-6">
-          <label for="exampleInputtext1" class=" lbls">Nível de Escolaridade:</label>
-          <input type="text" class="form-control inpts" disabled value="<?php echo($professor->getEscolaridade());?>" ></input>
+        <div class="col-lg-12">
+          <label for="exampleInputtext1" class=" lbls">Data de Nascimento:   <span class="text-dark"><?php echo($professor->getData_nasc());?></span></label>
           
-
-
-
+        </div>
+        <div class="col-lg-12">
+          <label for="exampleInputtext1" class=" lbls">Nível de Escolaridade: <span class="text-dark"><?php echo($professor->getEscolaridade());?></span></label>
           
         </div>
          <div class="col-lg-12">
-          <label for="exampleInputtext1" class="lbls">CPF:</label>
-          <input type="text" class="form-control mb-4 inpts cpf" disabled value="<?php echo($professor->getCpf());?>" >
+          <label for="exampleInputtext1" class="lbls">CPF: <span class="text-dark">           <?php echo($professor->getCpf());?> 
+        </span></label>
         </div>
+        <br><br><br><br>
         <div class="col-12">
-          <a class="btn btn-primary text-white">Editar Perfil</a>
+          <a class="btn btn-primary text-white"  data-toggle="modal" data-target=".bd-example-modal-lg">Editar Perfil</a>
           <br><br>
         </div>
       </form>
     </div>
     <div class="col-lg-6 text-center p-0">
-      <img src="images/banner/banner-2.png" width="350px" height="350px">
+      <img src="images/icon/man.png" width="250px" height="250px">
     </div>
   </div>
 </div>
+<br><br><br>
 </section>
 
+
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog modal-lg">
+
+
+    <div class="modal-content mod">
+       <div class="modal-header" >
+        <center> <h4 class="header-title text-white"> Faça a alteração nas suas informações</h4></center>
+                 <button type="button" class="close" data-dismiss="modal"><span><i class="fas fa-times-circle text-white"></i></span></button>
+
+             </div>
+             <br><br>
+      <form>
+  <div class="form-row">
+    <div class="form-group col-md-12 ">
+      <label for="inputEmail4" class=" lbls text-white">Nome</label>
+      <input type="email" class="form-control inputs text-white" id="inputEmail4" value="<?php echo($professor->getNome());?>">
+    </div>
+    <div class="form-group col-md-12 ">
+      <label for="inputPassword4" class=" lbls text-white">Email</label>
+      <input type="email" class="form-control inputs text-white" id="inputPassword4" value="<?php echo($professor->getEmail());?>" >
+    </div>
+     <div class="form-group col-md-12">
+      <label for="inputPassword4" class=" lbls text-white">Data de Nasc.</label>
+      <input type="date" class="form-control inputs text-white" id="inputPassword4" value="<?php echo($professor->getData_nasc());?>" >
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6 ">
+      <label for="inputEmail4" class=" lbls text-white ">CPF</label>
+      <input type="text" class="form-control inputs text-white" id="inputEmail4" value="<?php echo($professor->getCpf());?>">
+    </div>
+    <div class="form-group col-md-6 ">
+      <label for="exampleInputtext1" class=" lbls text-white">Nível de Escolaridade:</label>
+          <select class="form-control mb-4 inputs" required="" style="height: 60px;  name="escolaridade">
+            <option value=""><?php echo($professor->getEscolaridade());?></option>
+            <option>Ensino Fundamental Completo</option>
+            <option>Ensino Fundamental Incompleto</option>
+            <option>Ensino Médio Completo</option>
+            <option>Ensino Médio Incompleto</option>
+            <option>Ensino Superior Incompleto</option>
+            <option>Ensino Superior Completo</option>
+
+
+
+          </select>
+        
+    </div>
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Alterar Informações</button>
+</form>
+    </div>
+  </div>
+</div>
 
 
 
@@ -117,3 +163,11 @@
 <?php
     include 'footer_professor.php';
 ?>
+<script src="js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.cpf').mask('000.000.000-00');
+});
+
+
