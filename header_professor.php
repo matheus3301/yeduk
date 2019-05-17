@@ -1,6 +1,13 @@
 <?php 
    session_start();
   $id = $_SESSION['idprof'];
+
+
+  if (!isset($_SESSION['idprof'])) {
+      header('location:index.php?op=logar_professor');
+  }
+
+
    $professor = new Professor();
 
     $professor->setId($id);
@@ -62,7 +69,7 @@
                                 <a class="nav-link text-white text-capitalize" href="meuperfilprofessor.php">Perfil</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white text-capitalize" href="consultar_turmas.php">Minhas Turmas</a>
+                                <a class="nav-link text-white text-capitalize" href="minhasturmasprofessor.php">Minhas Turmas</a>
                             </li>
                               <li class="nav-item">
                                 <a class="nav-link text-white text-capitalize" href="cadastro_turmas.php">Cadastrar Turmas</a>
@@ -73,14 +80,33 @@
 
 
                         </ul>
-                        <a href="sair.php"><button class="btn btn btn-outline-primary text-white ml-3">Sair</button></a>
+                        <button class="btn btn btn-outline-primary text-white ml-3" data-toggle="modal" data-target="#modal-sair" id="aluno">Sair</button>
                     </div>
                 </nav>
             </div>
         </div>
-        <?php
-        include 'modal_login.php';
-        ?>
-        <?php
-        include 'modal_login_professor.php';
-        ?>
+
+        <div class="modal fade" id="modal-sair">
+    <div class="modal-dialog" >
+        <div class="modal-content">
+            <div class="modal-header" style="background:linear-gradient(to right, #00d2ff,#3a7bd5);">
+                 <h4 class="modal-title text-white">
+                  <img src="images/logo/logo.png">  Sair
+                 </h4>
+                 <button type="button" class="close" data-dismiss="modal"><span><i class="fas fa-times-circle text-white"></i></span></button>
+             </div>
+            <div class="modal-body"> 
+                 
+                 <p>Você tem certeza que deseja sair da sua conta?</p>
+                 
+
+
+             </div>
+            <div class="modal-footer" >
+                 <a href="sair.php?tipo=professor" class="btn btn btn-primary text-white ml-3">Sair</a>
+            </div>
+         </div>
+     </div>
+ </div>
+
+        

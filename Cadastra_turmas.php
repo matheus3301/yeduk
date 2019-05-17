@@ -20,6 +20,7 @@ $turmas->setId_professor($id);
 
 
 $turmas->Cadastrar($conexao);
+
 header('location:consultar_turmas.php?cad=true');
 
 

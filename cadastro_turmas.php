@@ -1,14 +1,6 @@
 <?php
-   include 'classes/professor.php';
+  include 'classes/professor.php';
   include 'classes/conexao.php';
-
-  session_start();
-  $id = $_SESSION['idprof'];
-   $professor = new Professor();
-
-    $professor->setId($id);
-    $professor->CapturarProfessor($conexao);
-
   include 'header_professor.php';
  
    
@@ -23,6 +15,10 @@
     color: #3a7bd5;
     float: left;
     padding: 10px;
+  }
+  .inpts{
+    border: 1px solid;
+    color:#3a7bd5;
   }
 
 </style>
@@ -59,17 +55,13 @@
           <div class="col-lg-12">
            <label for="exampleInputtext1" class=" lbls "> Turma:</label>
 
-           <input type="text" class="form-control mb-4 inputs text-primary" placeholder="Ex: Terceiro ano C" name="nome">
+           <input type="text" class="form-control mb-4 inpts text-primary" placeholder="Ex: Terceiro ano C" name="nome">
          </div>
          <div class="col-lg-12">
            <label for="exampleInputtext1" class=" lbls ">Descrição:</label>
-           <textarea  class="form-control mb-4 inputs text-primary" name="descricao"></textarea>  
+           <textarea  class="form-control mb-4 inpts text-primary" name="descricao"></textarea>  
          </div>
-          <div class="col-lg-2">
-           <label for="exampleInputtext1" class=" lbls ">Professor:</label>
-            <input type="text" class="form-control mb-4 inputs text-primary" name="IdProfessor"
-            value="<?php echo($professor->getId());?>" disabled>
-         </div>
+        
         <div class="col-12">
           <button type="submit" class="btn btn-outline-primary">Cadastrar Turma</button>
           <br><br>

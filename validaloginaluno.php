@@ -13,7 +13,7 @@
 		header('location:index.php?op=auth_aluno');
 	}else{
 		session_start();
-		$_SESSION['idtb_aluno'] = $resultado;
+		$_SESSION['idaluno'] = $resultado;
 		header('location:meuperfilaluno.php');
 
 	}

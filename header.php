@@ -53,11 +53,11 @@
 
 </head>
 <?php
-if (isset($_GET ['op']) && $_GET['op'] == "login_prof" || isset($_GET ['op']) && $_GET['op'] == "auth_prof") {
+if (isset($_GET ['op']) && $_GET['op'] == "login_prof" || isset($_GET ['op']) && $_GET['op'] == "auth_prof" || isset($_GET ['op']) && $_GET['op'] == "exit_professor" || isset($_GET ['op']) && $_GET['op'] == "logar_professor") {
     ?>
    <body onload="prof.click();">
   <?php }else{ 
-  if (isset($_GET ['op']) && $_GET['op'] == "login_aluno" || isset($_GET ['op']) && $_GET['op'] == "auth_aluno") {
+  if (isset($_GET ['op']) && $_GET['op'] == "login_aluno" || isset($_GET ['op']) && $_GET['op'] == "auth_aluno" || isset($_GET ['op']) && $_GET['op'] == "exit_aluno" || isset($_GET ['op']) && $_GET['op'] == "logar_aluno") {
     ?>
    <body onload="aluno.click();">
   <?php }else{
@@ -84,6 +84,22 @@ if (isset($_GET ['op']) && $_GET['op'] == "login_prof" || isset($_GET ['op']) &&
                 ?>
                <div class="alert alert-primary" role="alert">
                 Professor Cadastrado com Sucesso! Faça seu primeiro login.
+              </div>
+              <?php } ?>
+
+              <?php 
+                if (isset($_GET ['op']) && $_GET['op'] == "logar_professor") {
+                ?>
+               <div class="alert alert-warning" role="alert">
+                Primeiramente faça login!
+              </div>
+              <?php } ?> 
+
+              <?php 
+                if (isset($_GET ['op']) && $_GET['op'] == "exit_professor") {
+                ?>
+               <div class="alert alert-primary" role="alert">
+                Obrigado pela sua contribuição à comunidade, até a proxima! ;)
               </div>
               <?php } ?> 
 
@@ -155,6 +171,13 @@ if (isset($_GET ['op']) && $_GET['op'] == "login_prof" || isset($_GET ['op']) &&
                 Aluno Cadastrado com Sucesso! Faça seu primeiro login.
               </div>
               <?php } ?> 
+              <?php 
+                if (isset($_GET ['op']) && $_GET['op'] == "exit_aluno") {
+                ?>
+               <div class="alert alert-warning" role="alert">
+                Tchau, até a próxima ;)
+              </div>
+              <?php } ?>
 
                  <?php 
                 if (isset($_GET ['op']) && $_GET['op'] == "auth_aluno") {
@@ -163,6 +186,14 @@ if (isset($_GET ['op']) && $_GET['op'] == "login_prof" || isset($_GET ['op']) &&
                 Login ou Senha incorretos, por favor tente novamente.
               </div>
               <?php } ?> 
+
+              <?php 
+                if (isset($_GET ['op']) && $_GET['op'] == "logar_aluno") {
+                ?>
+               <div class="alert alert-warning" role="alert">
+                Primeiramente faça login! ;)
+              </div>
+              <?php } ?>
                  <form action="validaloginaluno.php" method="POST">
                   <div class="form-group">
                     <center><label for="exampleInputtext1"><img src="images/icon/teamwork.png"></label></center>
@@ -224,7 +255,7 @@ if (isset($_GET ['op']) && $_GET['op'] == "login_prof" || isset($_GET ['op']) &&
           
          
         </ul>
-        <button class="btn btn btn-outline-primary text-white ml-3" data-toggle="modal" data-target="#modal-mensagem" id="aluno">Login</a></button>
+        <button class="btn btn btn-outline-primary text-white ml-3" data-toggle="modal" data-target="#modal-mensagem" id="aluno">Login</button>
       </div>
     </nav>
   </div>

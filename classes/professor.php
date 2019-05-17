@@ -152,25 +152,24 @@ class Professor{
 			return false;
 		}
 	}
-	//public function CapturarMinhasTurmas($conexao){
-	// 	$sql = "SELECT * FROM tb_turma WHERE  tb_professor_idtb_professor = $this->id";
+	public function CapturarMinhasTurmas($conexao){
+		$sql = "SELECT * FROM tb_turma WHERE  tb_professor_idtb_professor = $this->id";
 
 
-	// 	$query = $conexao->query($sql);
+	 	$query = $conexao->query($sql);
 
-	//	$return = $query->fetchAll();
+		$return = $query->fetchAll();
 
-	//	if ($return != null) {
+		if ($return != null) {
 
-	//		$this->nome = $return[1];
-	//		$this->descricao = $return[2];
-
-	//	}
+			$this->nome = $return[1];
+			$this->descricao = $return[2];
+		}
 
 
 
 		
-	//}
+	}
 
 
 

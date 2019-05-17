@@ -1,5 +1,5 @@
 <?php 
-class Turmas{
+class Turma{
 
 	private $id;
 	private $nome;
@@ -49,8 +49,21 @@ class Turmas{
 		}
 
 	}
+
+
+	function CapturarTurmasProfessor($conexao,$idprofessor){	
+
+
+		$sth = $conexao->prepare("SELECT * FROM tb_turma WHERE  tb_professor_idtb_professor = $idprofessor");
+		$sth->execute();
+
+		$result = $sth->fetchAll();
+
+		return $result;
+		
+	}
 	
 
 }
 ?>
-	
+

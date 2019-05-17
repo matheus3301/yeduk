@@ -1,30 +1,19 @@
 <?php
-  session_start();
-  $id = $_SESSION['idtb_aluno'];
-
-  include 'header_professor.php';
-  include 'classes/aluno.php';
-  include 'classes/conexao.php';
-  
-    $aluno = new Aluno();
-
-    $aluno->setId($id);
-    $aluno->CapturarAluno($conexao);
-
-
-    
+  include 'header_aluno.php';
+ 
 ?>
+
 <section class="page-title page-title-overlay " data-background="images/background/about.jpg">
   <div class="container">
     <div class="row">
       <div class="col-lg-7">
         <h1 class="text-white position-relative">
-        <span class="watermark-sm">Aluno <?php echo($aluno->getNome()); ?></span>Aluno:<?php echo($aluno->getNome()); ?>
+        <span class="watermark-sm">Aluno:  <?php echo ucfirst(($aluno->getNome())); ?></span>Aluno:  <?php echo ucfirst(($aluno->getNome())); ?>
         </h1>
         <p class="text-white pt-4 pb-4">Biografia: <?php if ($aluno->getBiografia() == "") {
           echo "Sem biografia";
         }else{
-          echo($aluno->getData_ingresso());
+          echo ucfirst(($aluno->getData_ingresso()));
         }
         ?></p>
 
@@ -38,5 +27,5 @@
   </div>
 </section>
 <?php
-    include 'footer.php';
+    include 'footer_aluno.php';
 ?>
