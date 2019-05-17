@@ -3,7 +3,6 @@
 include 'classes/conexao.php';
 include 'classes/professor.php';
 
-
 $professor = new Professor();
 
 $professor->setNome($_POST['nome']);

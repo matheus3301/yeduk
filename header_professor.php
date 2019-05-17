@@ -1,3 +1,12 @@
+<?php 
+   session_start();
+  $id = $_SESSION['idprof'];
+   $professor = new Professor();
+
+    $professor->setId($id);
+    $professor->CapturarProfessor($conexao);
+
+ ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -28,14 +37,13 @@
         <style type="text/css">
 
         </style>
+        <meta charset="utf-8">
 
     </head>
 
     <body>
         <!-- preloader start --> 
-        <div class="preloader">
-            <img src="images/preloader.gif" alt="preloader">
-        </div>
+       
         <!-- preloader end -->
 
         <!-- navigation -->
@@ -54,10 +62,10 @@
                                 <a class="nav-link text-white text-capitalize" href="meuperfilprofessor.php">Perfil</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white text-capitalize" href="minhasturmasprofessor.php">Minhas Turmas</a>
+                                <a class="nav-link text-white text-capitalize" href="consultar_turmas.php">Minhas Turmas</a>
                             </li>
                               <li class="nav-item">
-                                <a class="nav-link text-white text-capitalize" href="minhasturmasprofessor.php">Cadastrar Turmas</a>
+                                <a class="nav-link text-white text-capitalize" href="cadastro_turmas.php">Cadastrar Turmas</a>
                             </li>
 
 

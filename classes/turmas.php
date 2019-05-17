@@ -1,5 +1,5 @@
 <?php 
-class Aluno{
+class Turmas{
 
 	private $id;
 	private $nome;
@@ -37,7 +37,7 @@ class Aluno{
 	}
 
 	public function Cadastrar($conexao) {
-		$sql = "INSERT INTO tb_turmas(nome,descricao,tb_professor_idtb_professor) VALUES('$this->nome','$this->descricao',$this->id_professor)";
+		$sql = "INSERT INTO tb_turma(nome,descricao,tb_professor_idtb_professor) VALUES('$this->nome','$this->descricao',$this->id_professor)";
 
 
 		try {
@@ -49,19 +49,7 @@ class Aluno{
 		}
 
 	}
-	public function CapturarTurmas($conexao) {
-		$sql = "SELECT * FROM tb_turma WHERE  tb_professor_idtb_professor = $this->id_professor";
-		
-		try {
-			$conexao->query($sql);
-			echo "Foi";
-
-		} catch (Exception $ex) {
-			$ex->getMessage();
-		}
-
-	}
-
+	
 
 }
 ?>
