@@ -138,18 +138,18 @@ class Professor{
 
 		}
 	}
-	public function AlterarProfessor($conexao){
-	 	$sql = "UPDATE tb_professor SET nome = '$this->nome', data_nasc = '$this->data_nasc', cpf = '$this->cpf', biografia = '$this->biografia',  escolaridade = '$this->escolaridade',
+	public function Alterar($conexao){
+	 	$sql = "UPDATE tb_professor SET nome = '$this->nome', data_nasc = '$this->data_nasc', cpf = '$this->cpf',  escolaridade = '$this->escolaridade'
 	 		   WHERE  idtb_professor = $this->id";
 
-	 	$query = $conexao->query($sql);
+	 	
 
-		$return = $query->fetch();
+	 	try {
+			$conexao->query($sql);
+			echo "Foi";
 
-		if ($return != null) {
-			return $return[0];
-		}else{
-			return false;
+		} catch (Exception $ex) {
+			$ex->getMessage();
 		}
 	}
 	public function CapturarMinhasTurmas($conexao){
