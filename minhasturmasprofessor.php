@@ -9,8 +9,8 @@
 
   $turma = new Turma();
 
-  $turma->CapturarTurmasProfessor($conexao,$id);
-  print_r($turma);
+  
+  print_r($turma->CapturarTurmasProfessor($conexao,$id));
 
 
  ?>
