@@ -10,7 +10,7 @@
   $turma = new Turma();
 
   
-  print_r($turma->CapturarTurmasProfessor($conexao,$id));
+  $turmas = $turma->CapturarTurmasProfessor($conexao,$id);
 
 
  ?>
@@ -35,11 +35,9 @@
     </div>
 
 
-
-
-<!-- nav part end
-
 </section>
+
+
 <section class="section section-lg-bottom bg-light">
   <div class="container">
     <div class="row">
@@ -47,62 +45,32 @@
         <p class="subtitle"></p>
         <h2 class="section-title">Suas Turmas</h2>
       </div>
-      <div class="col-lg-12 bg-white p-4 rounded shadow my-3">
-        <div class="media align-items-center flex-column flex-sm-row">
-          <img src="images/career/logo-1.png" class="mr-sm-3 mb-4 mb-sm-0 border rounded p-2" alt="logo-1">
-          <div class="media-body text-center text-sm-left mb-4 mb-sm-0">
-            <h6 class="mt-0"></h6>
-            <p class="mb-0 text-gray"></p>
-          </div>
-          <a href="career-details.html" class="btn btn-outline-primary">Apply Now</a>
-        </div>
-      </div>
-      <div class="col-lg-12 bg-white p-4 rounded shadow my-3">
-        <div class="media align-items-center flex-column flex-sm-row">
-          <img src="images/career/logo-2.png" class="mr-sm-3 mb-4 mb-sm-0 border rounded p-2" alt="logo-1">
-          <div class="media-body text-center text-sm-left mb-4 mb-sm-0">
-            <h6 class="mt-0"><?php echo($professor->getNome()); ?></h6>
-            <p class="mb-0 text-gray">MySQL Developer I West New York, USA I Full Time I 2 Days Ago</p>
-          </div>
-          <a href="career-details.html" class="btn btn-outline-primary">Apply Now</a>
-        </div>
-      </div>
-      <div class="col-lg-12 bg-white p-4 rounded shadow my-3">
-        <div class="media align-items-center flex-column flex-sm-row">
-          <img src="images/career/logo-3.png" class="mr-sm-3 mb-4 mb-sm-0 border rounded p-2" alt="logo-1">
-          <div class="media-body text-center text-sm-left mb-4 mb-sm-0">
-            <h6 class="mt-0">Web Project Manager - Team of PHP MySQL Developers</h6>
-            <p class="mb-0 text-gray">MySQL Developer I West New York, USA I Full Time I 2 Days Ago</p>
-          </div>
-          <a href="career-details.html" class="btn btn-outline-primary">Apply Now</a>
-        </div>
-      </div>
-      <div class="col-lg-12 bg-white p-4 rounded shadow my-3">
-        <div class="media align-items-center flex-column flex-sm-row">
-          <img src="images/career/logo-4.png" class="mr-sm-3 mb-4 mb-sm-0 border rounded p-2" alt="logo-1">
-          <div class="media-body text-center text-sm-left mb-4 mb-sm-0">
-            <h6 class="mt-0">Web Project Manager - Team of PHP MySQL Developers</h6>
-            <p class="mb-0 text-gray">MySQL Developer I West New York, USA I Full Time I 2 Days Ago</p>
-          </div>
-          <a href="career-details.html" class="btn btn-outline-primary">Apply Now</a>
-        </div>
-      </div>
-      <div class="col-lg-12 bg-white p-4 rounded shadow my-3">
-        <div class="media align-items-center flex-column flex-sm-row">
-          <img src="images/career/logo-5.png" class="mr-sm-3 mb-4 mb-sm-0 border rounded p-2" alt="logo-1">
-          <div class="media-body text-center text-sm-left mb-4 mb-sm-0">
-            <h6 class="mt-0">Web Project Manager - Team of PHP MySQL Developers</h6>
-            <p class="mb-0 text-gray">MySQL Developer I West New York, USA I Full Time I 2 Days Ago</p>
-          </div>
-          <a href="career-details.html" class="btn btn-outline-primary">Apply Now</a>
-        </div>
-      </div>
+
+        <?php 
+          foreach ($turmas as $turmaatual) { ?>
+            <div class="col-lg-12 bg-white p-4 rounded shadow my-3">
+              <div class="media align-items-center flex-column flex-sm-row">
+                <img src="images/career/logo-5.png" class="mr-sm-3 mb-4 mb-sm-0 border rounded p-2" alt="logo-1">
+                <div class="media-body text-center text-sm-left mb-4 mb-sm-0">
+                  <h6 class="mt-0"><?php echo $turmaatual[0]." - ".$turmaatual[1]; ?></h6>
+                  <p class="mb-0 text-gray"><?php echo $turmaatual[2]; ?></p>
+                </div>
+                <a href="career-details.html" class="btn btn-outline-primary">Acessar Turma</a>
+              </div>
+            </div>
+
+
+
+
+         <?php }?>
+      
+        
+
+
     </div>
   </div>
 </section>
- -->
 
-<!--- Footer -->
   <?php 
   include 'footer_professor.php';
 
