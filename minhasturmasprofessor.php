@@ -26,8 +26,8 @@
             <div class="col-lg-3 ml-auto align-self-end">
                 <nav class="position-relative zindex-1" aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-end bg-transparent">
-                        <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
-                        <li class="breadcrumb-item text-white" aria-current="page">Career</li>
+                        <li class="breadcrumb-item"><a href="meuperfilprofessor.php" class="text-white">Perfil</a></li>
+                        <li class="breadcrumb-item text-white" aria-current="page">Turmas</li>
                     </ol>
                 </nav>
             </div>
@@ -50,12 +50,12 @@
           foreach ($turmas as $turmaatual) { ?>
             <div class="col-lg-12 bg-white p-4 rounded shadow my-3">
               <div class="media align-items-center flex-column flex-sm-row">
-                <img src="images/career/logo-5.png" class="mr-sm-3 mb-4 mb-sm-0 border rounded p-2" alt="logo-1">
-                <div class="media-body text-center text-sm-left mb-4 mb-sm-0">
+                <i class="fa-4x fab fa-github" ></i>
+                <div class="media-body text-center text-sm-left mb-4 mb-sm-0" style="padding-left:5%">
                   <h6 class="mt-0"><?php echo $turmaatual[0]." - ".$turmaatual[1]; ?></h6>
                   <p class="mb-0 text-gray"><?php echo $turmaatual[2]; ?></p>
                 </div>
-                <a href="career-details.html" class="btn btn-outline-primary">Acessar Turma</a>
+                <a href="turmaprofessor.php?id=<?php echo $turmaatual[0]?>" class="btn btn-outline-primary">Acessar Turma</a>
               </div>
             </div>
 
