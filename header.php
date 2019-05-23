@@ -82,33 +82,49 @@ if (isset($_GET ['op']) && $_GET['op'] == "login_prof" || isset($_GET ['op']) &&
               <?php 
                 if (isset($_GET ['op']) && $_GET['op'] == "login_prof") {
                 ?>
-               <div class="alert alert-primary" role="alert">
-                Professor Cadastrado com Sucesso! Faça seu primeiro login.
-              </div>
+               <div class="alert alert-primary alert-dismissible fade show text-center"  role="alert">
+            Cadastro realizado com sucesso, faça seu primeiro login!
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
               <?php } ?>
 
               <?php 
                 if (isset($_GET ['op']) && $_GET['op'] == "logar_professor") {
                 ?>
-               <div class="alert alert-warning" role="alert">
-                Primeiramente faça login!
-              </div>
+              <div class="alert alert-danger alert-dismissible fade show text-center"  role="alert">
+            Primeiramente faça Login!
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
               <?php } ?> 
 
               <?php 
                 if (isset($_GET ['op']) && $_GET['op'] == "exit_professor") {
                 ?>
-               <div class="alert alert-primary" role="alert">
-                Obrigado pela sua contribuição à comunidade, até a proxima! ;)
-              </div>
+               <div class="alert alert-primary alert-dismissible fade show text-center"  role="alert">
+            Obrigado pela sua contribuição para a comunidade, até a próxima ;)
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
               <?php } ?> 
 
               <?php 
                 if (isset($_GET ['op']) && $_GET['op'] == "auth_prof") {
                 ?>
-               <div class="alert alert-danger" role="alert">
-                Login ou Senha incorretos, por favor tente novamente.
-              </div>
+               <div class="alert alert-danger alert-dismissible fade show text-center"  role="alert">
+            Email ou senha incorretos, por favor tente novamente!
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
               <?php } ?> 
                  <form  method="post" action="validaloginprof.php">
                   <div class="form-group">

@@ -170,6 +170,21 @@ class Professor{
 
 		
 	}
+	public function AlterarBiografia($conexao){
+	 	$sql = "UPDATE tb_professor SET bio = '$this->biografia'
+	 		   WHERE  idtb_professor = $this->id";
+
+	 	
+
+	 	try {
+			$conexao->query($sql);
+			echo "Foi";
+
+		} catch (Exception $ex) {
+			$ex->getMessage();
+		}
+	}
+
 
 
 

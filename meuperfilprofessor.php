@@ -38,9 +38,17 @@ include 'header_professor.php';
 .bio:focus{
   background-color: transparent;
   color:#fff;
+  transition:.4s linear;
 }
 .bio:disabled{
   background-color: transparent;
+  border:none;
+}
+.i2{
+  display: none;
+  position: relative;
+  z-index: 1;
+
 }
 
 
@@ -54,18 +62,20 @@ include 'header_professor.php';
           <span class="watermark-sm">Professor: <?php echo($professor->getNome()); ?></span>Professor: <?php echo ucfirst(($professor->getNome())); ?>
         </h1>
 
-        <form action="altera_bio_professor.php" method="POST" > 
-          <textarea name="bio" disabled="" class="form-control bio"><?php if ($professor->getBiografia() == "") {
-          echo "Sem Biografia";
-        }else{
-          echo($professor->getBiografia());
-        } ?></textarea><br>
-         <button type="button" class="btn btn-outline-primary text-white text-center"> Editar Biografia</button>
-         </form>
-         <br>
+        <form action="altera_biografia_professor.php" method="POST"  > 
+          <textarea name="bio" id="biografia" disabled="" class="form-control bio"><?php if ($professor->getBiografia() == "") {
+            echo "Sem Biografia";
+          }else{
+            echo($professor->getBiografia());
+          } ?></textarea><br>
+          <a href="meuperfilprofessor.php"><i class="far fa-times-circle text-danger fa-2x i2"></i></a>
+          <button type="submit" class="btn-submit"><i class="far fa-check-circle text-success fa-2x i2"></i></button>
+          <button type="button" class="btn btn-outline-primary text-white text-center" id="text" onclick="editarText();"> Editar Biografia</button>
+        </form>
+        <br>
 
       </div>
-     
+
       <div class="col-lg-5 ml-auto text-center">
         <img src="images/icon/man.png"  width="200px" height="200px"><br><br>
         <button type="button" class="btn btn-outline-primary text-white text-center"> Editar Imagem</button>
@@ -78,8 +88,22 @@ include 'header_professor.php';
 <section class="section section-lg-bottom bg-light">
   <div class="container">
     <div class="row">
-      <div class="col-lg-10 text-center">
+
+      <div class="col-lg-12 text-center">
+
         <br>
+        <?php 
+        if (isset($_GET ['op']) && $_GET['op'] == "alterado") {
+          ?>
+          <div class="alert alert-primary alert-dismissible fade show text-center"  role="alert">
+            Informações Alteradas com sucesso!
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <?php } ?>
+
         <h3 class="section-title">Verifique suas Informações!</h3>
       </div>
       <div class="col-lg-6 text-center p-0">
@@ -102,43 +126,43 @@ include 'header_professor.php';
             <option value="">Selecione...</option>
             <option <?php if($professor->getEscolaridade() == "Ensino Fundamental Completo"){
               echo 'selected=""';} ?>>Ensino Fundamental Completo</option>
-            <option <?php if($professor->getEscolaridade() == "Ensino Fundamental Incompleto"){
-              echo 'selected=""';} ?>>Ensino Fundamental Incompleto</optio)n>
-              <option <?php if($professor->getEscolaridade() == "Ensino Médio Completo"){
-              echo 'selected=""';} ?>>Ensino Médio Completo</option>
-              <option <?php if($professor->getEscolaridade() == "Ensino Médio Incompleto"){
-              echo 'selected=""';} ?>>Ensino Médio Incompleto</option>
-              <option <?php if($professor->getEscolaridade() == "Ensino Superior Incompleto"){
-              echo 'selected=""';} ?>>Ensino Superior Incompleto</option>
-              <option <?php if($professor->getEscolaridade() == "Ensino Superior Completo"){
-              echo 'selected=""';} ?>>Ensino Superior Completo</option>
+              <option <?php if($professor->getEscolaridade() == "Ensino Fundamental Incompleto"){
+                echo 'selected=""';} ?>>Ensino Fundamental Incompleto</optio)n>
+<option <?php if($professor->getEscolaridade() == "Ensino Médio Completo"){
+  echo 'selected=""';} ?>>Ensino Médio Completo</option>
+  <option <?php if($professor->getEscolaridade() == "Ensino Médio Incompleto"){
+    echo 'selected=""';} ?>>Ensino Médio Incompleto</option>
+    <option <?php if($professor->getEscolaridade() == "Ensino Superior Incompleto"){
+      echo 'selected=""';} ?>>Ensino Superior Incompleto</option>
+      <option <?php if($professor->getEscolaridade() == "Ensino Superior Completo"){
+        echo 'selected=""';} ?>>Ensino Superior Completo</option>
 
 
 
-            </select>
-          </div>
-          <div class="col-lg-6">
-            <label for="exampleInputtext1" class="lbls">CPF:</label>
-            <input type="text" id="inpt" name="cpf" class="form-control" readonly="" value="<?php echo($professor->getCpf());?>">
-          </div>
-
-          <div class="col-12 text-right">
-            <br><br>
-             <a href="meuperfilprofessor.php"><i class="far fa-times-circle text-danger fa-2x i"></i></a>
-             <button type="submit" class="btn-submit"><i class="far fa-check-circle text-success fa-2x i"></i></button>
-            <a class="btn btn-primary text-white " id="editar" onclick="editar(false);"  data-toggle="modal" data-target=".bd-example-modal-lg">Editar Perfil</a>
-
-
-            <br><br>
-          </div>
-        </form>
-      </div>
-      <div class="col-lg-5 text-center p-0">
-        
-      </div>
+      </select>
     </div>
-  </div>
-  <br><br><br>
+    <div class="col-lg-6">
+      <label for="exampleInputtext1" class="lbls">CPF:</label>
+      <input type="text" id="inpt" name="cpf" class="form-control" readonly="" value="<?php echo($professor->getCpf());?>">
+    </div>
+
+    <div class="col-12 text-right">
+      <br><br>
+      <a onclick="voltar(true);"><i class="far fa-times-circle text-danger fa-2x i"></i></a>
+      <button type="submit" class="btn-submit"><i class="far fa-check-circle text-success fa-2x i"></i></button>
+      <a class="btn btn-outline-primary  " id="editar" onclick="editar(false);"  data-toggle="modal" data-target=".bd-example-modal-lg">Editar Perfil</a>
+
+
+      <br><br>
+    </div>
+  </form>
+</div>
+<div class="col-lg-5 text-center p-0">
+
+</div>
+</div>
+</div>
+<br><br><br>
 </section>
 
 
@@ -170,15 +194,44 @@ include 'footer_professor.php';
   var select = document.getElementById("select");
   select.disabled = false;
 
-    $('#editar').hide();
+  $('#editar').hide();
   $('.i').fadeIn(1000);
- 
-
 
 
 
 
 }
+function voltar(bool) {
+
+ var inputs = document.getElementsByTagName("input");
+ for (var i = 0; i < inputs.length; i++) {
+  if (inputs[i].type === "text" || inputs[i].type === "date") {
+    inputs[i].readOnly = bool;
+  }
+}
+var select = document.getElementById("select");
+select.disabled = true;
+
+$('#editar').fadeIn(1000);
+$('.i').hide();
+
+
+
+
+}
+function editarText() {
+  var bio = document.getElementById('biografia');
+  bio.disabled = false;
+  $('#text').hide();
+  $('.i2').fadeIn(1000);
+}
+
+
+
+
+
+
+
 </script>
 
 
