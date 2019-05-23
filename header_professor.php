@@ -45,6 +45,27 @@
 
         </style>
         <meta charset="utf-8">
+        <style type="text/css">
+          sup{
+            font-size: 1em;
+            color:#00fa9a;
+            position: relative;
+            top:2%;
+          }
+          .bt{
+            border:none;
+            border: 1px solid #00fa9a;
+            width:30px;
+            height:30px;
+            border-radius: 40px;
+            background-color: transparent;
+          }
+          .bt:hover{
+            color: #009afa;
+           -webkit-transform:scale(1.2); 
+            transition:.4s linear;
+          }
+        </style>
 
     </head>
 
@@ -73,6 +94,9 @@
                             </li>
                               <li class="nav-item">
                                 <a class="nav-link text-white text-capitalize" href="cadastro_turmas.php">Cadastrar Turmas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white text-capitalize" href="cadastro_turmas.php"><i class="fa fa-envelope"></i><button class="bt"><sup>3</sup></button> </a>
                             </li>
 
 

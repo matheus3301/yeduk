@@ -67,8 +67,9 @@
     <div class="row">
       <div class="col-lg-12 text-center">
         <p class="subtitle"></p>
-        <h2 class="section-title">Suas Turmas</h2>
-        <button type="button" class="btn btn-outline-primary-primary text-center btn-more" data-toggle="modal" data-target="#modal_add"><i class="fa fa-plus fa-1x"></i></button>
+        <h2 class="section-title">Suas Turmas  <button type="button" class="btn btn-outline-primary-primary text-center btn-more" data-toggle="modal" data-target="#modal_add"><i class="fa fa-plus fa-1x"></i></button>
+        </h2>
+       
       </div>
 
         <?php 
