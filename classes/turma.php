@@ -62,6 +62,26 @@ class Turma{
 		return $result;
 		
 	}
+	 public function CapturarTurma($conexao){
+	 	$sql = "SELECT * FROM tb_turma WHERE  idtb_turma = $this->id";
+
+	 	$query = $conexao->query($sql);
+
+		$return = $query->fetch();
+
+		if ($return != null) {
+
+			$this->nome = $return[1];
+			$this->descricao = $return[2];
+			$this->id_professor = $return[3];
+			
+
+
+
+
+
+		}
+	}
 	
 
 }
