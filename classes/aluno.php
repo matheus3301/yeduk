@@ -156,6 +156,34 @@ class Aluno{
 			return false;
 		}
 	}
+	public function Alterar($conexao){
+	 	$sql = "UPDATE tb_aluno SET nome = '$this->nome', data_nasc = '$this->data_nasc',  escolaridade = '$this->escolaridade'
+	 		   WHERE  idtb_aluno = $this->id";
+
+	 	
+
+	 	try {
+			$conexao->query($sql);
+			echo "Foi";
+
+		} catch (Exception $ex) {
+			$ex->getMessage();
+		}
+	}
+	public function AlterarBiografia($conexao){
+	 	$sql = "UPDATE tb_aluno SET bio = '$this->biografia'
+	 		   WHERE  idtb_aluno = $this->id";
+
+	 	
+
+	 	try {
+			$conexao->query($sql);
+			echo "Foi";
+
+		} catch (Exception $ex) {
+			$ex->getMessage();
+		}
+	}
 
 }
 ?>

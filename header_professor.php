@@ -4,7 +4,6 @@ include 'classes/professor.php';
 session_start();
 $id = $_SESSION['idprof'];
 
-
 if (!isset($_SESSION['idprof'])) {
   header('location:index.php?op=logar_professor');
 }

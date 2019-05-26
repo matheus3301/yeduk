@@ -80,7 +80,6 @@ include 'header_professor.php';
         <button type="button" class="btn btn-outline-primary text-white text-center"> Editar Imagem</button>
 
       </div>
-
     </div>
   </div>
 </section>
@@ -145,6 +144,7 @@ include 'header_professor.php';
       <input type="text" id="inpt" name="cpf" class="form-control" readonly="" value="<?php echo($professor->getCpf());?>">
     </div>
 
+
     <div class="col-12 text-right">
       <br><br>
       <a onclick="voltar(true);"><i class="far fa-times-circle text-danger fa-2x i"></i></a>
@@ -157,7 +157,7 @@ include 'header_professor.php';
   </form>
 </div>
 <div class="col-lg-5 text-center p-0">
-
+<img src="images/icon/edit.png ">
 </div>
 </div>
 </div>

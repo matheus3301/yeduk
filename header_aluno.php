@@ -4,7 +4,6 @@
     include 'classes/aluno.php';
     include 'classes/conexao.php';
 
-
     if (!isset($_SESSION['idaluno'])) {
       header('location:index.php?op=logar_aluno');
   } 

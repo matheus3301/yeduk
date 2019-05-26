@@ -172,7 +172,7 @@ $professor->CapturarProfessor($conexao);
                   <div class="card-body">
                     <h5 class="card-title"><i class="fa fa-user"></i> Aluno</h5>
                     <p class="card-text">Conteúdo da Mensagem</p>
-                    <button class="btn-send"><i class="fas fa-paper-plane"></i></button>
+                    <button class="btn-send btn-circle"><i class="fas fa-paper-plane"></i></button>
                     <div class="dropdown-divider"></div>
                      <h5 class="card-title"><i class="fa fa-user"></i> Aluno</h5>
                     <p class="card-text">Conteúdo da Mensagem</p>
