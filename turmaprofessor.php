@@ -16,6 +16,17 @@ $professor->setId($turma->getId_professor());
 
 $professor->CapturarProfessor($conexao);
 
+
+
+
+$alunosPendentes = $turma->ListarAlunosPendentes($conexao);
+
+
+$alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
+
+
+
+
 ?>
 <style type="text/css">
 .publicacao{
@@ -100,6 +111,23 @@ $professor->CapturarProfessor($conexao);
   
 
 }
+.btn-circle{
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding:6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+.btn-circle.btn-lg{
+  width:50px;
+  height: 50px;
+  padding: 1px 1px;
+  font-size: 1em;
+  line-height: 1.33;
+  border-radius: 25px;
+}
 </style>
 
 
@@ -155,7 +183,77 @@ $professor->CapturarProfessor($conexao);
             </div>
 
           </div>
-          <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">aa</div>
+          <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <h4>Solicitações de Entrada</h4>
+             <?php 
+
+             if ($alunosPendentes != null) {
+              foreach ($alunosPendentes as $alunoAtual) { ?>
+                <div class="col-lg-12 bg-white p-4 rounded shadow my-3">
+                  <div class="media align-items-center flex-column flex-sm-row">
+                    <i class="fa-4x fas fa-globe-americas" ></i>
+                    <div class="media-body text-center text-sm-left mb-4 mb-sm-0" style="padding-left:5%">
+                      <h6 class="mt-0"><?php echo $alunoAtual[0];?></h6>
+                      
+                    </div>
+                    <form action="responder_aplicacao.php?idTurma=<?php echo $turma->getId();?>&idMatricula=<?php echo $alunoAtual[1] ?>" method="post">
+                      <button name="op" value="recusa" class="btn btn-danger btn-circle btn-circle btn-lg"><i class="fas fa-user-times"></i></button>
+                      <button name="op" value="aceita" class="btn btn-success btn-circle btn-circle btn-lg"><i class="fas fa-user-check"></i></button>
+                    </form>         
+                   
+                  </div>
+                </div>
+      <?php }
+             }else{ ?>
+                <div class="col-lg-12 bg-white p-4 rounded shadow my-3">
+                  <div class="media align-items-center flex-column flex-sm-row">
+                    <i class="fa-4x fas fa-globe-americas" ></i>
+                    <div class="media-body text-center text-sm-left mb-4 mb-sm-0" style="padding-left:5%">
+                      <h6 class="mt-0">Não há solicitações de participação pendentes</h6>
+                      
+                    </div>
+                           
+                   
+                  </div>
+                </div>
+            <?php }?>
+
+       <h4>Alunos da Turma</h4>
+             <?php 
+
+             if ($alunosCadastrados != null) {
+               foreach ($alunosCadastrados as $alunoAtual) { ?>
+                <div class="col-lg-12 bg-white p-4 rounded shadow my-3">
+                  <div class="media align-items-center flex-column flex-sm-row">
+                    <i class="fa-4x fas fa-globe-americas" ></i>
+                    <div class="media-body text-center text-sm-left mb-4 mb-sm-0" style="padding-left:5%">
+                      <h6 class="mt-0"><?php echo $alunoAtual[0];?></h6>
+                      
+                    </div>
+                    <form action="responder_aplicacao.php?idTurma=<?php echo $turma->getId();?>" method="post">
+                      <button name="op" value="remove" class="btn btn-danger btn-circle btn-circle btn-lg"><i class="fas fa-user-times"></i></button>
+                      
+                    </form>         
+                   
+                  </div>
+                </div>
+      <?php }
+             }else{ ?>
+               <div class="col-lg-12 bg-white p-4 rounded shadow my-3">
+                  <div class="media align-items-center flex-column flex-sm-row">
+                    <i class="fa-4x fas fa-globe-americas" ></i>
+                    <div class="media-body text-center text-sm-left mb-4 mb-sm-0" style="padding-left:5%">
+                      <h6 class="mt-0">Não há alunos participando da turma</h6>
+                      
+                    </div>
+                           
+                   
+                  </div>
+                </div>
+              <?php              }?>
+              
+
+          </div>
           <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
             <div class="tab-pane active" id="messages" role="tabpanel" aria-labelledby="home-tab">
             <div class="row">
