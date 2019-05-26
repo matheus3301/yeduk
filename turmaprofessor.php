@@ -1,6 +1,5 @@
 <?php 
-include 'classes/conexao.php';
-include 'classes/professor.php';
+
 include 'classes/turma.php';
 include 'header_professor.php';
 

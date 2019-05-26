@@ -107,9 +107,9 @@ class Aluno{
 
 	}
 	public function CapturarAluno($conexao){
-	 	$sql = "SELECT * FROM tb_aluno WHERE  idtb_aluno = $this->id";
+		$sql = "SELECT * FROM tb_aluno WHERE  idtb_aluno = $this->id";
 
-	 	$query = $conexao->query($sql);
+		$query = $conexao->query($sql);
 
 		$return = $query->fetch();
 
@@ -124,6 +124,36 @@ class Aluno{
 
 
 
+		}
+	}
+
+	public function VerificaParticipacaoTurma($conexao, $idturma){
+		$sql = "SELECT situacao FROM tb_matricula WHERE tb_aluno_idtb_aluno = $this->id AND tb_turma_idtb_turma = $idturma";
+
+
+
+		$query = $conexao->query($sql);
+
+		$return = $query->fetch();
+
+		if ($return != null) {
+			return $return[0];
+
+		}else{
+			return  "nao aplicou";
+		}
+	}
+
+	public function AplicarTurma($conexao, $idturma){
+		$sql = "INSERT INTO tb_matricula VALUES(0,$this->id,$idturma,'Pendente')";
+
+		try {
+			$conexao->query($sql);
+			return true;
+
+		} catch (Exception $ex) {
+			$ex->getMessage();
+			return false;
 		}
 	}
 
