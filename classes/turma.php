@@ -6,7 +6,6 @@ class Turma{
 	private $descricao;
 	private $id_professor;
 
-
 	public function getId(){
 		return $this->id;
 	}
@@ -80,6 +79,20 @@ class Turma{
 
 
 
+		}
+	}
+	public function Alterar($conexao){
+	 	$sql = "UPDATE tb_turma SET nome = '$this->nome', descricao = '$this->descricao'
+	 		   WHERE  idtb_turma = $this->id";
+
+	 	
+
+	 	try {
+			$conexao->query($sql);
+			echo "Foi";
+
+		} catch (Exception $ex) {
+			$ex->getMessage();
 		}
 	}
 	

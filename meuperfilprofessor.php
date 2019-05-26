@@ -125,17 +125,17 @@ include 'header_professor.php';
           <select class="form-control mb-4 inputs" required="" style="height: 60px; color: #3a7bd5" name="escolaridade" disabled="" id="select">
             <option value="">Selecione...</option>
             <option <?php if($professor->getEscolaridade() == "Ensino Fundamental Completo"){
-              echo 'selected=""';} ?>>Ensino Fundamental Completo</option>
+                echo 'selected=""';} ?>>Ensino Fundamental Completo</option>
               <option <?php if($professor->getEscolaridade() == "Ensino Fundamental Incompleto"){
                 echo 'selected=""';} ?>>Ensino Fundamental Incompleto</optio)n>
-<option <?php if($professor->getEscolaridade() == "Ensino Médio Completo"){
-  echo 'selected=""';} ?>>Ensino Médio Completo</option>
-  <option <?php if($professor->getEscolaridade() == "Ensino Médio Incompleto"){
-    echo 'selected=""';} ?>>Ensino Médio Incompleto</option>
-    <option <?php if($professor->getEscolaridade() == "Ensino Superior Incompleto"){
-      echo 'selected=""';} ?>>Ensino Superior Incompleto</option>
-      <option <?php if($professor->getEscolaridade() == "Ensino Superior Completo"){
-        echo 'selected=""';} ?>>Ensino Superior Completo</option>
+              <option <?php if($professor->getEscolaridade() == "Ensino Médio Completo"){
+                echo 'selected=""';} ?>>Ensino Médio Completo</option>
+              <option <?php if($professor->getEscolaridade() == "Ensino Médio Incompleto"){
+                echo 'selected=""';} ?>>Ensino Médio Incompleto</option>
+              <option <?php if($professor->getEscolaridade() == "Ensino Superior Incompleto"){
+                echo 'selected=""';} ?>>Ensino Superior Incompleto</option>
+              <option <?php if($professor->getEscolaridade() == "Ensino Superior Completo"){
+                echo 'selected=""';} ?>>Ensino Superior Completo</option>
 
 
 

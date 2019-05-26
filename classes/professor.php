@@ -14,7 +14,6 @@ class Professor{
 	
 
 
-
 	public function getNome(){
 		return $this->nome;
 	}
