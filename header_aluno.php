@@ -73,7 +73,7 @@
                                 <a class="nav-link text-white text-capitalize" href="#">Minhas Turmas</a>
                             </li>
                               <li class="nav-item">
-                                <a class="nav-link text-white text-capitalize" href="#"></a>
+                                <a class="nav-link text-white text-capitalize" href="buscarturmasaluno.php">Buscar Turmas</a>
                             </li>
 
 
