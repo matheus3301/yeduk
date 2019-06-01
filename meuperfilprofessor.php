@@ -51,22 +51,22 @@ include 'header_professor.php';
 }
 
 .btn-file {
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
 .btn-file input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    font-size: 100px;
-    text-align: right;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    outline: none;   
-    cursor: inherit;
-    display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;   
+  cursor: inherit;
+  display: block;
 }
 
 
@@ -93,35 +93,41 @@ include 'header_professor.php';
 
       </div>
       <form action="altera_img_professor.php" enctype="multipart/form-data" method="post">
-      <div class="col-lg-5 ml-auto text-center">
+        <div class="col-lg-5 ml-auto text-center">
 
 
-        <?php 
+          <?php 
           if ($professor->getImagem() != null) {
-             ?>
-               <img src="mostra_imagem.php"  width="200px" height="200px"><br><br>
-            <?php 
-
-             
-
-          }else{
-            ?>
-               <img src="images/icon/man.png"  width="200px" height="200px"><br><br>
-            <?php 
-          }
+           ?>
+           <img src="mostra_imagem.php" id="output" width="200px" height="200px"><br><br>
+           <?php 
 
 
-         ?>
-       <span class="btn btn-outline-primary btn-file text-white">
-        Buscar Foto <input type="file" name="imagem">
+
+         }else{
+          ?>
+          <img src="images/icon/man.png"  id="output" width="200px" height="200px"><br><br>
+          <?php 
+        }
+
+
+        ?>
+        <span class="btn btn-outline-primary btn-file text-white">
+          Buscar Foto <input type="file" name="imagem" accept="image/*" onchange="loadFile(event)">
         </span>
         
-        <input type="hidden" class="ipt-up"name="MAX_FILE_SIZE" value="99999999"/>
+        <input type="hidden" name="MAX_FILE_SIZE" value="99999999"/>
         <button type="submit" class="btn btn-outline-primary text-white text-center">Salvar</button>
       </div>
-      </form>
-    </div>
+    </form>
+    <script>
+      var loadFile = function(event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+      };
+    </script>
   </div>
+</div>
 </section>
 <section class="section section-lg-bottom bg-light">
   <div class="container">
@@ -163,17 +169,17 @@ include 'header_professor.php';
           <select class="form-control mb-4 inputs" required="" style="height: 60px; color: #3a7bd5" name="escolaridade" disabled="" id="select">
             <option value="">Selecione...</option>
             <option <?php if($professor->getEscolaridade() == "Ensino Fundamental Completo"){
-                echo 'selected=""';} ?>>Ensino Fundamental Completo</option>
+              echo 'selected=""';} ?>>Ensino Fundamental Completo</option>
               <option <?php if($professor->getEscolaridade() == "Ensino Fundamental Incompleto"){
                 echo 'selected=""';} ?>>Ensino Fundamental Incompleto</optio)n>
-              <option <?php if($professor->getEscolaridade() == "Ensino Médio Completo"){
-                echo 'selected=""';} ?>>Ensino Médio Completo</option>
-              <option <?php if($professor->getEscolaridade() == "Ensino Médio Incompleto"){
-                echo 'selected=""';} ?>>Ensino Médio Incompleto</option>
-              <option <?php if($professor->getEscolaridade() == "Ensino Superior Incompleto"){
-                echo 'selected=""';} ?>>Ensino Superior Incompleto</option>
-              <option <?php if($professor->getEscolaridade() == "Ensino Superior Completo"){
-                echo 'selected=""';} ?>>Ensino Superior Completo</option>
+<option <?php if($professor->getEscolaridade() == "Ensino Médio Completo"){
+  echo 'selected=""';} ?>>Ensino Médio Completo</option>
+  <option <?php if($professor->getEscolaridade() == "Ensino Médio Incompleto"){
+    echo 'selected=""';} ?>>Ensino Médio Incompleto</option>
+    <option <?php if($professor->getEscolaridade() == "Ensino Superior Incompleto"){
+      echo 'selected=""';} ?>>Ensino Superior Incompleto</option>
+      <option <?php if($professor->getEscolaridade() == "Ensino Superior Completo"){
+        echo 'selected=""';} ?>>Ensino Superior Completo</option>
 
 
 
@@ -197,7 +203,7 @@ include 'header_professor.php';
   </form>
 </div>
 <div class="col-lg-5 text-center p-0">
-<img src="images/icon/edit.png ">
+  <img src="images/icon/edit.png ">
 </div>
 </div>
 </div>
