@@ -28,13 +28,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
 
 ?>
-<style type="text/css">
-.publicacao{
-  background-color: transparent;
-  border:1px solid #009afa;
-  color:#fff;
-  resize:none;
-}
+
 </style>
 <section class="page-title page-title-overlay bg-cover" data-background="images/background/about.jpg">
   <div class="container">
@@ -65,6 +59,16 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 <style type="text/css">
 .section{
   margin-top: 5%;
+}
+.publicacao{
+  background-color: transparent;
+  border:1px solid #009afa;
+  color:#fff;
+  resize:none;
+}
+.btn-send{
+   background: linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%);
+   border:none;
 }
 .btn-pub{
   border:none;
@@ -197,8 +201,8 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
                       
                     </div>
                     <form action="responder_aplicacao.php?idTurma=<?php echo $turma->getId();?>&idMatricula=<?php echo $alunoAtual[1] ?>" method="post">
-                      <button name="op" value="recusa" class="btn btn-danger btn-circle btn-circle btn-lg"><i class="fas fa-user-times"></i></button>
-                      <button name="op" value="aceita" class="btn btn-success btn-circle btn-circle btn-lg"><i class="fas fa-user-check"></i></button>
+                      <button name="op" value="recusa" type="submit"class="btn btn-danger btn-circle btn-circle btn-lg"><i class="fas fa-user-times"></i></button>
+                      <button name="op" value="aceita" type="submit" class="btn btn-success btn-circle btn-circle btn-lg"><i class="fas fa-user-check"></i></button>
                     </form>         
                    
                   </div>
@@ -231,6 +235,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
                       
                     </div>
                     <form action="responder_aplicacao.php?idTurma=<?php echo $turma->getId();?>" method="post">
+                      <button name="op" value="remove" class="btn btn-primary btn-circle btn-circle btn-lg"><i class="fas fa-comments"></i></button>
                       <button name="op" value="remove" class="btn btn-danger btn-circle btn-circle btn-lg"><i class="fas fa-user-times"></i></button>
                       
                     </form>         
@@ -270,7 +275,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
                   <div class="card-body">
                     <h5 class="card-title"><i class="fa fa-user"></i> Aluno</h5>
                     <p class="card-text">Conteúdo da Mensagem</p>
-                    <button class="btn-send btn-circle"><i class="fas fa-paper-plane"></i></button>
+                    <button class="btn-send btn-circle btn-send"><i class="fas fa-paper-plane"></i></button>
                     <div class="dropdown-divider"></div>
                      <h5 class="card-title"><i class="fa fa-user"></i> Aluno</h5>
                     <p class="card-text">Conteúdo da Mensagem</p>

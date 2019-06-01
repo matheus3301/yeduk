@@ -19,7 +19,7 @@
             <div class="col-lg-3 ml-auto align-self-end">
                 <nav class="position-relative zindex-1" aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-end bg-transparent">
-                        <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
+                        <li class="breadcrumb-item"><a href="index.php" class="text-white">Home</a></li>
                         <li class="breadcrumb-item text-white" aria-current="page">Dev's</li>
                     </ol>
                 </nav>

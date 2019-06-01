@@ -185,5 +185,18 @@ class Aluno{
 		}
 	}
 
+	public function ListarMatriculasLimitado($conexao){		
+
+		$sth = $conexao->prepare("SELECT * FROM tb_matricula WHERE tb_aluno_idtb_aluno = $this->id ORDER BY data DESC LIMIT 4");
+		$sth->execute();
+
+		$result = $sth->fetchAll();
+
+		return $result;
+
+
+	}
+
+
 }
 ?>

@@ -33,7 +33,9 @@ $turmas = $turma->CapturarTurmasNome($conexao,$nometurma);
   line-height: 1.428571429;
   border-radius: 15px;
 }
-
+body{
+  background-color:#ebebeb;
+}
 .inpts{
   background-color: transparent;
   border: 2px solid #00d2ff;
@@ -53,6 +55,7 @@ $turmas = $turma->CapturarTurmasNome($conexao,$nometurma);
   line-height: 1.33;
   border-radius: 25px;
 }
+
 
 </style>
 <section class="page-title page-title-overlay bg-cover" data-background="images/background/about.jpg" >
@@ -80,9 +83,9 @@ $turmas = $turma->CapturarTurmasNome($conexao,$nometurma);
 </section>
 
 
-<section class="section section-lg-bottom bg-light">
+<section class="section section-lg-bottom bg-light" style="padding-top: 5%">
   <div class="container">
-    <div class="row" style="margin-top: 5%">
+    <div class="row" >
       <div class="col-lg-6 text-center">
         <p class="subtitle"></p>
         <h2 class="section-title">Turmas 
@@ -91,9 +94,9 @@ $turmas = $turma->CapturarTurmasNome($conexao,$nometurma);
       </div>
       <div class="col-lg-6 text-right">
 
-        <form action="buscarturmasaluno.php" method="get">
-          <div class="position-relative">
-            <input name="nomeTurma" type="text" placeholder="Buscar turmas por nome..." class="border-bottom form-control rounded-0 px-0" required="">
+        <form action="buscarturmasaluno.php" method="get" >
+          <div class="position-relative ipt-busca"  >
+            <input name="nomeTurma" type="text" placeholder="Buscar turmas por nome..." class="border-bottom form-control rounded-1 px-3 " required=""  >
             <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
           </div>
         </form>
