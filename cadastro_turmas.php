@@ -1,6 +1,5 @@
 <?php
-  include 'classes/professor.php';
-  include 'classes/conexao.php';
+
   include 'header_professor.php';
  
    

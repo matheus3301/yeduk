@@ -11,6 +11,11 @@ class Professor{
 	private $email;
 	private $senha;
 
+	private $nome_imagem;
+	private $tamanho_imagem;
+	private $tipo_imagem;
+	private $imagem;
+
 	
 
 
@@ -86,6 +91,44 @@ class Professor{
 		
 	}
 
+
+
+
+
+	public function getNome_imagem(){
+		return $this->nome_imagem;
+	}
+
+	public function setNome_imagem($nome_imagem){
+		$this->nome_imagem = $nome_imagem;
+	}
+
+	public function getTamanho_imagem(){
+		return $this->tamanho_imagem;
+	}
+
+	public function setTamanho_imagem($tamanho_imagem){
+		$this->tamanho_imagem = $tamanho_imagem;
+	}
+
+	public function getTipo_imagem(){
+		return $this->tipo_imagem;
+	}
+
+	public function setTipo_imagem($tipo_imagem){
+		$this->tipo_imagem = $tipo_imagem;
+	}
+
+	public function getImagem(){
+		return $this->imagem;
+	}
+
+	public function setImagem($imagem){
+		$this->imagem = $imagem;
+	}
+
+
+
 	public function Cadastrar($conexao) {
 		$sql = "INSERT INTO tb_professor(nome,data_nasc,cpf,escolaridade,email,senha) VALUES('$this->nome','$this->data_nasc','$this->cpf','$this->escolaridade','$this->email','$this->senha')";
 
@@ -130,6 +173,11 @@ class Professor{
 			$this->biografia = $return[5];
 			$this->escolaridade = $return[6];
 			$this->email = $return[7];
+
+			$this->nome_imagem = $return[9];
+			$this->tamanho_imagem = $return[10];
+			$this->tipo_imagem = $return[11];
+			$this->imagem = $return[12];
 
 
 
@@ -184,8 +232,23 @@ class Professor{
 		}
 	}
 
+	public function AlterarFoto($conexao){
+
+		$sql = "UPDATE tb_professor SET nome_imagem = '$this->nome_imagem', tamanho_imagem = '$this->tamanho_imagem', tipo_imagem = '$this->tipo_imagem', imagem = '$this->imagem' WHERE idtb_professor = $this->id";
+
+		
+
+
+		try {
+			$conexao->query($sql);
+			echo "Foi";
+
+		} catch (Exception $ex) {
+			$ex->getMessage();
+		}			
 
 
 
-}
+		}
+	}
 ?>

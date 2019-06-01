@@ -50,6 +50,24 @@ include 'header_professor.php';
 
 }
 
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;   
+    cursor: inherit;
+    display: block;
+}
 
 
 </style>
@@ -74,12 +92,34 @@ include 'header_professor.php';
         <br>
 
       </div>
-
+      <form action="altera_img_professor.php" enctype="multipart/form-data" method="post">
       <div class="col-lg-5 ml-auto text-center">
-        <img src="images/icon/man.png"  width="200px" height="200px"><br><br>
-        <button type="button" class="btn btn-outline-primary text-white text-center"> Editar Imagem</button>
 
+
+        <?php 
+          if ($professor->getImagem() != null) {
+             ?>
+               <img src="mostra_imagem.php"  width="200px" height="200px"><br><br>
+            <?php 
+
+             
+
+          }else{
+            ?>
+               <img src="images/icon/man.png"  width="200px" height="200px"><br><br>
+            <?php 
+          }
+
+
+         ?>
+       <span class="btn btn-outline-primary btn-file text-white">
+        Buscar Foto <input type="file" name="imagem">
+        </span>
+        
+        <input type="hidden" class="ipt-up"name="MAX_FILE_SIZE" value="99999999"/>
+        <button type="submit" class="btn btn-outline-primary text-white text-center">Salvar</button>
       </div>
+      </form>
     </div>
   </div>
 </section>

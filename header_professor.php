@@ -14,6 +14,8 @@ $professor = new Professor();
 $professor->setId($id);
 $professor->CapturarProfessor($conexao);
 
+
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
