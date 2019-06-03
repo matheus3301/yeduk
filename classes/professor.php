@@ -156,6 +156,7 @@ class Professor{
 			return false;
 		}
 
+
 	}
 	 public function CapturarProfessor($conexao){
 	 	$sql = "SELECT * FROM tb_professor WHERE  idtb_professor = $this->id";
@@ -251,4 +252,5 @@ class Professor{
 
 		}
 	}
+	
 ?>

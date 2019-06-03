@@ -122,6 +122,19 @@ class Turma{
 
 		return $result;
 	}
+	
+	
+	
+	public function CapturarPostagem($conexao)
+	{
+
+		$sth = $conexao->prepare("SELECT * FROM tb_post WHERE tb_turma_idtb_turma=$this->id ORDER BY idtb_post DESC");
+		$sth->execute();
+
+		$result = $sth->fetchAll();
+
+		return $result;
+	}
 
 	
 	

@@ -1,8 +1,8 @@
 <?php
 
 
-include 'classes/conexao.php';
-include 'classes/turma.php';
+include '../classes/conexao.php';
+include '../classes/turma.php';
 
 
 
@@ -14,7 +14,7 @@ $turma->setNome($_POST['nome']);
 $turma->setDescricao($_POST['descricao']);
 
 $turma->Alterar($conexao);
-header('location:turmaprofessor.php?id='.$turma->getId());
+header('location:../turmaprofessor.php?id='.$turma->getId());
 
 
 

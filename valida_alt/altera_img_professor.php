@@ -1,6 +1,6 @@
 <?php
-    include 'classes/conexao.php';
-    include 'classes/professor.php';
+    include '../classes/conexao.php';
+    include '../classes/professor.php';
 
     $imagem = $_FILES['imagem']['tmp_name'];
     $tamanho = $_FILES['imagem']['size'];
@@ -36,5 +36,5 @@
     
 
 
-    header('location:meuperfilprofessor.php');
+    header('location:../meuperfilprofessor.php?op=img');
   ?>

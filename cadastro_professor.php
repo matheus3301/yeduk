@@ -40,7 +40,7 @@ include 'header.php';
         <h2 class="section-title">Cadastre-se Para Desfrutar do Nosso Sistema.</h2>
       </div>
       <div class="col-lg-6 text-center p-0">
-          <form class="row" method="post" action="cadastra_professor.php">
+          <form class="row" method="post" action="valida_cadastro/cadastra_professor.php">
           <div class="col-lg-12">
            <label for="exampleInputtext1" class=" lbls ">Seu nome:</label>
 
@@ -96,11 +96,6 @@ include 'header.php';
 </div>
 </section>
 
-<!-- subscription -->
-
-<!-- subscription -->
-
-<!-- footer part start -->
 <?php 
 include 'footer.php';
 ?>

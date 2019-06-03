@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-include 'classes/conexao.php';
-include 'classes/professor.php';
+include '../classes/conexao.php';
+include '../classes/professor.php';
 
 
 
@@ -19,7 +19,7 @@ print_r($professor) ;
 
 $professor->Alterar($conexao);
 
-header('location:meuperfilprofessor.php?op=alterado');
+header('location:../meuperfilprofessor.php?op=alterado');
 
 
 

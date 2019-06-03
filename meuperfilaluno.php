@@ -1,12 +1,15 @@
 <?php
-  include 'header_aluno.php';
- 
+include 'header_aluno.php';
+
 ?>
 <style type="text/css">
-  .bio{
+.bio{
   background-color: transparent;
   border:1px solid #009afa;
   color:#fff;
+}
+#biografia{
+  resize: none;
 }
 .lbls{
   font-size: 1em;
@@ -42,15 +45,45 @@
   background-color: transparent;
 }
 
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;   
+  cursor: inherit;
+  display: block;
+}
+#output{
+  width:300px;
+  height:300px;
+  border-radius: 100%;
+  border: 6px solid #009afa;
+}
+.foto-perfil{
+  width:300px;
+  height:300px;
+  border-radius: 100%;
+  border: 6px solid #009afa;
+}
+
 </style>
 <section class="page-title page-title-overlay " data-background="images/background/about.jpg" style=" background-repeat: no-repeat; background-size: cover;">
   <div class="container">
     <div class="row">
       <div class="col-lg-7">
         <h1 class="text-white position-relative">
-        <span class="watermark-sm">Aluno:  <?php echo ucfirst(($aluno->getNome())); ?></span>Aluno:  <?php echo ucfirst(($aluno->getNome())); ?>
+          <span class="watermark-sm">Aluno:  <?php echo ucfirst(($aluno->getNome())); ?></span>Aluno:  <?php echo ucfirst(($aluno->getNome())); ?>
         </h1>
-        <form action="altera_biografia_aluno.php" method="POST"  > 
+        <form action="valida_alt/altera_biografia_aluno.php" method="POST"  > 
           <textarea name="bio" id="biografia" disabled="" class="form-control bio"><?php if ($aluno->getBiografia() == "") {
             echo "Sem Biografia";
           }else{
@@ -62,14 +95,34 @@
         </form>
 
       </div>
-       <div class="col-lg-5 ml-auto text-center">
-        <img src="images/icon/student.png"  width="200px" height="200px"><br><br>
-        <button type="button" class="btn btn-outline-primary text-white text-center"> Editar Imagem</button>
+      <form action="valida_alt/altera_img_aluno.php" enctype="multipart/form-data" method="post">
+        <div class="col-md-5 ml-auto text-center"  >
+          <?php 
+       if ($aluno->getImagem() != null) {
+         ?>
+         <img src="mostra_imagem_aluno.php" class="foto-perfil"><br><br>
 
+
+         <?php 
+
+
+
+       }else{
+        ?>
+        <img src="images/icon/man.png"   width="200px" height="200px"><br><br>
+
+
+        <?php 
+      }
+
+
+      ?>
       </div>
-      </div>
-    </div>
+   
+    
   </div>
+</div>
+</div>
 </section>
 
 <section class="section section-lg-bottom bg-light">
@@ -92,9 +145,20 @@
         <?php } ?>
 
         <h3 class="section-title">Verifique suas Informações!</h3>
+         <?php 
+        if (isset($_GET ['op']) && $_GET['op'] == "img") {
+          ?>
+          <div class="alert alert-primary alert-dismissible fade show text-center"  role="alert">
+            Foto de perfil alterada com sucesso!
+
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <?php } ?>
       </div>
       <div class="col-lg-6 text-center p-0">
-        <form class="row" action="altera_dados_aluno.php" method="POST">
+        <form class="row" action="valida_alt/altera_dados_aluno.php" method="POST">
           <div class="col-lg-12">
            <label for="exampleInputtext1" class="lbls ">Seu nome:</label>
            <input type="text" id="inpt" name="nome" class="form-control" readonly="" value="<?php echo($aluno->getNome());?>"> 
@@ -112,17 +176,17 @@
           <select class="form-control mb-4 inputs" required="" style="height: 60px; color: #3a7bd5" name="escolaridade" disabled="" id="select">
             <option value="">Selecione...</option>
             <option <?php if($aluno->getEscolaridade() == "Ensino Fundamental Completo"){
-                echo 'selected=""';} ?>>Ensino Fundamental Completo</option>
+              echo 'selected=""';} ?>>Ensino Fundamental Completo</option>
               <option <?php if($aluno->getEscolaridade() == "Ensino Fundamental Incompleto"){
                 echo 'selected=""';} ?>>Ensino Fundamental Incompleto</optio)n>
-              <option <?php if($aluno->getEscolaridade() == "Ensino Médio Completo"){
-                echo 'selected=""';} ?>>Ensino Médio Completo</option>
-              <option <?php if($aluno->getEscolaridade() == "Ensino Médio Incompleto"){
-                echo 'selected=""';} ?>>Ensino Médio Incompleto</option>
-              <option <?php if($aluno->getEscolaridade() == "Ensino Superior Incompleto"){
-                echo 'selected=""';} ?>>Ensino Superior Incompleto</option>
-              <option <?php if($aluno->getEscolaridade() == "Ensino Superior Completo"){
-                echo 'selected=""';} ?>>Ensino Superior Completo</option>
+<option <?php if($aluno->getEscolaridade() == "Ensino Médio Completo"){
+  echo 'selected=""';} ?>>Ensino Médio Completo</option>
+  <option <?php if($aluno->getEscolaridade() == "Ensino Médio Incompleto"){
+    echo 'selected=""';} ?>>Ensino Médio Incompleto</option>
+    <option <?php if($aluno->getEscolaridade() == "Ensino Superior Incompleto"){
+      echo 'selected=""';} ?>>Ensino Superior Incompleto</option>
+      <option <?php if($aluno->getEscolaridade() == "Ensino Superior Completo"){
+        echo 'selected=""';} ?>>Ensino Superior Completo</option>
 
 
 
@@ -133,16 +197,45 @@
       <br><br>
       <a href="meuperfilaluno.php" "><i class="far fa-times-circle text-danger fa-2x i"></i></a>
       <button type="submit" class="btn-submit"><i class="far fa-check-circle text-success fa-2x i"></i></button>
-      <a class="btn btn-outline-primary  " id="editar" onclick="editar(false);"  data-toggle="modal" data-target=".bd-example-modal-lg">Editar Perfil</a>
+      <a class="btn btn-outline-primary text-dark  " id="editar" onclick="editar(false);"  data-toggle="modal" data-target=".bd-example-modal-lg">Editar Perfil</a>
 
 
       <br><br>
     </div>
   </form>
 </div>
-<div class="col-lg-5 text-center p-0">
+<form action="valida_alt/altera_img_aluno.php" enctype="multipart/form-data" method="post">
+<div class="col-lg-5 text-center p-0" style="margin-left: 50%;">
+ <center>
 
+
+            <?php 
+            if ($aluno->getImagem() != null) {
+             ?>
+             <img src="mostra_imagem_aluno.php" id="output"  width="200px" height="200px"><br><br>
+             <?php 
+
+
+
+           }else{
+            ?>
+            <img src="images/icon/man.png"  id="output" width="200px" height="200px"><br><br>
+            <?php 
+          }
+
+
+          ?>
+          <span class="btn btn-outline-primary btn-file text-dark" style="width:250px; "></i>
+          Buscar Foto <input type="file" name="imagem"  accept="image/*" onchange="loadFile(event)">
+        </span>
+
+
+          <input type="hidden" name="MAX_FILE_SIZE" value="99999999"/>
+          <br><br>
+          <button type="submit" class="btn btn-outline-primary text-dark text-center" style="width:250px;" >Salvar</button>
+        </center>
 </div>
+ </form>
 </div>
 </div>
 <br><br><br>
@@ -151,13 +244,13 @@
 
 <script type="text/javascript">
   function editarText() {
-  var bio = document.getElementById('biografia');
-  bio.disabled = false;
-  $('#text').hide();
-  $('.i2').fadeIn(1000);
-}
+    var bio = document.getElementById('biografia');
+    bio.disabled = false;
+    $('#text').hide();
+    $('.i2').fadeIn(1000);
+  }
 
-function editar(bool) {
+  function editar(bool) {
 
    var inputs = document.getElementsByTagName("input");
    for (var i = 0; i < inputs.length; i++) {
@@ -176,6 +269,12 @@ function editar(bool) {
 
 }
 </script>
+<script>
+      var loadFile = function(event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+      };
+    </script>
 <?php
-    include 'footer_aluno.php';
+include 'footer_aluno.php';
 ?>

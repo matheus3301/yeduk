@@ -1,8 +1,8 @@
 <?php 
 session_start();
 
-include 'classes/conexao.php';
-include 'classes/aluno.php';
+include '../classes/conexao.php';
+include '../classes/aluno.php';
 
 
 $aluno = new aluno();
@@ -14,7 +14,7 @@ print_r($aluno);
 
 $aluno->AlterarBiografia($conexao);
 
-header('location:meuperfilaluno.php?op=alterado');
+header('location:../meuperfilaluno.php?op=alterado');
 
 
 

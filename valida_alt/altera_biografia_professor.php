@@ -1,8 +1,8 @@
 <?php 
 session_start();
 
-include 'classes/conexao.php';
-include 'classes/professor.php';
+include '../classes/conexao.php';
+include '../classes/professor.php';
 
 
 $professor = new Professor();
@@ -14,7 +14,7 @@ print_r($professor);
 
 $professor->AlterarBiografia($conexao);
 
-header('location:meuperfilprofessor.php?op=alterado');
+header('location:../meuperfilprofessor.php?op=alterado');
 
 
 

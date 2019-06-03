@@ -40,7 +40,7 @@ include 'header.php';
         <h2 class="section-title">Cadastre-se Para Desfrutar do Nosso Sistema.</h2>
       </div>
       <div class="col-lg-6 text-center p-0">
-        <form action="cadastra_aluno.php" method="POST" class="row">
+        <form action="valida_cadastro/cadastra_aluno.php" method="POST" class="row">
           <div class="col-lg-12">
            <label for="exampleInputtext1" class=" lbls ">Seu nome:</label>
            <input type="text" name="nome" required="" class="form-control mb-4 inputs text-primary" placeholder="Ex: José da Silva">

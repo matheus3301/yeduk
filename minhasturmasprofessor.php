@@ -96,7 +96,6 @@ $turmas = $turma->CapturarTurmasProfessor($conexao,$id);
 
 
 
-
       <?php }?>
       
       
@@ -122,7 +121,7 @@ $turmas = $turma->CapturarTurmasProfessor($conexao,$id);
         <h3 class="section-title">Preencha os Campos Abaixo Para Registrar a nova Turma.</h3>
       </div>
       <div class="col-lg-12 text-center p-0">
-        <form class="row" method="post" action="cadastra_turmas.php">
+        <form class="row" method="post" action="valida_cadastro/cadastra_turmas.php">
           <div class="col-lg-12">
            <label for="exampleInputtext1" class=" lbls "> Turma:</label>
 
