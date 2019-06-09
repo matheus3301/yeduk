@@ -3,96 +3,13 @@
 include 'header_professor.php';
 
 ?>
-<style type="text/css">
-#biografia{
-  resize: none;
-}
-.lbls{
-  font-size: 1em;
-  font-weight: bold;
-  color: #3a7bd5;
-  float: left;
-  padding: 10px;
-}
-.mod{
-  position: absolute;
-  width: 100%;
-  padding: 50px;
-  background-color: #fff;
-}
-.btn-submit{
-  border:none;
-  background-color: transparent;
-}
-.i{
-  display: none;
-}
-.bio{
-  background-color: transparent;
-  border:1px solid #009afa;
-  color:#fff;
-}
-.bio{
-  position: relative;
-  z-index: 1;
-  color:#fff;
-}
-.bio:focus{
-  background-color: transparent;
-  color:#fff;
-  transition:.4s linear;
-}
-.bio:disabled{
-  background-color: transparent;
-  border:none;
-}
-.i2{
-  display: none;
-  position: relative;
-  z-index: 1;
 
-}
-
-.btn-file {
-  position: relative;
-  overflow: hidden;
-}
-.btn-file input[type=file] {
-  position: absolute;
-  top: 0;
-  right: 0;
-  min-width: 100%;
-  min-height: 100%;
-  font-size: 100px;
-  filter: alpha(opacity=0);
-  opacity: 0;
-  outline: none;   
-  cursor: inherit;
-  display: block;
-
-
-}
-#output{
-  width:300px;
-  height:300px;
-  border-radius: 100%;
-  border: 6px solid #009afa;
-}
-.foto-perfil{
-  width:300px;
-  height:300px;
-  border-radius: 100%;
-  border: 6px solid #009afa;
-}
-
-
-</style>
 <section class="page-title page-title-overlay " data-background="images/background/about.jpg" style=" background-repeat: no-repeat; background-size: cover;">
   <div class="container">
     <div class="row" >
-      <div class="col-lg-7">
+      <div class="col-lg-8">
         <h1 class="text-white position-relative">
-          <span class="watermark-sm">Professor: <?php echo($professor->getNome()); ?></span>Professor: <?php echo ucfirst(($professor->getNome())); ?>
+          Professor: <?php echo ucfirst(($professor->getNome())); ?>
         </h1>
 
         <form action="valida_alt/altera_biografia_professor.php" method="POST"  > 
@@ -112,7 +29,7 @@ include 'header_professor.php';
       </div>
       
 
-      <div class="col-md-5 ml-auto text-right"  >
+      <div class="col-md-4 m-auto "  >
        <?php 
        if ($professor->getImagem() != null) {
          ?>
@@ -144,7 +61,7 @@ include 'header_professor.php';
   <div class="container">
     <div class="row">
 
-      <div class="col-lg-12 text-center">
+      <div class="col-lg-12 ">
 
         <br>
         <?php 
@@ -161,7 +78,7 @@ include 'header_professor.php';
 
         <h3 class="section-title">Verifique suas Informações!</h3>
       </div>
-      <div class="col-lg-6 text-center p-0">
+      <div class="col-lg-6 text-center ">
         <form class="row" action="valida_alt/altera_dados_professor.php" method="POST">
           <div class="col-lg-12">
            <label for="exampleInputtext1" class="lbls ">Seu nome:</label>
@@ -214,7 +131,7 @@ include 'header_professor.php';
   </form>
 </div>
 <form action="valida_alt/altera_img_professor.php" enctype="multipart/form-data" method="post">
-  <div class="col-lg-6 text-right" style="margin-left: 50%;">
+  <div class="col-lg-6 m-auto" >
 
 
    <center>
@@ -223,14 +140,14 @@ include 'header_professor.php';
     <?php 
     if ($professor->getImagem() != null) {
      ?>
-     <img src="mostra_imagem.php?id=<?php echo $professor->getId() ?>&tipo=professor" id="output"><br><br>
+     <img src="mostra_imagem.php" id="output"><br><br>
      <?php 
 
 
 
    }else{
     ?>
-    <img src="images/icon/man.png"  id="output" width="200px" height="200px"><br><br>
+    <img src="images/icon/man.png"  id="output" width="300px" height="300px"><br><br>
     <?php 
   }
 
@@ -249,7 +166,7 @@ include 'header_professor.php';
 </center>
 
 </div>
-
+</form>
 </div>
 </div>
 <br><br><br>

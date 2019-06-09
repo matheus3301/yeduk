@@ -2,80 +2,6 @@
 include 'header_aluno.php';
 
 ?>
-<style type="text/css">
-.bio{
-  background-color: transparent;
-  border:1px solid #009afa;
-  color:#fff;
-}
-#biografia{
-  resize: none;
-}
-.lbls{
-  font-size: 1em;
-  font-weight: bold;
-  color: #3a7bd5;
-  float: left;
-  padding: 10px;
-}
-.i{
-  display: none;
-}
-.bio{
-  position: relative;
-  z-index: 1;
-  color:#fff;
-}
-.bio:focus{
-  background-color: transparent;
-  color:#fff;
-  transition:.4s linear;
-}
-.bio:disabled{
-  background-color: transparent;
-  border:none;
-}
-.i2{
-  display: none;
-  position: relative;
-  z-index: 1;
-}
-.btn-submit{
-  border:none;
-  background-color: transparent;
-}
-
-.btn-file {
-  position: relative;
-  overflow: hidden;
-}
-.btn-file input[type=file] {
-  position: absolute;
-  top: 0;
-  right: 0;
-  min-width: 100%;
-  min-height: 100%;
-  font-size: 100px;
-  filter: alpha(opacity=0);
-  opacity: 0;
-  outline: none;   
-  cursor: inherit;
-  display: block;
-}
-#output{
-  width:300px;
-  height:300px;
-  border-radius: 100%;
-  border: 6px solid #009afa;
-}
-.foto-perfil{
-  width:300px;
-  height:300px;
-  border-radius: 100%;
-  border: 6px solid #009afa;
-}
-
-</style>
 <section class="page-title page-title-overlay " data-background="images/background/about.jpg" style=" background-repeat: no-repeat; background-size: cover;">
   <div class="container">
     <div class="row">
@@ -93,35 +19,28 @@ include 'header_aluno.php';
           <button type="submit" class="btn-submit"><i class="far fa-check-circle text-success fa-2x i2"></i></button>
           <button type="button" class="btn btn-outline-primary text-white text-center" id="text" onclick="editarText();"> Editar Biografia</button>
         </form>
+        <br>
 
       </div>
       <form action="valida_alt/altera_img_aluno.php" enctype="multipart/form-data" method="post">
-        <div class="col-md-5 ml-auto text-center"  >
+        <div class="col-md-5  m-auto"  >
           <?php 
-       if ($aluno->getImagem() != null) {
-         ?>
-         <img src="mostra_imagem_aluno.php" class="foto-perfil"><br><br>
-
-
-         <?php 
-
-
-
-       }else{
+          if ($aluno->getImagem() != null) {
+           ?>
+           <img src="mostra_imagem_aluno.php" class="foto-perfil">
+           <?php 
+         }else{
+          ?>
+          <img src="images/icon/man.png"   width="200px" height="200px">
+          <?php 
+        }
         ?>
-        <img src="images/icon/man.png"   width="200px" height="200px"><br><br>
 
-
-        <?php 
-      }
-
-
-      ?>
       </div>
-   
-    
+
+
+    </div>
   </div>
-</div>
 </div>
 </section>
 
@@ -145,7 +64,7 @@ include 'header_aluno.php';
         <?php } ?>
 
         <h3 class="section-title">Verifique suas Informações!</h3>
-         <?php 
+        <?php 
         if (isset($_GET ['op']) && $_GET['op'] == "img") {
           ?>
           <div class="alert alert-primary alert-dismissible fade show text-center"  role="alert">
@@ -171,9 +90,9 @@ include 'header_aluno.php';
           <input type="date" id="inpt" name="data_nasc" class="form-control" readonly="" value="<?php echo($aluno->getData_nasc());?>">
           
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-7">
           <label for="exampleInputtext1" class=" lbls">Nível de Escolaridade:</label>
-          <select class="form-control mb-4 inputs" required="" style="height: 60px; color: #3a7bd5" name="escolaridade" disabled="" id="select">
+          <select class="form-control mb-4 inputs" required="" style="height: 60px; color: #3a7bd5; border:1px solid #009afa;" name="escolaridade" disabled="" id="select">
             <option value="">Selecione...</option>
             <option <?php if($aluno->getEscolaridade() == "Ensino Fundamental Completo"){
               echo 'selected=""';} ?>>Ensino Fundamental Completo</option>
@@ -205,37 +124,37 @@ include 'header_aluno.php';
   </form>
 </div>
 <form action="valida_alt/altera_img_aluno.php" enctype="multipart/form-data" method="post">
-<div class="col-lg-5 text-center p-0" style="margin-left: 50%;">
- <center>
-
-
-            <?php 
-            if ($aluno->getImagem() != null) {
-             ?>
-             <img src="mostra_imagem_aluno.php" id="output"  width="200px" height="200px"><br><br>
-             <?php 
+  <div class="col-md-6 m-auto" >
 
 
 
-           }else{
-            ?>
-            <img src="images/icon/man.png"  id="output" width="200px" height="200px"><br><br>
-            <?php 
-          }
+    <?php 
+    if ($aluno->getImagem() != null) {
+     ?>
+     <img src="mostra_imagem_aluno.php" id="output"  width="200px" height="200px"><br><br>
+     <?php 
 
 
-          ?>
-          <span class="btn btn-outline-primary btn-file text-dark" style="width:250px; "></i>
-          Buscar Foto <input type="file" name="imagem"  accept="image/*" onchange="loadFile(event)">
-        </span>
+
+   }else{
+    ?>
+    <img src="images/icon/man.png"  id="output" width="200px" height="200px"><br><br>
+    <?php 
+  }
 
 
-          <input type="hidden" name="MAX_FILE_SIZE" value="99999999"/>
-          <br><br>
-          <button type="submit" class="btn btn-outline-primary text-dark text-center" style="width:250px;" >Salvar</button>
-        </center>
+  ?>
+  <span class="btn btn-outline-primary btn-file text-dark" style="width:250px; "></i>
+    Buscar Foto <input type="file" name="imagem"  accept="image/*" onchange="loadFile(event)">
+  </span>
+
+
+  <input type="hidden" name="MAX_FILE_SIZE" value="99999999"/>
+  <br><br>
+  <button type="submit" class="btn btn-outline-primary text-dark text-center" style="width:250px;" >Salvar</button>
+
 </div>
- </form>
+</form>
 </div>
 </div>
 <br><br><br>
@@ -270,11 +189,11 @@ include 'header_aluno.php';
 }
 </script>
 <script>
-      var loadFile = function(event) {
-        var output = document.getElementById('output');
-        output.src = URL.createObjectURL(event.target.files[0]);
-      };
-    </script>
+  var loadFile = function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+  };
+</script>
 <?php
 include 'footer_aluno.php';
 ?>

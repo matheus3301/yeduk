@@ -4,3 +4,272 @@
 	position: absolute;
 	background-color: rgba(0,0,0,.9);
 }
+#biografia{
+  resize: none;
+}
+.lbls{
+  font-size: 1em;
+  font-weight: bold;
+  color: #3a7bd5;
+  float: left;
+  padding: 10px;
+}
+.mod{
+  position: absolute;
+  width: 100%;
+  padding: 50px;
+  background-color: #fff;
+}
+.btn-submit{
+  border:none;
+  background-color: transparent;
+}
+.i{
+  display: none;
+}
+.bio{
+  background-color: transparent;
+  border:1px solid #009afa;
+  color:#fff;
+}
+.bio{
+  position: relative;
+  z-index: 1;
+  color:#fff;
+}
+.bio:focus{
+  background-color: transparent;
+  color:#fff;
+  transition:.4s linear;
+}
+.bio:disabled{
+  background-color: transparent;
+  border:none;
+}
+.i2{
+  display: none;
+  position: relative;
+  z-index: 1;
+
+}
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;   
+  cursor: inherit;
+  display: block;
+
+
+}
+#output{
+  width:300px;
+  height:300px;
+  border-radius: 100%;
+  border: 6px solid #009afa;
+  object-fit: cover;
+}
+
+.bt-more {
+  border:none;
+  background-color:transparent;
+  color: #fff;
+  position:absolute;
+  right:3%;
+}
+.post{
+  border-radius: 5px;
+}
+.section{
+  padding-top: 5%;
+}
+.nome_professor{
+  font-size:0.8em;
+}
+.publicacao{
+  background-color: transparent;
+  border:1px solid #009afa;
+  color:#fff;
+  resize:none;
+}
+
+.mensagem{
+  padding:10px;
+  border-radius: 5px;
+}
+.mensagem:hover{
+  background-color: #ebebeb;
+  transition: .4s linear;
+}
+.visualizar:hover {
+  background-color: red;
+}
+.btn-pub{
+  border:none;
+  color:#009afa;
+  height:40px;
+  width:100px;
+  border-radius:40px;
+  background-color: transparent;
+  box-shadow: 0px 0px 5px #909090;
+
+}
+
+.bio:disabled{
+  background-color: transparent;
+  border:none;
+}
+.btn-submit{
+  border:none;
+  background-color: transparent;
+}
+.btn-pub:hover{
+  background: linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%);
+  color:#fff;
+  transition: .4s linear;
+}
+.ch{
+ background: linear-gradient(80deg, #0030cc 0%, #00a4db 100%);
+ color:#fff;
+}
+.small {
+  float:right;
+}
+#inpt{
+  border:1px solid #009afa;
+}
+.btn-circle{
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding:6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+.btn-circle.btn-lg{
+  width:50px;
+  height: 50px;
+  padding: 1px 1px;
+  font-size: 1em;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+.btn-send{
+ background: linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%);
+ border:none;
+ float:right;
+}
+.comentar{
+  width: 100%;
+  height:40px;
+  border:1px solid #009afa;
+}
+.img-pequena{
+  width:40px;
+  height:40px;
+  border-radius: 60px;
+  object-fit: cover;
+}
+.img-media{
+  width:60px;
+  height:60px;
+  border-radius: 80px;
+  object-fit: cover;
+}
+.foto-perfil{
+  width:300px;
+  height:300px;
+  border-radius: 100%;
+  object-fit: cover;
+}
+.inpts{
+  background-color: transparent;
+  border: 2px solid #00d2ff;
+  color: #fff;
+}
+.inpus::placeholder{
+  color:dodgerblue;
+}
+.inpus:focus{
+  background-color: transparent;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

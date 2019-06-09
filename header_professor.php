@@ -23,7 +23,8 @@ $professor->CapturarProfessor($conexao);
 <head>
   <meta charset="utf-8">
   <title>Yeduk - Turmas Online</title>
-
+  <link rel="stylesheet" type="text/css" href="css/adminLTE.css">
+  <link rel="stylesheet" href="css/AdminLTE.min.css">
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -44,8 +45,7 @@ $professor->CapturarProfessor($conexao);
   <!--Favicon-->
   <link rel="icon" href="images/icon/logo (2).png">
 
-  <style type="text/css">
-</style>
+  <link rel="stylesheet" type="text/css" href="css/estilo.css">
 <meta charset="utf-8">
 <style type="text/css">
 sup{
@@ -128,7 +128,7 @@ sup{
                 </a>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
+                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60"  alt="">
                     <div class="status-indicator bg-warning"></div>
                   </div>
                   <div>
