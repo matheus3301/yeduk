@@ -204,6 +204,11 @@
 .inpus:focus{
   background-color: transparent;
 }
+.img-turma{
+      width:300px;
+  height:300px;
+  border-radius: 100%;
+  object-fit: cover;
 
 
 
