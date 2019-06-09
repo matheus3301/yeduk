@@ -3,8 +3,14 @@ class Turma{
 
 	private $id;
 	private $nome;
+	private $data_criacao;
 	private $descricao;
 	private $id_professor;
+
+	private $nome_imagem;
+	private $tamanho_imagem;
+	private $tipo_imagem;
+	private $imagem;
 
 	public function getId(){
 		return $this->id;
@@ -20,6 +26,13 @@ class Turma{
 	public function setNome($nome){
 		$this->nome = $nome;
 	}
+	public function getData_criacao(){
+		return $this->data_criacao;
+	}
+
+	public function setData_criacao($data_criacao){
+		$this->data_criacao = $data_criacao;
+	}
 	public function getDescricao(){
 		return $this->descricao;
 	}
@@ -34,6 +47,42 @@ class Turma{
 	public function setId_professor($id_professor){
 		$this->id_professor = $id_professor;
 	}
+
+	public function getNome_imagem(){
+		return $this->nome_imagem;
+	}
+
+	public function setNome_imagem($nome_imagem){
+		$this->nome_imagem = $nome_imagem;
+	}
+
+	public function getTamanho_imagem(){
+		return $this->tamanho_imagem;
+	}
+
+	public function setTamanho_imagem($tamanho_imagem){
+		$this->tamanho_imagem = $tamanho_imagem;
+	}
+
+	public function getTipo_imagem(){
+		return $this->tipo_imagem;
+	}
+
+	public function setTipo_imagem($tipo_imagem){
+		$this->tipo_imagem = $tipo_imagem;
+	}
+
+	public function getImagem(){
+		return $this->imagem;
+	}
+
+	public function setImagem($imagem){
+		$this->imagem = $imagem;
+	}
+
+
+
+
 
 	public function Cadastrar($conexao) {
 		$sql = "INSERT INTO tb_turma(nome,descricao,tb_professor_idtb_professor) VALUES('$this->nome','$this->descricao',$this->id_professor)";
@@ -61,19 +110,26 @@ class Turma{
 		return $result;
 		
 	}
-	 public function CapturarTurma($conexao){
-	 	$sql = "SELECT * FROM tb_turma WHERE  idtb_turma = $this->id";
+	public function CapturarTurma($conexao){
+		$sql = "SELECT * FROM tb_turma WHERE  idtb_turma = $this->id";
 
-	 	$query = $conexao->query($sql);
+
+		$query = $conexao->query($sql);
 
 		$return = $query->fetch();
 
 		if ($return != null) {
 
 			$this->nome = $return[1];
-			$this->descricao = $return[2];
-			$this->id_professor = $return[3];
+			$this->data_criacao = $return[2];
+			$this->descricao = $return[3];
+			$this->id_professor = $return[4];
+
 			
+			$this->nome_imagem = $return[5];
+			$this->tamanho_imagem = $return[6];
+			$this->tipo_imagem = $return[7];
+			$this->imagem = $return[8];
 
 		}
 	}
@@ -90,12 +146,12 @@ class Turma{
 		
 	}
 	public function Alterar($conexao){
-	 	$sql = "UPDATE tb_turma SET nome = '$this->nome', descricao = '$this->descricao'
-	 		   WHERE  idtb_turma = $this->id";
+		$sql = "UPDATE tb_turma SET nome = '$this->nome', descricao = '$this->descricao'
+		WHERE  idtb_turma = $this->id";
 
-	 	
 
-	 	try {
+
+		try {
 			$conexao->query($sql);
 			echo "Foi";
 
@@ -134,6 +190,25 @@ class Turma{
 		$result = $sth->fetchAll();
 
 		return $result;
+	}
+
+	public function AlterarFoto($conexao){
+
+		$sql = "UPDATE tb_turma SET nome_imagem = '$this->nome_imagem', tamanho_imagem = '$this->tamanho_imagem', tipo_imagem = '$this->tipo_imagem', imagem = '$this->imagem' WHERE idtb_turma = $this->id";
+
+		
+
+
+		try {
+			$conexao->query($sql);
+			echo "Foi";
+
+		} catch (Exception $ex) {
+			$ex->getMessage();
+		}			
+
+
+
 	}
 
 	

@@ -88,7 +88,7 @@ $turmas = $turma->CapturarTurmasProfessor($conexao,$id);
             <i class="fa-4x fas fa-globe-americas" ></i>
             <div class="media-body text-center text-sm-left mb-4 mb-sm-0" style="padding-left:5%">
               <h6 class="mt-0"><?php echo $turmaatual[0]." - ".$turmaatual[1]; ?></h6>
-              <p class="mb-0 text-gray"><?php echo $turmaatual[2]; ?></p>
+              <p class="mb-0 "><?php echo $turmaatual[3]; ?></p>
             </div>
             <a href="turmaprofessor.php?id=<?php echo $turmaatual[0]?>" class="btn btn-outline-primary">Acessar Turma</a>
           </div>
