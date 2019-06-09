@@ -29,7 +29,7 @@ $turmas = $turma->CapturarTurmasProfessor($conexao,$id);
             <li class="breadcrumb-item"><a href="meuperfilprofessor.php" class="text-white">Meu Perfil</a></li>
             <li class="breadcrumb-item text-white" aria-current="page">Minhas Turmas</li>
 
-          
+
           </ol>
         </nav>
       </div>
@@ -54,7 +54,17 @@ $turmas = $turma->CapturarTurmasProfessor($conexao,$id);
       foreach ($turmas as $turmaatual) { ?>
         <div class="col-lg-12 bg-white p-4 rounded shadow my-3">
           <div class="media align-items-center flex-column flex-sm-row">
-            <i class="fa-4x fas fa-globe-americas" ></i>
+            <?php 
+            if ($turmaatual[8] != null) {
+               echo '<img class="img-turma" src="data:'.$turmaatual[7].';base64,'.base64_encode( $turmaatual[8]).'"/>';
+
+             }else{
+              ?>
+              <i class="fa-4x fas fa-globe-americas" ></i>
+              <?php 
+            }
+
+            ?>
             <div class="media-body text-center text-sm-left mb-4 mb-sm-0" style="padding-left:5%">
               <h6 class="mt-0"><?php echo $turmaatual[0]." - ".$turmaatual[1]; ?></h6>
               <p class="mb-0 "><?php echo $turmaatual[3]; ?></p>

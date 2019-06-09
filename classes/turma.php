@@ -98,7 +98,6 @@ class Turma{
 
 	}
 
-
 	function CapturarTurmasProfessor($conexao,$idprofessor){	
 
 
@@ -143,7 +142,7 @@ class Turma{
 	function CapturarTurmasNome($conexao,$nome){	
 
 
-		$sth = $conexao->prepare("SELECT idtb_turma, tb_turma.nome, descricao, tb_professor.nome FROM tb_turma INNER JOIN tb_professor ON tb_professor.idtb_professor = tb_professor_idtb_professor WHERE tb_turma.nome LIKE '%$nome%'");
+		$sth = $conexao->prepare("SELECT idtb_turma, tb_turma.nome, descricao, tb_professor.nome, tb_turma.tipo_imagem, tb_turma.imagem FROM tb_turma INNER JOIN tb_professor ON tb_professor.idtb_professor = tb_professor_idtb_professor WHERE tb_turma.nome LIKE '%$nome%'");
 		$sth->execute();
 
 		$result = $sth->fetchAll();

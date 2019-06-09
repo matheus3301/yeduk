@@ -86,11 +86,12 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
             <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Eventos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Configurações</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" id="questoes-tab" data-toggle="tab" href="#questoes" role="tab" aria-controls="questoes" aria-selected="false">Questões</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Configurações</a>
+          </li>
+          
 
         </ul>
         
@@ -533,13 +534,13 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
        
               if ($turma->getImagem() != null) {
-              echo '<img class="img-turma" src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'"/>';
+              echo '<img id="output" class="img-turma" src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'"/>';
 
 
 
              }else{
               ?>
-              <img src="images/icon/man.png"   width="300px" height="300px"><br><br>
+              <img src="images/icon/man.png"  id="output" width="300px" height="300px"><br><br>
               <?php 
             }
       

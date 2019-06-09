@@ -97,7 +97,17 @@ $turmas = $turma->CapturarTurmasNome($conexao,$nometurma);
     foreach ($turmas as $turmaatual) { ?>
       <div class="col-lg-12 bg-white p-4 rounded shadow my-3">
         <div class="media align-items-center flex-column flex-sm-row">
-          <i class="fa-4x fas fa-globe-americas" ></i>
+           <?php 
+            if ($turmaatual[5] != null) {
+               echo '<img class="img-turma" src="data:'.$turmaatual[4].';base64,'.base64_encode( $turmaatual[5]).'"/>';
+
+             }else{
+              ?>
+              <i class="fa-4x fas fa-globe-americas" ></i>
+              <?php 
+            }
+
+            ?>
           <div class="media-body text-center text-sm-left mb-4 mb-sm-0" style="padding-left:5%">
             <h6 class="mt-0"><?php echo $turmaatual[3]." - ".$turmaatual[1]; ?></h6>
             <p class="mb-0 text-gray"><?php echo $turmaatual[2]; ?></p>
