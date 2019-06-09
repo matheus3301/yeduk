@@ -1,17 +1,18 @@
 <?php 
 include 'classes/conexao.php';
 include 'classes/turma.php';
-session_start();
+
 $id = $_GET['idTurma'];
-$turma = new Turma();
 
-$turma->setId($id);
-$turma->CapturarTurma($conexao);
+$aluno = new Turma();
 
+$aluno->setId($id);
+$aluno->CapturarTurma($conexao);
 
-header("Content-type:".$turma->getTipo_imagem());
+//header("Content-type:".$aluno->getTipo_imagem());
 
-echo $turma->getImagem();
+//echo $aluno->getImagem();
 
+echo '<img src="data:'.$aluno->getTipo_imagem().';base64,'.base64_encode( $aluno->getImagem() ).'"/>';
 
  ?>

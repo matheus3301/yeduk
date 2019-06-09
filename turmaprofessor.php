@@ -167,23 +167,19 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
       </div>
       <div class="col-md-4 m-auto "  >
-       <?php 
-       if ($turma->getImagem() != null) {
-         ?>
-         <img src="mostra_imagem_turma.php?idTurma=<?php echo $turma->getId(); ?>" class="foto-perfil"><br><br>
-
-
-         <?php 
-
-
-
-       }else{
-        ?>
-        <img src="images/icon/man.png"   width="200px" height="200px"><br><br>
-
-
         <?php 
-      }
+              if ($turma->getImagem() != null) {
+              echo '<img src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'" " width="300px" height="300px"/>';
+
+
+             }else{
+              ?>
+              <img src="images/icon/man.png"   width="300px" height="300px"><br><br>
+              <?php 
+            }
+
+
+            ?>
 
 
       ?>
@@ -219,10 +215,10 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
           <li class="nav-item">
             <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Configurações</a>
           </li>
-           <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" id="questoes-tab" data-toggle="tab" href="#questoes" role="tab" aria-controls="questoes" aria-selected="false">Questões</a>
           </li>
-         
+
         </ul>
         
         <div class="tab-content">
@@ -464,248 +460,248 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 </div>
 
 
- <div class="tab-pane"id="questoes" role="tabpanel" aria-labelledby="questoes-tab">
-            <div class="row">
-              <div class="col-md-12">
+<div class="tab-pane"id="questoes" role="tabpanel" aria-labelledby="questoes-tab">
+  <div class="row">
+    <div class="col-md-12">
 
-                <h1 class="subtitle">Elabore Questões para seus Alunos</h1>
-                <div class="dropdown-divider"></div>
-                <h6 class="text-dark"> <?php 
-                if ($professor->getImagem() != null) {
+      <h1 class="subtitle">Elabore Questões para seus Alunos</h1>
+      <div class="dropdown-divider"></div>
+      <h6 class="text-dark"> <?php 
+      if ($professor->getImagem() != null) {
+       ?>
+       <img src="mostra_imagem.php" id="img-professor" class="img-circle" >
+       <?php 
+
+
+
+     }else{
+      ?>
+      <img src="images/icon/man.png"  class="img-circle">
+      <?php 
+    }
+
+
+    ?> <?php echo $professor->getNome();?></h6>
+    <br>
+    <form action="questaoturma.php?idTurma=<?php echo $turma->getId(); ?>" method="POST">
+      <label class="lbls text-center">Título da questão</label>
+      <input type="text" id="inpt" name="titulo" class="form-control" required="Apresente o Conteúdo de sua postagem" >
+      <br>
+      <textarea class="form-control publicacao text-primary bg-white" name="enuciado" required="" > 
+      </textarea><br>
+      <center>
+        <button class="btn-pub text-center"><i class="far fa-image"></i> Imagem</button>
+        <button type="submit" class="btn-pub text-center"><i class="fas fa-check"></i> Publicar</button>
+      </center>
+    </form>
+
+    <br><br>
+    <div class="dropdown-divider"></div><br>
+    <?php 
+    if (isset($_GET ['op']) && $_GET['op'] == "novaquestao") {
+      ?>
+      <div class="alert alert-primary alert-dismissible fade show text-center"  role="alert">
+        Nova questão Adicionada!
+
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <?php } ?>
+    <?php 
+    if (isset($_GET ['op']) && $_GET['op'] == "questaoxcluida") {
+      ?>
+      <div class="alert alert-danger alert-dismissible fade show text-center"  role="alert">
+        Uma questão foi excluída!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <?php } ?>
+
+    <?php 
+    if (isset($_GET ['op']) && $_GET['op'] == "questaoalterada") {
+      ?>
+      <div class="alert alert-warning alert-dismissible fade show text-center"  role="alert">
+        Uma questão foi Alterada!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <?php } ?>
+
+    <h3 class="text-primary">Questões para responder</h3><br>
+    <?php 
+    foreach ($capturarPostagem as $posts) { 
+
+      ?>
+
+      <div class="col-md-12 ">
+        <!-- Box Comment -->
+        <div class="post bg-white">
+          <div class="box box-widget ">
+            <div class="box-header without-border">
+              <div class="user-block ">
+
+               <?php 
+               if ($professor->getImagem() != null) {
                  ?>
-                 <img src="mostra_imagem.php" id="img-professor" class="img-circle" >
+                 <img src="mostra_imagem.php" id="img-professor"  class="img-circle" >
                  <?php 
 
 
 
                }else{
                 ?>
-                <img src="images/icon/man.png"  class="img-circle">
+                <img src="images/icon/man.png" id="img-professor"  class="img-circle">
                 <?php 
               }
 
 
-              ?> <?php echo $professor->getNome();?></h6>
-              <br>
-              <form action="questaoturma.php?idTurma=<?php echo $turma->getId(); ?>" method="POST">
-                <label class="lbls text-center">Título da questão</label>
-                <input type="text" id="inpt" name="titulo" class="form-control" required="Apresente o Conteúdo de sua postagem" >
-                <br>
-                <textarea class="form-control publicacao text-primary bg-white" name="enuciado" required="" > 
-                </textarea><br>
-                <center>
-                  <button class="btn-pub text-center"><i class="far fa-image"></i> Imagem</button>
-                  <button type="submit" class="btn-pub text-center"><i class="fas fa-check"></i> Publicar</button>
-                </center>
-              </form>
-
-              <br><br>
-              <div class="dropdown-divider"></div><br>
-              <?php 
-              if (isset($_GET ['op']) && $_GET['op'] == "novaquestao") {
-                ?>
-                <div class="alert alert-primary alert-dismissible fade show text-center"  role="alert">
-                  Nova questão Adicionada!
-
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-              <?php } ?>
-              <?php 
-              if (isset($_GET ['op']) && $_GET['op'] == "questaoxcluida") {
-                ?>
-                <div class="alert alert-danger alert-dismissible fade show text-center"  role="alert">
-                  Uma questão foi excluída!
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-              <?php } ?>
-
-              <?php 
-              if (isset($_GET ['op']) && $_GET['op'] == "questaoalterada") {
-                ?>
-                <div class="alert alert-warning alert-dismissible fade show text-center"  role="alert">
-                  Uma questão foi Alterada!
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-              <?php } ?>
-
-              <h3 class="text-primary">Questões para responder</h3><br>
-              <?php 
-              foreach ($capturarPostagem as $posts) { 
-
-                ?>
-
-                <div class="col-md-12 ">
-                  <!-- Box Comment -->
-                  <div class="post bg-white">
-                    <div class="box box-widget ">
-                      <div class="box-header without-border">
-                        <div class="user-block ">
-
-                         <?php 
-                         if ($professor->getImagem() != null) {
-                           ?>
-                           <img src="mostra_imagem.php" id="img-professor"  class="img-circle" >
-                           <?php 
-
-
-
-                         }else{
-                          ?>
-                          <img src="images/icon/man.png" id="img-professor"  class="img-circle">
-                          <?php 
-                        }
-
-
-                        ?>
-                        <span class="username"><a href="#" class="nome_professor">Professor - <?php echo $professor->getNome(); ?></a></span>
-                        <span class="description">Post - <?php echo $posts[4]; ?></span>
-                      </div><!-- /.user-block -->
-                      <div class="box-tools">
-                        <button type="button" class="bt-more dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fas fa-list text-dark"></i>
-                        </button>
-                        <div class="dropdown-menu text">
-                          <a class="dropdown-item" data-toggle="modal" data-target='#<?php echo $posts[0]."excluir"; ?>'>Excluir Postagem</a>
-                          <a class="dropdown-item" data-toggle="modal" data-target="#<?php echo $posts[0]."alterar"; ?>">Alterar Postagem</a>
-                        </div>
-                      </div>
-                    </div><!-- /.box-tools -->
-                  </div><!-- /.box-header -->
-                  <div class="box-body text-center bg-white">
-
-                    <h4 class="text-left"><?php echo $posts[3]; ?></h4>
-                    <img class="img-responsive pad" src="images/icon/man.png" alt="Photo">
-                    <p class="text-left"><?php echo $posts[2]; ?></p>
-
-                    <p class="text-left text-muted ">[Numero Comentários]</p>
-
-                  </div><!-- /.box-body -->
-                  <div class="dropdown-divider"></div>
-                  <h6 class="m-4">Comentários</h6>
-                  <div class="box-footer box-comments">
-
-
-                    <div class="box-comment">
-                      <!-- User image -->
-                      <?php 
-                      if ($professor->getImagem() != null) {
-                       ?>
-                       <img src="mostra_imagem.php" class="img-responsive img-circle img-sm img-circle "id="img-professor"   >
-                       <?php 
-
-
-
-                     }else{
-                      ?>
-                      <img src="images/icon/man.png" class="img-responsive img-circle img-sm img-circle "id="img-professor"  >
-                      <?php 
-                    }
-
-
-                    ?>
-
-                    <div class="comment-text ">
-
-                      <span class="username ">
-                        <?php echo $professor->getNome(); ?>
-                        <span class="text-muted pull-right text-light">8:03 PM Today</span>
-                      </span><!-- /.username -->
-                      Comentário
-                    </div><!-- /.comment-text -->
-                  </div><!-- /.box-comment -->
-                </div><!-- /.box-footer -->
-                <div class="box-footer">
-                  <form action="#" method="post" ">
-                    <?php 
-                    if ($professor->getImagem() != null) {
-                     ?>
-                     <img src="mostra_imagem.php" class="img-responsive img-circle img-sm img-circle "   >
-                     <?php 
-
-
-
-                   }else{
-                    ?>
-                    <img src="images/icon/man.png" class="img-responsive img-circle img-sm img-circle "  >
-                    <?php 
-                  }
-
-
-                  ?>
-
-
-                  <div class="img-push">
-                    <input type="text" class="form-control input-sm comentar"  placeholder="digite um comentário...">
-                  </div>
-                </form>
-              </div><!-- /.box-footer -->
-            </div><!-- /.box -->
-          </div>
-
-
-
-
-          <div class="modal fade" id="<?php echo $posts[0]."excluir"; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">Deseja Excluir Esta Postagem?</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body text-dark">
-                 <strong><?php echo $posts[3];?></strong><br>
-                 <p><?php echo $posts[2];?></p>
-               </div>
-               <div class="modal-footer">
-
-                <a class="btn btn-outline-primary " href="excluirposts.php?id=<?php echo $posts[0]; ?>&idT=<?php echo $turma->getId(); ?>">Excluir</a>
+              ?>
+              <span class="username"><a href="#" class="nome_professor">Professor - <?php echo $professor->getNome(); ?></a></span>
+              <span class="description">Post - <?php echo $posts[4]; ?></span>
+            </div><!-- /.user-block -->
+            <div class="box-tools">
+              <button type="button" class="bt-more dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-list text-dark"></i>
+              </button>
+              <div class="dropdown-menu text">
+                <a class="dropdown-item" data-toggle="modal" data-target='#<?php echo $posts[0]."excluir"; ?>'>Excluir Postagem</a>
+                <a class="dropdown-item" data-toggle="modal" data-target="#<?php echo $posts[0]."alterar"; ?>">Alterar Postagem</a>
               </div>
             </div>
-          </div>
+          </div><!-- /.box-tools -->
+        </div><!-- /.box-header -->
+        <div class="box-body text-center bg-white">
+
+          <h4 class="text-left"><?php echo $posts[3]; ?></h4>
+          <img class="img-responsive pad" src="images/icon/man.png" alt="Photo">
+          <p class="text-left"><?php echo $posts[2]; ?></p>
+
+          <p class="text-left text-muted ">[Numero Comentários]</p>
+
+        </div><!-- /.box-body -->
+        <div class="dropdown-divider"></div>
+        <h6 class="m-4">Comentários</h6>
+        <div class="box-footer box-comments">
+
+
+          <div class="box-comment">
+            <!-- User image -->
+            <?php 
+            if ($professor->getImagem() != null) {
+             ?>
+             <img src="mostra_imagem.php" class="img-responsive img-circle img-sm img-circle "id="img-professor"   >
+             <?php 
+
+
+
+           }else{
+            ?>
+            <img src="images/icon/man.png" class="img-responsive img-circle img-sm img-circle "id="img-professor"  >
+            <?php 
+          }
+
+
+          ?>
+
+          <div class="comment-text ">
+
+            <span class="username ">
+              <?php echo $professor->getNome(); ?>
+              <span class="text-muted pull-right text-light">8:03 PM Today</span>
+            </span><!-- /.username -->
+            Comentário
+          </div><!-- /.comment-text -->
+        </div><!-- /.box-comment -->
+      </div><!-- /.box-footer -->
+      <div class="box-footer">
+        <form action="#" method="post" ">
+          <?php 
+          if ($professor->getImagem() != null) {
+           ?>
+           <img src="mostra_imagem.php" class="img-responsive img-circle img-sm img-circle "   >
+           <?php 
+
+
+
+         }else{
+          ?>
+          <img src="images/icon/man.png" class="img-responsive img-circle img-sm img-circle "  >
+          <?php 
+        }
+
+
+        ?>
+
+
+        <div class="img-push">
+          <input type="text" class="form-control input-sm comentar"  placeholder="digite um comentário...">
         </div>
-        <div class="modal fade bd-example-modal-lg" id="<?php echo $posts[0].'alterar';?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Faça a Alteração que deseja em sua Postagem</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="row">
-                <div class="col-md-12" style="padding:5%;">
-                 <form action="valida_alt/alterarpost.php?idTurma=<?php echo $turma->getId(); ?>&idP=<?php echo $posts[0]; ?>" method="POST">
-                  <label class="lbls text-center">Título da Postagem</label>
-                  <input type="text" id="inpt" name="titulo" class="form-control" value="<?php echo $posts[3]; ?>" >
-                  <br>
-                  <textarea class="form-control publicacao text-primary" name="publicacao" ><?php echo $posts[2]; ?></textarea><br>
-                  <button type="submit" class="btn btn-outline-primary">Alterar</button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
+      </form>
+    </div><!-- /.box-footer -->
+  </div><!-- /.box -->
+</div>
+
+
+
+
+<div class="modal fade" id="<?php echo $posts[0]."excluir"; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Deseja Excluir Esta Postagem?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
+      <div class="modal-body text-dark">
+       <strong><?php echo $posts[3];?></strong><br>
+       <p><?php echo $posts[2];?></p>
+     </div>
+     <div class="modal-footer">
 
-
-
-
-
-
-
-
-      <br><br><br>
-    <?php }?>
-
+      <a class="btn btn-outline-primary " href="excluirposts.php?id=<?php echo $posts[0]; ?>&idT=<?php echo $turma->getId(); ?>">Excluir</a>
+    </div>
   </div>
+</div>
+</div>
+<div class="modal fade bd-example-modal-lg" id="<?php echo $posts[0].'alterar';?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Faça a Alteração que deseja em sua Postagem</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="row">
+        <div class="col-md-12" style="padding:5%;">
+         <form action="valida_alt/alterarpost.php?idTurma=<?php echo $turma->getId(); ?>&idP=<?php echo $posts[0]; ?>" method="POST">
+          <label class="lbls text-center">Título da Postagem</label>
+          <input type="text" id="inpt" name="titulo" class="form-control" value="<?php echo $posts[3]; ?>" >
+          <br>
+          <textarea class="form-control publicacao text-primary" name="publicacao" ><?php echo $posts[2]; ?></textarea><br>
+          <button type="submit" class="btn btn-outline-primary">Alterar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+<br><br><br>
+<?php }?>
+
+</div>
 </div>
 </div>
 
@@ -917,10 +913,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
               <?php 
               if ($turma->getImagem() != null) {
-               ?>
-               <img src="mostra_imagem_turma.php?id=<?php echo $turma->getId() ?>" id="output "width="300px" height="300px" ><br><br>
-               <?php 
-
+              echo '<img src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'" id="output" width="300px" height="300px"/>';
 
 
              }else{
@@ -940,7 +933,12 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
             <br><br>
             <button type="submit" class="btn btn-outline-primary text-dark text-center" style="width:250px;" >Salvar</button>
 
-
+            <script>
+              var loadFile = function(event) {
+                var output = document.getElementById('output');
+                output.src = URL.createObjectURL(event.target.files[0]);
+              };
+            </script>
           </center>
 
         </div>
@@ -1044,12 +1042,7 @@ function editarText() {
 
 
 </script>
-<script>
-  var loadFile = function(event) {
-    var output = document.getElementById('output');
-    output.src = URL.createObjectURL(event.target.files[0]);
-  };
-</script>
+
 
 
 <!-- subscription -->
