@@ -162,7 +162,7 @@ class Turma{
 
 
 	public function ListarAlunosPendentes($conexao){
-		$sth = $conexao->prepare("SELECT tb_aluno.nome, idtb_matricula  FROM tb_matricula INNER JOIN tb_aluno ON tb_aluno.idtb_aluno = tb_aluno_idtb_aluno WHERE  tb_turma_idtb_turma = $this->id AND situacao = 'Pendente'");
+		$sth = $conexao->prepare("SELECT tb_aluno.nome, idtb_matricula, tb_aluno_idtb_aluno, tb_aluno.imagem  FROM tb_matricula INNER JOIN tb_aluno ON tb_aluno.idtb_aluno = tb_aluno_idtb_aluno WHERE  tb_turma_idtb_turma = $this->id AND situacao = 'Pendente'");
 		$sth->execute();
 
 		$result = $sth->fetchAll();
@@ -171,7 +171,7 @@ class Turma{
 	}
 
 	public function ListarAlunosAprovados($conexao){
-		$sth = $conexao->prepare("SELECT tb_aluno.nome, idtb_matricula FROM tb_matricula INNER JOIN tb_aluno ON tb_aluno.idtb_aluno = tb_aluno_idtb_aluno WHERE  tb_turma_idtb_turma = $this->id AND situacao = 'Aprovado'");
+		$sth = $conexao->prepare("SELECT tb_aluno.nome, idtb_matricula, tb_aluno_idtb_aluno, tb_aluno.imagem  FROM tb_matricula INNER JOIN tb_aluno ON tb_aluno.idtb_aluno = tb_aluno_idtb_aluno WHERE  tb_turma_idtb_turma = $this->id AND situacao = 'Aprovado'");
 		$sth->execute();
 
 		$result = $sth->fetchAll();

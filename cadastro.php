@@ -3,14 +3,7 @@ include 'header.php';
 
 ?>
 <!-- nav part end -->
-<style type="text/css">
-  .lbls{
-    font-size: 1em;
-    font-weight: bold;
-    color: #3a7bd5;
-    float: left;
-  }
-</style>
+
 <section class="page-title page-title-overlay " data-background="images/background/about.jpg">
   <div class="container">
     <div class="row">

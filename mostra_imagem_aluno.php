@@ -2,7 +2,15 @@
 include 'classes/conexao.php';
 include 'classes/aluno.php';
 session_start();
-$id = $_SESSION['idaluno'];
+//
+
+
+
+if (isset($_GET['idAluno'])) {
+	$id = $_GET['idAluno'];
+}else{
+	$id = $_SESSION['idaluno'];
+}
 //echo $id;
 $aluno = new Aluno();
 

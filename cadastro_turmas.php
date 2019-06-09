@@ -7,20 +7,7 @@
     
 ?>
 
-<style type="text/css">
-  .lbls{
-    font-size: 1em;
-    font-weight: bold;
-    color: #3a7bd5;
-    float: left;
-    padding: 10px;
-  }
-  .inpts{
-    border: 1px solid;
-    color:#3a7bd5;
-  }
 
-</style>
 <section class="page-title page-title-overlay " data-background="images/background/about.jpg">
   <div class="container">
     <div class="row">

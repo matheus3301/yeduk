@@ -45,8 +45,7 @@ $professor->CapturarProfessor($conexao);
   <!--Favicon-->
   <link rel="icon" href="images/icon/logo (2).png">
 
-  <style type="text/css">
-</style>
+  <link rel="stylesheet" type="text/css" href="css/estilo.css">
 <meta charset="utf-8">
 <style type="text/css">
 sup{

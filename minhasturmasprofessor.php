@@ -14,38 +14,7 @@ $turmas = $turma->CapturarTurmasProfessor($conexao,$id);
 
 ?>
 
-<style type="text/css">
-.btn-circle{
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  padding:6px 0;
-  font-size: 12px;
-  line-height: 1.428571429;
-  border-radius: 15px;
-}
 
-.inpts{
-  background-color: transparent;
-  border: 2px solid #00d2ff;
-  color: #fff;
-}
-.inpus::placeholder{
-  color:dodgerblue;
-}
-.inpus:focus{
-  background-color: transparent;
-}
-.btn-circle.btn-lg{
-  width:50px;
-  height: 50px;
-  padding: 1px 1px;
-  font-size: 1em;
-  line-height: 1.33;
-  border-radius: 25px;
-}
-
-</style>
 <section class="page-title page-title-overlay bg-cover" data-background="images/background/about.jpg">
   <div class="container">
     <div class="row">

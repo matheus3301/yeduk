@@ -2,85 +2,6 @@
 include 'header_aluno.php';
 
 ?>
-<style type="text/css">
-.bio{
-  background-color: transparent;
-  border:1px solid #009afa;
-  color:#fff;
-}
-#biografia{
-  resize: none;
-}
-.lbls{
-  font-size: 1em;
-  font-weight: bold;
-  color: #3a7bd5;
-  float: left;
-  padding: 10px;
-}
-.i{
-  display: none;
-}
-.bio{
-  position: relative;
-  z-index: 1;
-  color:#fff;
-}
-.bio:focus{
-  background-color: transparent;
-  color:#fff;
-  transition:.4s linear;
-}
-.bio:disabled{
-  background-color: transparent;
-  border:none;
-}
-.i2{
-  display: none;
-  position: relative;
-  z-index: 1;
-}
-.btn-submit{
-  border:none;
-  background-color: transparent;
-}
-
-.btn-file {
-  position: relative;
-  overflow: hidden;
-}
-.btn-file input[type=file] {
-  position: absolute;
-  top: 0;
-  right: 0;
-  min-width: 100%;
-  min-height: 100%;
-  font-size: 100px;
-  filter: alpha(opacity=0);
-  opacity: 0;
-  outline: none;   
-  cursor: inherit;
-  display: block;
-}
-#output{
-  width:300px;
-  height:300px;
-  border-radius: 100%;
-  border: 6px solid #009afa;
-  object-fit: scale-down;
-  top:5%;
-}
-.foto-perfil{
-  width:300px;
-  height:300px;
-  border-radius: 100%;
-  border: 6px solid #009afa;
-  object-fit: scale-down;
-  
-}
-
-
-</style>
 <section class="page-title page-title-overlay " data-background="images/background/about.jpg" style=" background-repeat: no-repeat; background-size: cover;">
   <div class="container">
     <div class="row">
@@ -169,9 +90,9 @@ include 'header_aluno.php';
           <input type="date" id="inpt" name="data_nasc" class="form-control" readonly="" value="<?php echo($aluno->getData_nasc());?>">
           
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-7">
           <label for="exampleInputtext1" class=" lbls">Nível de Escolaridade:</label>
-          <select class="form-control mb-4 inputs" required="" style="height: 60px; color: #3a7bd5" name="escolaridade" disabled="" id="select">
+          <select class="form-control mb-4 inputs" required="" style="height: 60px; color: #3a7bd5; border:1px solid #009afa;" name="escolaridade" disabled="" id="select">
             <option value="">Selecione...</option>
             <option <?php if($aluno->getEscolaridade() == "Ensino Fundamental Completo"){
               echo 'selected=""';} ?>>Ensino Fundamental Completo</option>

@@ -2,12 +2,7 @@
   include 'header.php';
 
  ?>
- <style type="text/css">
-  .imgs{
-    grid-area:center;
-  }
  
- </style>
 
 <section class="page-title page-title-overlay bg-cover" data-background="images/background/about.jpg">
     <div class="container">
