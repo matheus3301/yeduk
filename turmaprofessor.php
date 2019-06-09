@@ -26,14 +26,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
 
 ?>
-<style type="text/css">
-  .img-turma{
-      width:300px;
-  height:300px;
-  border-radius: 100%;
-  object-fit: cover;
-  }
-</style>
+
 
 
 <section class="page-title page-title-overlay bg-cover" data-background="images/background/about.jpg">
