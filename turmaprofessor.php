@@ -540,7 +540,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
        
               if ($turma->getImagem() != null) {
-              echo '<img src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'"/>';
+              echo '<img class="img-turma" src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'"/>';
 
 
 
