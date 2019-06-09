@@ -110,9 +110,10 @@ class Turma{
 		return $result;
 		
 	}
-	public function CapturarTurma($conexao){
-		$sql = "SELECT * FROM tb_turma WHERE  idtb_turma = $this->id";
 
+	
+	public function CapturarTurma($conexao){
+		$sql = "SELECT * FROM tb_turma WHERE idtb_turma = $this->id";
 
 		$query = $conexao->query($sql);
 
@@ -124,12 +125,17 @@ class Turma{
 			$this->data_criacao = $return[2];
 			$this->descricao = $return[3];
 			$this->id_professor = $return[4];
-
 			
+			
+
 			$this->nome_imagem = $return[5];
 			$this->tamanho_imagem = $return[6];
 			$this->tipo_imagem = $return[7];
 			$this->imagem = $return[8];
+
+
+
+
 
 		}
 	}

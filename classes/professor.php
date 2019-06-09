@@ -158,7 +158,7 @@ class Professor{
 
 
 	}
-	 public function CapturarProfessor($conexao){
+	public function CapturarProfessor($conexao){
 	 	$sql = "SELECT * FROM tb_professor WHERE  idtb_professor = $this->id";
 
 	 	$query = $conexao->query($sql);
