@@ -22,7 +22,7 @@ include 'header_aluno.php';
         <br>
 
       </div>
-      <form action="valida_alt/altera_img_aluno.php" enctype="multipart/form-data" method="post">
+      
         <div class="col-md-5  m-auto"  >
           <?php 
           if ($aluno->getImagem() != null) {

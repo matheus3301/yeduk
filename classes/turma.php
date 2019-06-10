@@ -150,6 +150,26 @@ class Turma{
 		return $result;
 		
 	}
+
+
+
+
+	function CapturarTurmasAluno($conexao,$nome){	
+
+
+		$sth = $conexao->prepare("SELECT idtb_turma, tb_turma.nome, descricao, tb_professor.nome, tb_turma.tipo_imagem, tb_turma.imagem FROM tb_turma INNER JOIN tb_professor ON tb_professor.idtb_professor = tb_professor_idtb_professor WHERE tb_turma.nome LIKE '%$nome%'");
+		$sth->execute();
+
+		$result = $sth->fetchAll();
+
+		return $result;
+		
+	}
+
+
+
+
+
 	public function Alterar($conexao){
 		$sql = "UPDATE tb_turma SET nome = '$this->nome', descricao = '$this->descricao'
 		WHERE  idtb_turma = $this->id";

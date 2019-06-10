@@ -23,6 +23,8 @@ $notificacoes = $aluno->ListarMatriculasLimitado($conexao);
 <head>
   <meta charset="utf-8">
   <title>Yeduk - Turmas Online</title>
+  <link rel="stylesheet" type="text/css" href="css/adminLTE.css">
+  <link rel="stylesheet" href="css/AdminLTE.min.css">
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,8 +47,21 @@ $notificacoes = $aluno->ListarMatriculasLimitado($conexao);
   <link rel="icon" href="images/icon/logo (2).png">
 
   <link rel="stylesheet" type="text/css" href="css/estilo.css">
-<meta charset="utf-8">
+  <meta charset="utf-8">
 
+  
+  <link href='fullcalendar/core/main.css' rel='stylesheet' />
+  <link href='fullcalendar/daygrid/main.css' rel='stylesheet' />
+  <script src='fullcalendar/core/locales/pt-br.js'></script>
+
+  <script src='fullcalendar/core/main.js'></script>
+  <script src='fullcalendar/daygrid/main.js'></script>
+
+  <link href='fullcalendar/list/main.css' rel='stylesheet' />
+  <script src='fullcalendar/list/main.js'></script>
+
+  <link href='fullcalendar/timegrid/main.css' rel='stylesheet' />
+  <script src='fullcalendar/timegrid/main.js'></script>
 </head>
 
 <body>
@@ -70,7 +85,7 @@ $notificacoes = $aluno->ListarMatriculasLimitado($conexao);
             <a class="nav-link text-white text-capitalize" href="meuperfilaluno.php">Perfil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white text-capitalize" href="#">Minhas Turmas</a>
+            <a class="nav-link text-white text-capitalize" href="minhasturmasaluno.php">Minhas Turmas</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white text-capitalize" href="buscarturmasaluno.php">Buscar Turmas</a>
@@ -108,7 +123,7 @@ $notificacoes = $aluno->ListarMatriculasLimitado($conexao);
                 ?>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="dropdown-list-image mr-3">
-                    
+
                   </div>
                   <div class="font-weight-bold">
                     <div class="text-truncate">Solicitação Aceita! <i class="<?php echo($classe); ?>"></i></div>
@@ -127,8 +142,36 @@ $notificacoes = $aluno->ListarMatriculasLimitado($conexao);
             </div>
           </li>
         </ul>
+       <li class="nav-item dropdown no-arrow mx-1 col-md-" style="list-style: none;">
+          <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <span class="text-white"> <?php 
+           if ($aluno->getImagem() != null) {
+             ?>
+             <img src="mostra_imagem_aluno.php" class="img-pequena">
 
-        <button class="btn btn btn-outline-primary text-white ml-3" data-toggle="modal" data-target="#modal-sair" id="aluno">Sair</button>
+
+             <?php 
+
+
+
+           }else{
+            ?>
+            <img src="images/icon/man.png" class="img-pequena" >
+
+
+            <?php 
+          }
+
+
+          ?><?php echo  $aluno->getNome(); ?></span>
+          <!-- Counter - Messages -->
+
+        </a>
+        <!-- Dropdown - Messages -->
+        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in text" aria-labelledby="messagesDropdown" style="width:200px; border-radius:3px; font-size: 0.8em; ">         
+          <a class="dropdown-item d-flex align-items-center" data-toggle="modal" data-target="#modal-sair" style="font-size: 1.3em;"><i class="fas fa-sign-out-alt mr-3 text-primary"></i>   Sair</a>         
+        </div>
+      </li>
       </div>
     </nav>
   </div>
@@ -151,8 +194,8 @@ $notificacoes = $aluno->ListarMatriculasLimitado($conexao);
 
 
    </div>
-   <div class="modal-footer" style="background:linear-gradient(to right, #00d2ff,#3a7bd5);">
-     <a href="sair.php?tipo=aluno" class="btn btn btn-outline-primary text-white ml-3">Sair</a>
+   <div class="modal-footer">
+     <a href="sair.php?tipo=aluno" class="btn btn btn-primary text-white ml-3">Sair</a>
    </div>
  </div>
 </div>

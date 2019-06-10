@@ -1,12 +1,63 @@
 <?php 
 
- class Posts{
+class Posts{
 
 	private $id;
 	private $id_turma;
 	private $post;
 	private $titulo;
 	private $data;
+
+
+
+
+	private $nome_imagem;
+	private $tamanho_imagem;
+	private $tipo_imagem;
+	private $imagem;
+
+
+	public function getNome_imagem(){
+		return $this->nome_imagem;
+	}
+
+	public function setNome_imagem($nome_imagem){
+		$this->nome_imagem = $nome_imagem;
+	}
+
+	public function getTamanho_imagem(){
+		return $this->tamanho_imagem;
+	}
+
+	public function setTamanho_imagem($tamanho_imagem){
+		$this->tamanho_imagem = $tamanho_imagem;
+	}
+
+	public function getTipo_imagem(){
+		return $this->tipo_imagem;
+	}
+
+	public function setTipo_imagem($tipo_imagem){
+		$this->tipo_imagem = $tipo_imagem;
+	}
+
+	public function getImagem(){
+		return $this->imagem;
+	}
+
+	public function setImagem($imagem){
+		$this->imagem = $imagem;
+	}
+
+
+
+
+
+
+
+
+
+
 
 	public function getId(){
 		return $this->id;
@@ -60,6 +111,20 @@
 			$ex->getMessage();
 		}
 	}
+
+	public function PostarComFoto($conexao)
+	{
+		$sql = "INSERT INTO tb_post(tb_turma_idtb_turma,postagem,titulo,nome_imagem,tamanho_imagem,tipo_imagem,imagem) VALUES('$this->id_turma','$this->post','$this->titulo','$this->nome_imagem','$this->tamanho_imagem','$this->tipo_imagem','$this->imagem')";
+
+
+		try {
+			$conexao->query($sql);
+			echo "Foi";
+
+		} catch (Exception $ex) {
+			$ex->getMessage();
+		}
+	}
 	public function ExcluirPostagem($conexao)
 	{
 		$sql = "DELETE FROM tb_post WHERE idtb_post = $this->id";
@@ -74,12 +139,12 @@
 		}
 	}
 	public function Alterar($conexao){
-	 	$sql = "UPDATE tb_post SET titulo = '$this->titulo', postagem = '$this->post'
-	 		   WHERE  idtb_post = $this->id";
+		$sql = "UPDATE tb_post SET titulo = '$this->titulo', postagem = '$this->post'
+		WHERE  idtb_post = $this->id";
 
-	 	
 
-	 	try {
+
+		try {
 			$conexao->query($sql);
 			echo "Foi";
 
@@ -97,4 +162,4 @@
 }
 
 
- ?>
+?>

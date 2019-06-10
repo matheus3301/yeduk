@@ -178,11 +178,43 @@ $professor->CapturarProfessor($conexao);
 
 
 
-        <button class="btn btn btn-outline-primary text-white ml-3" data-toggle="modal" data-target="#modal-sair" id="aluno">Sair</button>
+        <li class="nav-item dropdown no-arrow mx-1 col-md-" style="list-style: none;">
+          <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <span class="text-white"> <?php 
+           if ($professor->getImagem() != null) {
+             ?>
+             <img src="mostra_imagem.php" class="img-pequena">
 
-      </div>
-    </nav>
-  </div>
+
+             <?php 
+
+
+
+           }else{
+            ?>
+            <img src="images/icon/man.png" class="img-pequena" >
+
+
+            <?php 
+          }
+
+
+          ?><?php echo  $professor->getNome(); ?></span>
+          <!-- Counter - Messages -->
+
+        </a>
+        <!-- Dropdown - Messages -->
+        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in text" aria-labelledby="messagesDropdown" style="width:200px; border-radius:3px; font-size: 0.8em; ">         
+          <a class="dropdown-item d-flex align-items-center" data-toggle="modal" data-target="#modal-sair" style="font-size: 1.3em;"><i class="fas fa-sign-out-alt mr-3 text-primary"></i>   Sair</a>         
+        </div>
+      </li>
+
+
+
+
+    </div>
+  </nav>
+</div>
 </div>
 
 <div class="modal fade" id="modal-sair">

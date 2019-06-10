@@ -67,7 +67,7 @@ $turmas = $turma->CapturarTurmasProfessor($conexao,$id);
             ?>
             <div class="media-body text-center text-sm-left mb-4 mb-sm-0" style="padding-left:5%">
               <h6 class="mt-0"><?php echo $turmaatual[0]." - ".$turmaatual[1]; ?></h6>
-              <p class="mb-0 "><?php echo $turmaatual[3]; ?></p>
+              <p class="mb-0 text-dark"><?php echo $turmaatual[3]; ?></p>
             </div>
             <a href="turmaprofessor.php?id=<?php echo $turmaatual[0]?>" class="btn btn-outline-primary">Acessar Turma</a>
           </div>
@@ -97,12 +97,12 @@ $turmas = $turma->CapturarTurmasProfessor($conexao,$id);
     </div>
     <div class="modal-body"> 
       <div class="col-lg-12 text-center">
-        <h3 class="section-title">Preencha os Campos Abaixo Para Registrar a nova Turma.</h3>
+        <h3 class="section-title">Criar nova Turma.</h3>
       </div>
       <div class="col-lg-12 text-center p-0">
         <form class="row" method="post" action="valida_cadastro/cadastra_turmas.php">
           <div class="col-lg-12">
-           <label for="exampleInputtext1" class=" lbls "> Turma:</label>
+           <label for="exampleInputtext1" class=" lbls "> Nome:</label>
 
            <input type="text" class="form-control mb-4 inpts text-primary" placeholder="Ex: Terceiro ano C" name="nome">
          </div>

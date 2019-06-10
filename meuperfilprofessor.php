@@ -154,6 +154,7 @@ include 'header_professor.php';
 
   ?>
   <span class="btn btn-outline-primary btn-file text-dark" style="width:250px; "></i>
+    
     Buscar Foto <input type="file" name="imagem"  accept="image/*" onchange="loadFile(event)">
   </span>
 

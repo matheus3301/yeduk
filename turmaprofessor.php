@@ -32,6 +32,12 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 .fc-title{
   color: white;
 }
+
+.img-post{
+  width: 100%;
+  border-radius: 30px;
+
+}
 </style>
 
 
@@ -123,17 +129,38 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
               }
               ?> <?php echo $professor->getNome();?></h6>
               <br>
-              <form action="postagemturma.php?idTurma=<?php echo $turma->getId(); ?>" method="POST">
-                <label class="lbls text-center">Título da Postagem</label>
-                <input type="text" id="inpt" name="titulo" class="form-control" required="Apresente o Conteúdo de sua postagem" >
-                <br>
-                <textarea class="form-control publicacao text-primary bg-white" name="publicacao" required="" > 
-                </textarea><br>
-                <center>
-                  <button class="btn-pub text-center"><i class="far fa-image"></i> Imagem</button>
-                  <button type="submit" class="btn-pub text-center"><i class="fas fa-check"></i> Publicar</button>
-                </center>
-              </form>
+              <div class="row">
+                <div class="col-md-8">
+                  <form action="postagemturma.php?idTurma=<?php echo $turma->getId(); ?>" method="POST" enctype="multipart/form-data">
+
+                    <input type="text" id="inpt" name="titulo" class="form-control" required="" placeholder="Título da Postagem" >
+                    <br>
+
+
+                    <textarea class="form-control publicacao text-primary bg-white" name="publicacao" required="" ></textarea>
+
+                    <br>
+
+                    <center>
+                      <span class="btn btn-outline-primary btn-file text-primary" style="width:250px; "></i>
+                        <i class="far fa-image"></i> Imagem <input type="file" name="imagem"  accept="image/*" onchange="loadPost(event)">
+                      </span>
+                      <button type="submit" class=" btn btn-outline-primary text-center"><i class="fas fa-check"></i> Publicar</button>
+                      <br><br>
+                    </center>
+                  </form>
+                  <script>
+                    var loadPost = function(event) {
+                      var output = document.getElementById('outputPost');
+                      output.src = URL.createObjectURL(event.target.files[0]);
+                    };
+                  </script>
+                </div>
+                <div class="col-md-4">
+                  <img src="images/defaultpost.png " id="outputPost" class="img-post" >
+
+                </div>
+              </div>
 
               <br><br>
               <div class="dropdown-divider"></div><br>
@@ -169,6 +196,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
                   </button>
                 </div>
               <?php } ?>
+
 
               <h3 class="text-primary">Veja as últimas publicações.</h3><br>
               <?php 
@@ -215,11 +243,20 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
                   </div><!-- /.box-header -->
                   <div class="box-body text-center bg-white">
 
-                    <h4 class="text-left"><?php echo $posts[3]; ?></h4>
-                    <img class="img-responsive pad" src="images/icon/man.png" alt="Photo">
-                    <p class="text-left"><?php echo $posts[2]; ?></p>
+                    <h4 class="text-center"><?php echo $posts[3]; ?></h4>
 
-                    <p class="text-left text-muted ">[Numero Comentários]</p>
+                    <?php 
+                      if ($posts[8] != null) {
+                        echo '<img class=" img-post" src="data:'.$posts[7].';base64,'.base64_encode( $posts[8] ).'"/>';
+                      }else{?>
+                          <img class=" img-post" src="images/defaultpost.png" alt="Photo"><?php 
+                      }
+
+                     ?>
+                    
+                    <p class="text-left text-dark m-3" ><?php echo $posts[2]; ?></p>
+
+                    <p class="text-right text-muted  " style="font-size: 0.8em">[Numero Comentários]</p>
 
                   </div><!-- /.box-body -->
                   <div class="dropdown-divider"></div>
@@ -257,7 +294,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
                   </div><!-- /.box-comment -->
                 </div><!-- /.box-footer -->
                 <div class="box-footer">
-                  <form action="#" method="post" ">
+                  <form action="#" method="post" >
                     <?php 
                     if ($professor->getImagem() != null) {
                      ?>
