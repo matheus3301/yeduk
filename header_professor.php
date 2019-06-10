@@ -47,27 +47,43 @@ $professor->CapturarProfessor($conexao);
   <link rel="icon" href="images/icon/logo (2).png">
 
   <link href="css/estilo.css" rel="stylesheet">
-<meta charset="utf-8">
-<style type="text/css">
-sup{
-  font-size: 1em;
-  color:#00fa9a;
-  position: relative;
-  top:2%;
-}
-.bt{
-  border:none;
-  border: 1px solid #00fa9a;
-  width:30px;
-  height:30px;
-  border-radius: 40px;
-  background-color: transparent;
-}
-.bt:hover{
-  color: #009afa;
-  -webkit-transform:scale(1.2); 
-  transition:.4s linear;
-}
+
+
+  <link href='fullcalendar/core/main.css' rel='stylesheet' />
+  <link href='fullcalendar/daygrid/main.css' rel='stylesheet' />
+  <script src='fullcalendar/core/locales/pt-br.js'></script>
+
+  <script src='fullcalendar/core/main.js'></script>
+  <script src='fullcalendar/daygrid/main.js'></script>
+
+  <link href='fullcalendar/list/main.css' rel='stylesheet' />
+  <script src='fullcalendar/list/main.js'></script>
+
+  <link href='fullcalendar/timegrid/main.css' rel='stylesheet' />
+  <script src='fullcalendar/timegrid/main.js'></script>
+
+  
+  <meta charset="utf-8">
+  <style type="text/css">
+  sup{
+    font-size: 1em;
+    color:#00fa9a;
+    position: relative;
+    top:2%;
+  }
+  .bt{
+    border:none;
+    border: 1px solid #00fa9a;
+    width:30px;
+    height:30px;
+    border-radius: 40px;
+    background-color: transparent;
+  }
+  .bt:hover{
+    color: #009afa;
+    -webkit-transform:scale(1.2); 
+    transition:.4s linear;
+  }
 </style>
 
 </head>
@@ -96,60 +112,60 @@ sup{
             <a class="nav-link text-white text-capitalize" href="minhasturmasprofessor.php">Minhas Turmas</a>
           </li>
 
-            <li class="nav-item dropdown no-arrow mx-1 col-md-">
-              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-envelope fa-fw"></i>
-                <!-- Counter - Messages -->
-                <span class="badge badge-danger badge-counter">4</span>
+          <li class="nav-item dropdown no-arrow mx-1 col-md-">
+            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-envelope fa-fw"></i>
+              <!-- Counter - Messages -->
+              <span class="badge badge-danger badge-counter">4</span>
+            </a>
+            <!-- Dropdown - Messages -->
+            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown" style="width:320px; border-radius:3px; font-size: 0.8em; ">
+              <h6 class="dropdown-header">
+                Message Center
+              </h6>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <div class="dropdown-list-image mr-3">
+                  <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+                  <div class="status-indicator bg-success"></div>
+                </div>
+                <div class="font-weight-bold">
+                  <div class="text-truncate">Solicitação Aceita! <i class="far fa-check-circle text-success fa-2x i2"></i></div>
+                  <div class="small text-gray-500">Emily Fowler · 58m</div>
+                </div>
               </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown" style="width:320px; border-radius:3px; font-size: 0.8em; ">
-                <h6 class="dropdown-header">
-                  Message Center
-                </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
-                    <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div class="font-weight-bold">
-                    <div class="text-truncate">Solicitação Aceita! <i class="far fa-check-circle text-success fa-2x i2"></i></div>
-                    <div class="small text-gray-500">Emily Fowler · 58m</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
-                    <div class="status-indicator"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">Solicitação Aceita <i class="far fa-check-circle text-success fa-2x i2"></i></div>
-                    <div class="small text-gray-500">Jae Chun · 1d</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60"  alt="">
-                    <div class="status-indicator bg-warning"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">Solicitação Aceita <i class="far fa-check-circle text-success fa-2x i2"></i></div>
-                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
-                    <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">Solicitação Aceita <i class="far fa-check-circle text-success fa-2x i2"></i></div>
-                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                  </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-              </div>
-            </li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <div class="dropdown-list-image mr-3">
+                  <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+                  <div class="status-indicator"></div>
+                </div>
+                <div>
+                  <div class="text-truncate">Solicitação Aceita <i class="far fa-check-circle text-success fa-2x i2"></i></div>
+                  <div class="small text-gray-500">Jae Chun · 1d</div>
+                </div>
+              </a>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <div class="dropdown-list-image mr-3">
+                  <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60"  alt="">
+                  <div class="status-indicator bg-warning"></div>
+                </div>
+                <div>
+                  <div class="text-truncate">Solicitação Aceita <i class="far fa-check-circle text-success fa-2x i2"></i></div>
+                  <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                </div>
+              </a>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <div class="dropdown-list-image mr-3">
+                  <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
+                  <div class="status-indicator bg-success"></div>
+                </div>
+                <div>
+                  <div class="text-truncate">Solicitação Aceita <i class="far fa-check-circle text-success fa-2x i2"></i></div>
+                  <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                </div>
+              </a>
+              <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+            </div>
+          </li>
 
 
 
@@ -161,7 +177,7 @@ sup{
 
 
 
-       
+
         <button class="btn btn btn-outline-primary text-white ml-3" data-toggle="modal" data-target="#modal-sair" id="aluno">Sair</button>
 
       </div>
