@@ -27,6 +27,12 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
 ?>
 
+<style type="text/css">
+
+.fc-title{
+  color: white;
+}
+</style>
 
 
 <section class="page-title page-title-overlay bg-cover" data-background="images/background/about.jpg">
@@ -40,21 +46,21 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
       </div>
       <div class="col-md-4 m-auto ">
+
+
+       <?php 
+
        
-
-         <?php 
-
-       
-              if ($turma->getImagem() != null) {
-              echo '<img class="img-turma" src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'"/>';
+       if ($turma->getImagem() != null) {
+        echo '<img class="img-turma" src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'"/>';
 
 
 
-             }else{
-              ?>
-              <img src="images/icon/man.png"   width="300px" height="300px"><br><br>
-              <?php 
-            }
+      }else{
+        ?>
+        <img src="images/icon/man.png"   width="300px" height="300px"><br><br>
+        <?php 
+      }
       ?>
     </div>
 
@@ -340,8 +346,8 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
 
 
-</div>
-</div>
+    </div>
+  </div>
 </div>
 
 
@@ -375,7 +381,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
           <?php }else{
             ?>
-              <i class="fa-4x fas fa-globe-americas" ></i>
+            <i class="fa-4x fas fa-globe-americas" ></i>
             <?php 
           }
 
@@ -417,18 +423,18 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
     <div class="col-lg-12 bg-white p-4 rounded shadow my-3">
       <div class="media align-items-center flex-column flex-sm-row">
         <?php 
-          if ($alunoAtual[3] != null) { ?>
+        if ($alunoAtual[3] != null) { ?>
 
-            <img src="mostra_imagem_aluno.php?idAluno=<?php echo $alunoAtual[2];?>" class="foto-perfil">
+          <img src="mostra_imagem_aluno.php?idAluno=<?php echo $alunoAtual[2];?>" class="foto-perfil">
 
-          <?php }else{
-            ?>
-              <i class="fa-4x fas fa-globe-americas" ></i>
-            <?php 
-          }
-
+        <?php }else{
           ?>
-       
+          <i class="fa-4x fas fa-globe-americas" ></i>
+          <?php 
+        }
+
+        ?>
+
         <div class="media-body text-center text-sm-left mb-4 mb-sm-0" style="padding-left:5%">
           <h6 class="mt-0"><?php echo $alunoAtual[0];?></h6>
           
@@ -465,14 +471,93 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
     <div class="row">
       <div class="col-md-12">
 
+        <h4>Eventos Turma <button type="button" class="btn btn-primary text-center btn-circle " data-toggle="modal" data-target="#modal_add">+</button></h4>
+
+        <div id='calendar' ></div><br><br><br>
+        <?php 
+        $eventos = $turma->ListarEventosTurma($conexao);
+
+        ?>
+        <h4>Controle Eventos</h4>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Título</th>
+              <th scope="col">Data</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+
+
+            <?php 
+            foreach ($eventos as $eventoAtual) { ?>
+              <tr>
+               <th scope="row"><?php echo $eventoAtual[0]; ?></th>
+               <td><?php echo $eventoAtual[1]; ?></td>
+               <td><?php echo $eventoAtual[2]; ?></td>
+               <td><a  class="btn btn-outline-primary text-dark text-center" data-toggle="modal" data-target='#evento<?php echo $eventoAtual[0]."alterar"; ?>'>Editar</a>
+                <a  class="btn btn-outline-danger text-dark text-center" data-toggle="modal" data-target='#evento<?php echo $eventoAtual[0]."excluir"; ?>'>Excluir</a></td>
+              </tr>
 
 
 
 
+              <div class="modal fade" id="evento<?php echo $eventoAtual[0]."excluir"; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Deseja Excluir Este Evento?</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body text-dark">
+                     <p><?php echo $eventoAtual[1];?></p>
+                   </div>
+                   <div class="modal-footer">
 
-      </div>
-    </div>
+                    <a class="btn btn-outline-primary " href="valida_delete/excluir_evento.php?id=<?php echo $eventoAtual[0]; ?>&idT=<?php echo $turma->getId(); ?>">Excluir</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal fade bd-example-modal-lg" id="evento<?php echo $eventoAtual[0].'alterar';?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Faça a Alteração no Evento</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12" style="padding:5%;">
+                     <form action="valida_alt/altera_evento.php?idTurma=<?php echo $turma->getId(); ?>&idE=<?php echo $eventoAtual[0]; ?>" method="POST">
+                      <label class="lbls text-center">Título</label>
+                      <input type="text" id="inpt" name="titulo" class="form-control" value="<?php echo $eventoAtual[1]; ?>" >
+                      <br>
+                      <label class="lbls text-center">Data</label>
+                      <input type="date" id="inpt" name="data" class="form-control" value="<?php echo $eventoAtual[2]; ?>" ><br><br>
+                      <button type="submit" class="btn btn-outline-primary">Alterar</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php }
+        ?>
+      </tbody>
+    </table>
+
+
+
+
   </div>
+</div>
+</div>
 </div>
 <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">
   <section class="section section-lg-bottom">
@@ -518,7 +603,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
               <a href="turmaprofessor.php"><i class="far fa-times-circle text-danger fa-2x i"></i></a>
               <button type="submit" class="btn-submit"><i class="far fa-check-circle text-success fa-2x i"></i></button>
               <a class="btn btn-outline-primary" id="editar" onclick="editar(false);">Editar Turma</a>
-              
+
               <br><br>
             </div>
           </form>
@@ -532,49 +617,49 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
               <?php 
 
-       
+
               if ($turma->getImagem() != null) {
-              echo '<img id="output" class="img-turma" src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'"/>';
+                echo '<img id="output" class="img-turma" src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'"/>';
 
 
 
-             }else{
+              }else{
+                ?>
+                <img src="images/icon/man.png"  id="output" width="300px" height="300px"><br><br>
+                <?php 
+              }
+
+
+
               ?>
-              <img src="images/icon/man.png"  id="output" width="300px" height="300px"><br><br>
-              <?php 
-            }
-      
+              <span class="btn btn-outline-primary btn-file text-dark" style="width:250px; "></i>
+                Buscar Foto <input type="file" name="imagem"  accept="image/*" onchange="loadFile(event)">
+              </span>
 
 
-            ?>
-            <span class="btn btn-outline-primary btn-file text-dark" style="width:250px; "></i>
-              Buscar Foto <input type="file" name="imagem"  accept="image/*" onchange="loadFile(event)">
-            </span>
+              <input type="hidden" name="MAX_FILE_SIZE" value="99999999"/>
+              <br><br>
+              <button type="submit" class="btn btn-outline-primary text-dark text-center" style="width:250px;" >Salvar</button>
+
+              <script>
+                var loadFile = function(event) {
+                  var output = document.getElementById('output');
+                  output.src = URL.createObjectURL(event.target.files[0]);
+                };
+              </script>
+            </center>
+
+          </div>
+        </form>
 
 
-            <input type="hidden" name="MAX_FILE_SIZE" value="99999999"/>
-            <br><br>
-            <button type="submit" class="btn btn-outline-primary text-dark text-center" style="width:250px;" >Salvar</button>
+      </div>
+      <div class="col-lg-5 text-center p-0">
 
-            <script>
-              var loadFile = function(event) {
-                var output = document.getElementById('output');
-                output.src = URL.createObjectURL(event.target.files[0]);
-              };
-            </script>
-          </center>
-
-        </div>
-      </form>
-
-
-    </div>
-    <div class="col-lg-5 text-center p-0">
-
+      </div>
     </div>
   </div>
-</div>
-<br><br><br>
+  <br><br><br>
 </section>
 
 </div>
@@ -665,6 +750,94 @@ function editarText() {
 
 
 </script>
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      plugins: [ 'dayGrid' ],
+      locale: 'pt-br',
+      timeZone: 'UTC',
+      defaultView: 'dayGridMonth',
+      events: [
+
+      <?php 
+      foreach ($eventos as $eventoAtual) {
+       ?>
+       {
+        id:'<?php echo $eventoAtual[0]; ?>',
+        title:'<?php echo $eventoAtual[1]; ?>',
+        start:'<?php echo $eventoAtual[2]; ?>'
+      },
+
+
+      <?php   
+    }
+
+    ?>
+
+
+    ]
+
+
+
+
+
+
+
+
+  });
+
+    calendar.render();
+  });
+
+</script>
+
+
+
+<!---- Modal Adicionar Evento ----->
+
+<div class="modal fade" id="modal_add">
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-header" style="background:linear-gradient(to right, #00d2ff,#3a7bd5);">
+       <h4 class="modal-title text-white">
+        <img src="images/logo/logo.png"> Cadastrar Novo Evento
+      </h4>
+      <button type="button" class="close" data-dismiss="modal"><span><i class="fas fa-times-circle text-white"></i></span></button>
+    </div>
+    <div class="modal-body"> 
+      <div class="col-lg-12 text-center">
+        <h3 class="section-title">Novo Evento</h3>
+      </div>
+      <div class="col-lg-12 text-center p-0">
+        <form class="row" method="post" action="valida_cadastro/cadastra_evento.php?idTurma=<?php echo $turma->getId(); ?>">
+          <div class="col-lg-12">
+           <label for="exampleInputtext1" class=" lbls ">Título:</label>
+
+           <input type="text" class="form-control mb-4 inpts text-primary" placeholder="Ex: Live no Youtube" name="titulo" required="">
+         </div>
+         <div class="col-lg-12">
+           <label for="exampleInputtext1" class=" lbls ">Data:</label>
+           <input type="date" class="form-control mb-4 inpts text-primary" name="data" required="">
+         </div>
+         
+         <div class="col-12">
+          <button type="submit" class="btn btn-block btn-outline-primary">Criar Evento</button>
+          <br><br>
+        </div>
+      </form>
+    </div>
+    
+    
+
+
+  </div>
+</div>
+</div>
+</div>
 
 
 

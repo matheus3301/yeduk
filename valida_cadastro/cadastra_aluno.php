@@ -14,7 +14,7 @@ $aluno->setSenha($_POST['senha']);
 
 $aluno->Cadastrar($conexao);
 
-header('location:../index.php?op=login_aluno');
+header('location:../turmaprofessor.php?op=login_aluno');
 
 
 ?>

@@ -216,6 +216,15 @@ class Turma{
 
 	}
 
+
+	public function ListarEventosTurma($conexao){
+		$sth = $conexao->prepare("SELECT * FROM tb_evento WHERE tb_turma_idtb_turma = $this->id");
+		$sth->execute();
+
+		$result = $sth->fetchAll();
+
+		return $result;
+	}
 	
 	
 
