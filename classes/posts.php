@@ -153,6 +153,15 @@ class Posts{
 		}
 	}
 	
+	public function ListarComentarios($conexao){
+		$sth = $conexao->prepare("SELECT * FROM tb_comentario WHERE tb_turma_idtb_turma=$this->id ORDER BY idtb_comentario ASC");
+		$sth->execute();
+
+		$result = $sth->fetchAll();
+
+		return $result;
+	}
+
 
 	
 

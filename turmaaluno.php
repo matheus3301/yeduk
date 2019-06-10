@@ -42,6 +42,10 @@ $professor->CapturarProfessor($conexao);
   width: 100%;
   border-radius: 30px;
 }
+.comentar{
+  width: 100%;
+}
+
 </style>
 
 
@@ -203,15 +207,19 @@ $professor->CapturarProfessor($conexao);
                     <p class="text-right text-muted " style="font-size: 0.8em">[Numero Comentários]</p>
                       
 
-                      <p class="text-left text-muted ">[Numero Comentários]</p>
+                     
 
                     </div><!-- /.box-body -->
                     <div class="dropdown-divider"></div>
                     <h6 class="m-4">Comentários</h6>
-                    <div class="box-footer box-comments">
+                    <div class="box-footer box-comments bg-white">
 
+                      <?php 
 
-                      <div class="box-comment">
+                      
+
+                       ?>
+                      <div class="box-comment ">
                         <!-- User image -->
                         <?php 
                         if ($professor->getImagem() != null) {
@@ -240,7 +248,7 @@ $professor->CapturarProfessor($conexao);
                       </div><!-- /.comment-text -->
                     </div><!-- /.box-comment -->
                   </div><!-- /.box-footer -->
-                   <form action="#" method="post" >
+                   <form action="valida_cadastro/comenta_post_aluno.php?idT=<?php  echo $turma->getId() ?>" method="post" >
                     <?php 
                     if ($aluno->getImagem() != null) {
                      ?>
@@ -258,10 +266,14 @@ $professor->CapturarProfessor($conexao);
 
 
                   ?>
-
+                   
 
                   <div class="img-push">
-                    <input type="text" class="form-control input-sm comentar"  placeholder="digite um comentário...">
+                    <input type="text" class="form-control input-sm"  name="idPost" hidden="" value='<?php  echo $posts[0]; ?>'>
+                    <input type="text" class="form-control input-sm"  name="idAluno" hidden="" value='<?php  echo $aluno->getId(); ?>'>
+                    <input type="text" class="form-control input-sm comentar"  name="comentario" placeholder="digite um comentário..." >
+
+                    <button type="submit" class="btn btn-circle btn-"><i class="fa fa-paper-plane"></i></button>
                   </div>
                 </form>
               </div><!-- /.box-footer -->
