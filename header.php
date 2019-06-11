@@ -13,7 +13,7 @@
 
   <!-- ** Plugins Needed for the Project ** -->
   <!-- font-awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <!-- Bootstrap -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <!-- venobox -->

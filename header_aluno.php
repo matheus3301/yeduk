@@ -31,9 +31,11 @@ $notificacoes = $aluno->ListarMatriculasLimitado($conexao);
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <!-- ** Plugins Needed for the Project ** -->
-  <!-- font-awesome -->
+  <!-- font-awesome
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  <!-- Bootstrap -->
+  Bootstrap -->
+
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <!-- venobox -->
   <link rel="stylesheet" href="css/venobox.css">
@@ -142,7 +144,7 @@ $notificacoes = $aluno->ListarMatriculasLimitado($conexao);
             </div>
           </li>
         </ul>
-       <li class="nav-item dropdown no-arrow mx-1 col-md-" style="list-style: none;">
+        <li class="nav-item dropdown no-arrow mx-1 col-md-" style="list-style: none;">
           <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            <span class="text-white"> <?php 
            if ($aluno->getImagem() != null) {
@@ -172,9 +174,9 @@ $notificacoes = $aluno->ListarMatriculasLimitado($conexao);
           <a class="dropdown-item d-flex align-items-center" data-toggle="modal" data-target="#modal-sair" style="font-size: 1.3em;"><i class="fas fa-sign-out-alt mr-3 text-primary"></i>   Sair</a>         
         </div>
       </li>
-      </div>
-    </nav>
-  </div>
+    </div>
+  </nav>
+</div>
 </div>
 
 

@@ -1,6 +1,7 @@
 <?php 
 
 include 'classes/turma.php';
+include 'classes/posts.php';
 include 'header_aluno.php';
 include 'classes/professor.php';
 
@@ -45,7 +46,16 @@ $professor->CapturarProfessor($conexao);
 .comentar{
   width: 100%;
 }
+.btn-circle-coment{
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border-radius: 20px;
+  border:none;
+  background:linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%);
 
+
+}
 </style>
 
 
@@ -197,111 +207,182 @@ $professor->CapturarProfessor($conexao);
                       if ($posts[8] != null) {
                         echo '<img class=" img-post" src="data:'.$posts[7].';base64,'.base64_encode( $posts[8] ).'"/>';
                       }else{?>
-                          <img class=" img-post" src="images/defaultpost.png" alt="Photo"><?php 
+                        <img class=" img-post" src="images/defaultpost.png" alt="Photo"><?php 
                       }
 
-                     ?>
-                    
-                    <p class="text-left text-dark m-3"><?php echo $posts[2]; ?></p>
+                      ?>
 
-                    <p class="text-right text-muted " style="font-size: 0.8em">[Numero Comentários]</p>
+                      <p class="text-left text-dark m-3"><?php echo $posts[2]; ?></p>
+
+                      <p class="text-right text-muted " style="font-size: 0.8em">[Numero Comentários]</p>
                       
 
-                     
+
 
                     </div><!-- /.box-body -->
                     <div class="dropdown-divider"></div>
                     <h6 class="m-4">Comentários</h6>
                     <div class="box-footer box-comments bg-white">
 
-                      <?php 
 
-                      
+                      <?php 
+                      $postOBJ = new Posts();
+                      $postOBJ->setId($posts[0]);
+
+                      $comentarios = $postOBJ->ListarComentarios($conexao);
+
+
+                      foreach ($comentarios as $comentarioAtual ) {?>
+                        <?php 
+                        if ($comentarioAtual[2] != null) {
+                          $alunoComentario = new Aluno();
+
+                          $alunoComentario->setId($comentarioAtual[2]);
+                          $alunoComentario->CapturarAluno($conexao);
+
+
+                          ?>
+
+
+                          <div class="box-comment ">
+                            <?php 
+                            if ($alunoComentario->getImagem() != null) {
+                             ?>
+                             <img src="mostra_imagem_aluno.php?idAluno=<?php echo $alunoComentario->getId(); ?>" class="img-responsive img-circle img-sm img-circle img-pequena"  >
+                             <?php 
+                           }else{
+                            ?>
+                            <img src="images/icon/man.png" class="img-responsive img-circle img-sm img-circle img-pequena"  >
+                          <?php } ?>
+
+                          <div class="comment-text ">
+
+                            <span class="username ">
+                              <?php echo $alunoComentario->getNome(); ?>
+                              <span class="text-muted pull-right text-light"><?php echo $comentarioAtual[5]; ?></span>
+                            </span><!-- /.username -->
+                            <?php echo $comentarioAtual[1]; ?>
+                          </div><!-- /.comment-text -->
+                        </div><!-- /.box-comment -->
+
+                        <?php 
+
+                      }else{
+
+                       $professorComentario = new Professor();
+
+                       $professorComentario->setId($comentarioAtual[4]);
+                       $professorComentario->CapturarProfessor($conexao);
+
 
                        ?>
-                      <div class="box-comment ">
-                        <!-- User image -->
+
+
+                       <div class="box-comment ">
                         <?php 
-                        if ($professor->getImagem() != null) {
+                        if ($professorComentario->getImagem() != null) {
                          ?>
-                         <img src="mostra_imagem.php?idProf=<?php echo $professor->getId(); ?>" class="img-responsive img-circle img-sm img-circle img-pequena"   >
+                         <img src="mostra_imagem.php?idProf=<?php echo $professorComentario->getId(); ?>" class="img-responsive img-circle img-sm img-circle img-pequena"  >
                          <?php 
-
-
-
                        }else{
                         ?>
                         <img src="images/icon/man.png" class="img-responsive img-circle img-sm img-circle img-pequena"  >
-                        <?php 
-                      }
-
-
-                      ?>
+                      <?php } ?>
 
                       <div class="comment-text ">
 
-                        <span class="username ">
-                          <?php echo $professor->getNome(); ?>
-                          <span class="text-muted pull-right text-light">8:03 PM Today</span>
+                        <span class="username text-primary ">
+                          <?php echo $professorComentario->getNome(); ?>
+                          <span class="text-muted pull-right text-light"><?php echo $comentarioAtual[5]; ?></span>
                         </span><!-- /.username -->
-                        Comentário
+                        <?php echo $comentarioAtual[1]; ?>
                       </div><!-- /.comment-text -->
                     </div><!-- /.box-comment -->
-                  </div><!-- /.box-footer -->
-                   <form action="valida_cadastro/comenta_post_aluno.php?idT=<?php  echo $turma->getId() ?>" method="post" >
+
                     <?php 
-                    if ($aluno->getImagem() != null) {
-                     ?>
-                     <img src="mostra_imagem_aluno.php" class="img-responsive img-circle img-sm img-circle img-pequena"   >
-                     <?php 
 
 
-
-                   }else{
-                    ?>
-                    <img src="images/icon/man.png" class="img-responsive img-circle img-sm img-circle img-pequena"  >
-                    <?php 
                   }
-
-
-
                   ?>
-                   
 
-                  <div class="img-push">
+
+
+
+
+                  <?php 
+                }
+                ?>
+
+
+
+
+
+
+
+
+
+
+
+              </div><!-- /.box-footer -->
+              <form action="valida_cadastro/comenta_post_aluno.php?idT=<?php  echo $turma->getId() ?>" method="post" >
+                <?php 
+                if ($aluno->getImagem() != null) {
+                 ?>
+                 <img src="mostra_imagem_aluno.php" class="img-responsive img-circle img-sm img-circle img-pequena m-1"   >
+                 <?php 
+
+
+
+               }else{
+                ?>
+                <img src="images/icon/man.png" class="img-responsive img-circle img-sm img-circle img-pequena"  >
+                <?php 
+              }
+
+
+
+              ?>
+
+
+              <div class="img-push">
+                <div class="row">
+                  <div class="col-md-10">
                     <input type="text" class="form-control input-sm"  name="idPost" hidden="" value='<?php  echo $posts[0]; ?>'>
                     <input type="text" class="form-control input-sm"  name="idAluno" hidden="" value='<?php  echo $aluno->getId(); ?>'>
                     <input type="text" class="form-control input-sm comentar"  name="comentario" placeholder="digite um comentário..." >
-
-                    <button type="submit" class="btn btn-circle btn-"><i class="fa fa-paper-plane"></i></button>
                   </div>
-                </form>
-              </div><!-- /.box-footer -->
-              </div><!-- /.box -->
-            
+                  <div class="col-md-2">
+                    <button type="submit" class="btn-circle-coment mb-3"><i class="fa fa-paper-plane fa-x text-white"></i></button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div><!-- /.box-footer -->
+        </div><!-- /.box -->
 
 
 
 
 
-            <br><br><br>
-          <?php }?>
 
-        </div>
-      </div>
+        <br><br><br>
+      <?php }?>
+
     </div>
+  </div>
+</div>
 
 
-    <div class="tab-pane"id="questoes" role="tabpanel" aria-labelledby="questoes-tab">
-      <div class="row">
-        <div class="col-md-12">
+<div class="tab-pane"id="questoes" role="tabpanel" aria-labelledby="questoes-tab">
+  <div class="row">
+    <div class="col-md-12">
 
 
 
 
-        </div>
-      </div>
     </div>
+  </div>
+</div>
 
 
 
@@ -319,52 +400,52 @@ $professor->CapturarProfessor($conexao);
 
 
 
-    <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+<div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 
 
-      <h4>Colegas de Turma</h4>
-      <?php 
+  <h4>Colegas de Turma</h4>
+  <?php 
 
-      if ($alunosCadastrados != null) {
-       foreach ($alunosCadastrados as $alunoAtual) { ?>
-        <div class="col-lg-12 bg-white p-4 rounded shadow my-3">
-          <div class="media align-items-center flex-column flex-sm-row">
-            <?php 
-            if ($alunoAtual[3] != null) { ?>
-
-              <img src="mostra_imagem_aluno.php?idAluno=<?php echo $alunoAtual[2];?>" class="foto-perfil">
-
-            <?php }else{
-              ?>
-              <i class="fa-4x fas fa-globe-americas" ></i>
-              <?php 
-            }
-
-            ?>
-
-            <div class="media-body text-center text-sm-left mb-4 mb-sm-0" style="padding-left:5%">
-              <h6 class="mt-0"><?php echo $alunoAtual[0];?></h6>
-
-
-            </div>
-              
-
-          </div>
-        </div>
-      <?php }
-    }else{ ?>
-     <div class="col-lg-12 bg-white p-4 rounded shadow my-3">
+  if ($alunosCadastrados != null) {
+   foreach ($alunosCadastrados as $alunoAtual) { ?>
+    <div class="col-lg-12 bg-white p-4 rounded shadow my-3">
       <div class="media align-items-center flex-column flex-sm-row">
-        <i class="fa-4x fas fa-globe-americas" ></i>
+        <?php 
+        if ($alunoAtual[3] != null) { ?>
+
+          <img src="mostra_imagem_aluno.php?idAluno=<?php echo $alunoAtual[2];?>" class="foto-perfil">
+
+        <?php }else{
+          ?>
+          <i class="fa-4x fas fa-globe-americas" ></i>
+          <?php 
+        }
+
+        ?>
+
         <div class="media-body text-center text-sm-left mb-4 mb-sm-0" style="padding-left:5%">
-          <h6 class="mt-0">Não há alunos participando da turma</h6>
+          <h6 class="mt-0"><?php echo $alunoAtual[0];?></h6>
+
 
         </div>
 
 
       </div>
     </div>
-  <?php              }?>
+  <?php }
+}else{ ?>
+ <div class="col-lg-12 bg-white p-4 rounded shadow my-3">
+  <div class="media align-items-center flex-column flex-sm-row">
+    <i class="fa-4x fas fa-globe-americas" ></i>
+    <div class="media-body text-center text-sm-left mb-4 mb-sm-0" style="padding-left:5%">
+      <h6 class="mt-0">Não há alunos participando da turma</h6>
+
+    </div>
+
+
+  </div>
+</div>
+<?php              }?>
 
 
 </div>
@@ -385,9 +466,9 @@ $professor->CapturarProfessor($conexao);
 
 
 
+      </div>
+    </div>
   </div>
-</div>
-</div>
 </div>
 
 

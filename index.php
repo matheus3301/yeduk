@@ -43,7 +43,7 @@
           <img src="images/feature/feature-1.png" class="img-fluid" alt="feature-image">
           <h5 class="pt-5 pb-3 text-capitalize card-title">Converse Com Seus Colegas!</h5>
           <p class="mb-4">Tenha acesso à um chat da turma, uma ótima maneira de aprender e tirar dúvida com professores.</p>
-          <a class="btn btn-outline-primary" href="#">Leia Mais</a>
+          
 
         </div>
       </div>
@@ -53,7 +53,7 @@
           <img src="images/feature/feature-2.png" class="img-fluid" alt="feature-image">
           <h5 class="pt-5 pb-3 text-capitalize card-title">Participe de Várias Turmas!</h5>
           <p class="mb-4">Aqui você pode inscrever-se na turma que você quiser. Tenha acesso a materiais de estudo e comentários do professor.</p>
-          <a class="btn btn-outline-primary" href="#">Leia Mais</a>
+          
         </div>
       </div>
       <div class="col-lg-4 col-sm-6 mb-lg- mb-4">
@@ -61,7 +61,7 @@
           <img src="images/feature/feature-3.png" class="img-fluid" alt="feature-image">
           <h5 class="pt-5 pb-3 text-capitalize card-title">Resolva Atividades!</h5>
           <p class="mb-4">Correção imediata de cada questão, deixe seus comentários na questão para ajudar os seus colegas de turma.</p>
-          <a class="btn btn-outline-primary" href="#">Leia Mais</a>
+          
         </div>
       </div>
     </div>
