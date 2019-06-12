@@ -1,5 +1,5 @@
 <?php
-
+  session_start();
   include 'header_professor.php';
  
    

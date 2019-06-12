@@ -1,7 +1,7 @@
 
 
 <?php 
-
+session_start();
 include 'classes/turma.php';
 include 'header_aluno.php';
 

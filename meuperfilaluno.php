@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'header_aluno.php';
 
 ?>
@@ -23,24 +24,24 @@ include 'header_aluno.php';
 
       </div>
       
-        <div class="col-md-5  m-auto"  >
-          <?php 
-          if ($aluno->getImagem() != null) {
-           ?>
-           <img src="mostra_imagem_aluno.php" class="foto-perfil">
-           <?php 
-         }else{
-          ?>
-          <img src="images/icon/man.png"   width="200px" height="200px">
-          <?php 
-        }
+      <div class="col-md-5  m-auto"  >
+        <?php 
+        if ($aluno->getImagem() != null) {
+         ?>
+         <img src="mostra_imagem_aluno.php" class="foto-perfil">
+         <?php 
+       }else{
         ?>
-
-      </div>
-
+        <img src="images/icon/man.png"   width="200px" height="200px">
+        <?php 
+      }
+      ?>
 
     </div>
+
+
   </div>
+</div>
 </div>
 </section>
 

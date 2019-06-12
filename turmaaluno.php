@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 include 'classes/turma.php';
 include 'classes/posts.php';
 include 'header_aluno.php';
@@ -56,6 +56,10 @@ $professor->CapturarProfessor($conexao);
 
 
 }
+.coment{
+  display: none;
+}
+
 </style>
 
 
@@ -194,7 +198,7 @@ $professor->CapturarProfessor($conexao);
 
 
                           ?>
-                          <span class="username"><a href="#" class="nome_professor">Professor - <?php echo $professor->getNome(); ?></a></span>
+                          <span class="username"><a href="perfilprofessor.php?id=<?php echo $professor->getId(); ?>" class="nome_professor">Professor - <?php echo $professor->getNome(); ?></a></span>
                           <span class="description">Post - <?php echo $posts[4]; ?></span>
                         </div><!-- /.user-block -->
 
@@ -202,7 +206,7 @@ $professor->CapturarProfessor($conexao);
                     </div><!-- /.box-header -->
                     <div class="box-body text-center bg-white">
 
-                      <h4 class="text-left"><?php echo $posts[3]; ?></h4>
+                      <h4 class="text-center"><?php echo $posts[3]; ?></h4>
                       <?php 
                       if ($posts[8] != null) {
                         echo '<img class=" img-post" src="data:'.$posts[7].';base64,'.base64_encode( $posts[8] ).'"/>';
@@ -210,26 +214,29 @@ $professor->CapturarProfessor($conexao);
                         <img class=" img-post" src="images/defaultpost.png" alt="Photo"><?php 
                       }
 
+
+
+                      $postOBJ = new Posts();
+                      $postOBJ->setId($posts[0]);
+
+                      $comentarios = $postOBJ->ListarComentarios($conexao);
                       ?>
 
                       <p class="text-left text-dark m-3"><?php echo $posts[2]; ?></p>
 
-                      <p class="text-right text-muted " style="font-size: 0.8em">[Numero Comentários]</p>
+                     <p class="text-right text-muted  " style="font-size: 0.8em"> <?php echo count($comentarios); ?> Comentário(s)</p>
                       
 
 
 
                     </div><!-- /.box-body -->
                     <div class="dropdown-divider"></div>
-                    <h6 class="m-4">Comentários</h6>
+                    <h6 class="m-4" id="exibir">Comentários</h6>
                     <div class="box-footer box-comments bg-white">
 
 
                       <?php 
-                      $postOBJ = new Posts();
-                      $postOBJ->setId($posts[0]);
-
-                      $comentarios = $postOBJ->ListarComentarios($conexao);
+                      
 
 
                       foreach ($comentarios as $comentarioAtual ) {?>
@@ -244,7 +251,7 @@ $professor->CapturarProfessor($conexao);
                           ?>
 
 
-                          <div class="box-comment ">
+                          <div class="box-comment">
                             <?php 
                             if ($alunoComentario->getImagem() != null) {
                              ?>
@@ -257,10 +264,10 @@ $professor->CapturarProfessor($conexao);
 
                           <div class="comment-text ">
 
-                            <span class="username ">
+                             <a href="perfilaluno.php?id=<?php echo $alunoComentario->getId(); ?>"><span class="username ">
                               <?php echo $alunoComentario->getNome(); ?>
                               <span class="text-muted pull-right text-light"><?php echo $comentarioAtual[5]; ?></span>
-                            </span><!-- /.username -->
+                            </span></a><!-- /.username -->
                             <?php echo $comentarioAtual[1]; ?>
                           </div><!-- /.comment-text -->
                         </div><!-- /.box-comment -->
@@ -269,7 +276,7 @@ $professor->CapturarProfessor($conexao);
 
                       }else{
 
-                       $professorComentario = new Professor();
+                      $professorComentario = new Professor();
 
                        $professorComentario->setId($comentarioAtual[4]);
                        $professorComentario->CapturarProfessor($conexao);
@@ -291,13 +298,14 @@ $professor->CapturarProfessor($conexao);
 
                       <div class="comment-text ">
 
-                        <span class="username text-primary ">
+                         <a href="perfilprofessor.php?id=<?php echo $professorComentario->getId(); ?>"><span class="username text-primary ">
                           <?php echo $professorComentario->getNome(); ?>
                           <span class="text-muted pull-right text-light"><?php echo $comentarioAtual[5]; ?></span>
-                        </span><!-- /.username -->
+                        </span></a><!-- /.username -->
                         <?php echo $comentarioAtual[1]; ?>
                       </div><!-- /.comment-text -->
                     </div><!-- /.box-comment -->
+                    
 
                     <?php 
 
@@ -454,7 +462,7 @@ $professor->CapturarProfessor($conexao);
     <div class="row">
       <div class="col-md-12">
 
-        <h4>Eventos Turma <button type="button" class="btn btn-primary text-center btn-circle " data-toggle="modal" data-target="#modal_add">+</button></h4>
+        <h4>Eventos da Turma </h4>
 
         <div id='calendar' ></div><br><br><br>
         <?php 
@@ -554,6 +562,15 @@ function editarText() {
 
 
 
+$( "#exibir" ).click(function() {
+  $( ".box-coment" ).slideDown( "slow", function() {
+    
+  });
+});
+
+
+
+
 
 
 
@@ -608,37 +625,7 @@ function editarText() {
 
 <!---- Modal Adicionar Evento ----->
 
-<div class="modal fade" id="modal_add">
-  <div class="modal-dialog" >
-    <div class="modal-content">
-      <div class="modal-header" style="background:linear-gradient(to right, #00d2ff,#3a7bd5);">
-       <h4 class="modal-title text-white">
-        <img src="images/logo/logo.png"> Cadastrar Novo Evento
-      </h4>
-      <button type="button" class="close" data-dismiss="modal"><span><i class="fas fa-times-circle text-white"></i></span></button>
-    </div>
-    <div class="modal-body"> 
-      <div class="col-lg-12 text-center">
-        <h3 class="section-title">Novo Evento</h3>
-      </div>
-      <div class="col-lg-12 text-center p-0">
-        <form class="row" method="post" action="valida_cadastro/cadastra_evento.php?idTurma=<?php echo $turma->getId(); ?>">
-          <div class="col-lg-12">
-           <label for="exampleInputtext1" class=" lbls ">Título:</label>
 
-           <input type="text" class="form-control mb-4 inpts text-primary" placeholder="Ex: Live no Youtube" name="titulo" required="">
-         </div>
-         <div class="col-lg-12">
-           <label for="exampleInputtext1" class=" lbls ">Data:</label>
-           <input type="date" class="form-control mb-4 inpts text-primary" name="data" required="">
-         </div>
-         
-         <div class="col-12">
-          <button type="submit" class="btn btn-block btn-outline-primary">Criar Evento</button>
-          <br><br>
-        </div>
-      </form>
-    </div>
     
     
 

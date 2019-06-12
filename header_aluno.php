@@ -1,5 +1,5 @@
 <?php 
-session_start();
+
 $id = $_SESSION['idaluno'];
 include 'classes/aluno.php';
 include 'classes/conexao.php';
