@@ -214,7 +214,10 @@
   .box-coment{
     overflow: hidden;
   }
-
+  .minimize{
+    float: right;
+    display: none;
+  }
   .coment{
   display: none;
 
