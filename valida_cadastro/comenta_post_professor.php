@@ -9,7 +9,7 @@ $comentario->setComentario($_POST['comentario']);
 $comentario->setId_professor($_POST['idProfessor']);
 $comentario->setId_post($_POST['idPost']);
 
-
+$redir = '#comentar';
 
 
 echo $comentario->getComentario()."<br>";

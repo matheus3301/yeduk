@@ -181,6 +181,14 @@
   border-radius: 60px;
   object-fit: cover;
 }
+.img-pequena-chat{
+  width:30px;
+  height:30px;
+  border-radius: 50px;
+  object-fit: cover;
+  position:relative;
+  top:3%;
+}
 .img-media{
   width:60px;
   height:60px;
@@ -214,14 +222,74 @@
   .box-coment{
     overflow: hidden;
   }
-  .minimize{
-    float: right;
-    display: none;
-  }
-  .coment{
-  display: none;
+
+
+
+
+.fc-title{
+  color: white;
+}
+.img-post{
+  width: 100%;
+  border-radius: 30px;
 
 }
+.comentar{
+  width: 100%;
+}
+.msg{
+  height:50px;
+}
+.btn-circle-coment{
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border-radius: 20px;
+  border:none;
+  background:linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%);
+}
+.btn-circle-chat{
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border-radius: 20px;
+  border:none;
+
+  background:linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%);
+}
+.direct-chat{
+  position:fixed;
+  z-index: 10;
+  bottom: 0;
+  right:5%;
+}
+#chat{
+  display: none;
+}
+
+.fc-title{
+  color: white;
+}
+.img-post{
+  width: 100%;
+  border-radius: 30px;
+
+}
+.comentar{
+  width: 100%;
+}
+
+.coment{
+  height:150px !important;
+  overflow: auto;
+
+}
+@media screen (min-width: 280px){
+
+
+}
+
+
 
 
 

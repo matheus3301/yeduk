@@ -32,35 +32,117 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
 ?>
 
-<style type="text/css">
 
-.fc-title{
-  color: white;
-}
-.img-post{
-  width: 100%;
-  border-radius: 30px;
-}
-.comentar{
-  width: 100%;
-}
-.btn-circle-coment{
-  width: 40px;
-  height: 40px;
-  text-align: center;
-  border-radius: 20px;
-  border:none;
-  background:linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%);
-}
-.coment{
-  display: none;
 
-}
-.minimize{
-  display: none;
-}
 
-</style>
+
+<div class="box box-primary direct-chat direct-chat-primary" id="chat" style="width: 300px;" >
+  <div class="box-header with-border">
+    <h3 class="box-title">Nome do aluno</h3><span data-toggle="tooltip" title="3 New Messages" class="badge bg-light-blue">3</span>
+    <div class="box-tools pull-right">
+      
+      <i class="fas fa-times-circle text-primary" id="fecharChat" onclick="FechaChat();"></i>
+
+    </div>
+  </div><!-- /.box-header -->
+  <div class="box-body">
+    <!-- Conversations are loaded here -->
+    <div class="direct-chat-messages">
+      <!-- Message. Default to the left -->
+      <div class="direct-chat-msg text-right">
+        <div class="direct-chat-info clearfix">
+          <span class="direct-chat-name pull-left"><?php echo $professor->getNome(); ?></span>
+          <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
+        </div><!-- /.direct-chat-info -->
+        <?php 
+              if ($professor->getImagem() != null) {
+               ?>
+               <img src="mostra_imagem.php"  class="img-circle img-pequena-chat direct-chat-img" >
+               <?php 
+
+
+
+             }else{
+              ?>
+              <img src="images/icon/man.png"   class="img-circle img-pequena">
+              <?php 
+            }
+            ?>
+
+      <!-- /.direct-chat-img -->
+        <div class="direct-chat-text">
+          Bom dia!
+        </div><!-- /.direct-chat-text -->
+      </div><!-- /.direct-chat-msg -->
+
+      <!-- Message to the right -->
+      <div class="direct-chat-msg right">
+        <div class="direct-chat-info clearfix">
+          <span class="direct-chat-name pull-right">Sarah Bullock</span>
+          <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
+        </div><!-- /.direct-chat-info -->
+         <?php 
+              if ($professor->getImagem() != null) {
+               ?>
+               <img src="mostra_imagem.php"  class="img-circle img-pequena-chat direct-chat-img">
+               <?php 
+
+
+
+             }else{
+              ?>
+              <img src="images/icon/man.png"   class="img-circle img-pequena">
+              <?php 
+            }
+            ?> 
+        <div class="direct-chat-text" style="border:none;  background:linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%);">
+          Bom dia!
+        </div><!-- /.direct-chat-text -->
+      </div><!-- /.direct-chat-msg -->
+    </div><!--/.direct-chat-messages-->
+
+    <!-- Contacts are loaded here -->
+    <div class="direct-chat-contacts">
+      <ul class="contacts-list">
+        <li>
+          <a href="#">
+           <?php 
+              if ($professor->getImagem() != null) {
+               ?>
+               <img src="mostra_imagem.php"  class="img-circle img-pequena" >
+               <?php 
+
+
+
+             }else{
+              ?>
+              <img src="images/icon/man.png"   class="img-circle img-pequena">
+              <?php 
+            }
+            ?>
+          <div class="contacts-list-info">
+            <span class="contacts-list-name">
+              Count Dracula
+              <small class="contacts-list-date pull-right">2/28/2015</small>
+            </span>
+            <span class="contacts-list-msg">How have you been? I was...</span>
+          </div><!-- /.contacts-list-info -->
+        </a>
+      </li><!-- End Contact Item -->
+    </ul><!-- /.contatcts-list -->
+  </div><!-- /.direct-chat-pane -->
+</div><!-- /.box-body -->
+<div class="box-footer">
+  <form action="#" method="post">
+    <div class="input-group">
+      <input type="text" name="message" placeholder="Type Message ..." class="form-control msg">
+      <span class="input-group-btn">
+        <button type="submit" class="btn-circle-chat mt-2" id="enviaDdos"><i class="fa fa-paper-plane fa-x text-white ml-10"></i></button>
+      </span>
+    </div>
+  </form>
+</div><!-- /.box-footer-->
+</div>
 
 
 
@@ -132,7 +214,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
       </ul>
 
-      <div class="tab-content">
+      <div class="tab-content" >
         <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
           <div class="row">
             <div class="col-md-12">
@@ -228,7 +310,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
             foreach ($capturarPostagem as $posts) { 
 
               ?>
-
+              
               <div class="col-md-12 ">
                 <!-- Box Comment -->
                 <div class="post bg-white">
@@ -272,7 +354,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
                   <?php 
                   if ($posts[8] != null) {
-                    echo ' <img class=" img-post" src="data:'.$posts[7].';base64,'.base64_encode( $posts[8] ).'" data-toggle="modal" data-target=".bd-example-modal-lg-a"/>';
+                    echo ' <img class=" img-post" src="data:'.$posts[7].';base64,'.base64_encode( $posts[8] ).'" data-toggle="modal" data-target="#'.$posts[0].'ver"/>';
                     ?>
                     <div class="modal fade bd-example-modal-lg" id="<?php echo $posts[0].'alterar';?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 
@@ -300,37 +382,6 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
                       </div>
                     </div>
                   </div>
-
-
-                  <div class="modal fade bd-example-modal-lg-a" id="<?php echo $posts[0].'alterar';?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-
-
-
-                      <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-12" style="padding:5%;">
-                              
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                   
-
-
-
-                  
-
-
-
                 <?php }else{ ?>
                   <img class=" img-post" src="images/defaultpost.png" alt="Photo"><?php 
                 }
@@ -343,14 +394,14 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
                 $comentarios = $postOBJ->ListarComentarios($conexao);
                 ?>
 
-                <p class="text-left text-dark m-3" ><?php echo $posts[2]; ?></p>
+                <p class="text-left text-dark" ><?php echo $posts[2]; ?></p>
 
                 <p class="text-right text-muted  " style="font-size: 0.8em"> <?php echo count($comentarios); ?> Comentário(s)</p>
 
               </div><!-- /.box-body -->
               <div class="dropdown-divider"></div>
-              <i class="fas fa-window-minimize text-light text-right m-2 minimize" onclick="MinimizarComentarios();" style="float: right;"></i>
-              <h6 class="m-4"><a class="comentarios" onclick="ListarComentarios();">Comentários <i class="fas fa-sort-down text-primary"></i></i></a></h6>
+              
+              
 
               <div class="box-footer box-comments bg-white coment">
 
@@ -472,10 +523,11 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
           <div class="col-md-10">
             <input type="text" class="form-control input-sm"  name="idPost" hidden="" value='<?php  echo $posts[0]; ?>'>
             <input type="text" class="form-control input-sm"  name="idProfessor" hidden="" value='<?php  echo $professor->getId(); ?>'>
-            <input type="text" class="form-control input-sm comentar"  name="comentario" placeholder="digite um comentário..." >
+            <input type="text" class="form-control input-sm comentar"  name="comentario" required="" placeholder="digite um comentário..." >
           </div>
-          <div class="col-md-2">
-            <button type="submit" class="btn-circle-coment " id="enviaDdos"><i class="fa fa-paper-plane fa-x text-white"></i></button>
+          <div class="col-md-2 text-center">
+
+            <button type="submit" class="btn-circle-coment" id="enviaDdos"><i class="fa fa-paper-plane fa-x text-white ml-10"></i></button>
           </div>
         </div>
       </div>
@@ -483,6 +535,8 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
   </div><!-- /.box-footer -->
 </div><!-- /.box -->
 </div>
+
+
 
 
 
@@ -639,12 +693,10 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
           
 
         </div>
-        <form action="responder_aplicacao.php?idTurma=<?php echo $turma->getId();?>" method="post">
-          <button name="op" value="remove" class="btn btn-primary btn-circle btn-circle btn-lg"><i class="fas fa-comments"></i><span class="badge badge-danger badge-counter">4</span>
-          </button>
-          <button name="op" value="remove" class="btn btn-danger btn-circle btn-circle btn-lg"><i class="fas fa-user-times"></i></button>
-
-        </form>         
+        
+         <i class="fas fa-comments fa-2x text-primary" id="chamaChat" onclick="ChamaChat();"></i><span class="badge badge-danger badge-counter">4</span>
+          
+          <button name="op" value="remove" class="btn btn-danger btn-circle btn-circle btn-lg"><i class="fas fa-user-times"></i></button>         
 
       </div>
     </div>
@@ -941,6 +993,16 @@ function editarText() {
   $('.i2').fadeIn(1000);
 }
 
+  function ChamaChat() {
+     $("#chamaChat").click(function(){
+      $("#chat").slideDown(500);
+    });
+    }
+  function FechaChat() {
+   $("#fecharChat").click(function(){
+      $("#chat").fadeOut(500);
+    });
+  }
 
 
 
@@ -993,24 +1055,10 @@ function editarText() {
   });
 
 </script>
-<script type="text/javascript">
-  function ListarComentarios() {
-    $(".comentarios").click(function(){
-      $(".coment").slideDown(1000);
-    });
-    $(".minimize").fadeIn(500);
 
-  }
-  function MinimizarComentarios() {
-    $(".minimize").click(function(){
-      $(".coment").slideUp(1000);
-    });
-    $(".minimize").fadeOut(500);
-    function EnviarDadosComentario() {
+  
 
-    }
-  }
-</script>
+
 
 
 
