@@ -36,114 +36,31 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
 
 
-<div class="box box-primary direct-chat direct-chat-primary" id="chat" style="width: 300px;" >
-  <div class="box-header with-border">
-    <h3 class="box-title">Nome do aluno</h3><span data-toggle="tooltip" title="3 New Messages" class="badge bg-light-blue">3</span>
-    <div class="box-tools pull-right">
-      
-      <i class="fas fa-times-circle text-primary" id="fecharChat" onclick="FechaChat();"></i>
+<style type="text/css">
+  
+  .img-post{
+  width: 100%;
+  border-radius: 30px;
 
-    </div>
-  </div><!-- /.box-header -->
-  <div class="box-body">
-    <!-- Conversations are loaded here -->
-    <div class="direct-chat-messages">
-      <!-- Message. Default to the left -->
-      <div class="direct-chat-msg text-right">
-        <div class="direct-chat-info clearfix">
-          <span class="direct-chat-name pull-left"><?php echo $professor->getNome(); ?></span>
-          <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
-        </div><!-- /.direct-chat-info -->
-        <?php 
-              if ($professor->getImagem() != null) {
-               ?>
-               <img src="mostra_imagem.php"  class="img-circle img-pequena-chat direct-chat-img" >
-               <?php 
+}
 
+.sumido{
+  display: none;
+}
 
+ 
+@media screen and (min-width: 414px){
+  .direct-chat{
+    width:100%;
+    height:100%;
+    top:10%;
+  }
+ .direct-chat .messages{
+  height:100%;
+ }
 
-             }else{
-              ?>
-              <img src="images/icon/man.png"   class="img-circle img-pequena">
-              <?php 
-            }
-            ?>
-
-      <!-- /.direct-chat-img -->
-        <div class="direct-chat-text">
-          Bom dia!
-        </div><!-- /.direct-chat-text -->
-      </div><!-- /.direct-chat-msg -->
-
-      <!-- Message to the right -->
-      <div class="direct-chat-msg right">
-        <div class="direct-chat-info clearfix">
-          <span class="direct-chat-name pull-right">Sarah Bullock</span>
-          <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
-        </div><!-- /.direct-chat-info -->
-         <?php 
-              if ($professor->getImagem() != null) {
-               ?>
-               <img src="mostra_imagem.php"  class="img-circle img-pequena-chat direct-chat-img">
-               <?php 
-
-
-
-             }else{
-              ?>
-              <img src="images/icon/man.png"   class="img-circle img-pequena">
-              <?php 
-            }
-            ?> 
-        <div class="direct-chat-text" style="border:none;  background:linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%);">
-          Bom dia!
-        </div><!-- /.direct-chat-text -->
-      </div><!-- /.direct-chat-msg -->
-    </div><!--/.direct-chat-messages-->
-
-    <!-- Contacts are loaded here -->
-    <div class="direct-chat-contacts">
-      <ul class="contacts-list">
-        <li>
-          <a href="#">
-           <?php 
-              if ($professor->getImagem() != null) {
-               ?>
-               <img src="mostra_imagem.php"  class="img-circle img-pequena" >
-               <?php 
-
-
-
-             }else{
-              ?>
-              <img src="images/icon/man.png"   class="img-circle img-pequena">
-              <?php 
-            }
-            ?>
-          <div class="contacts-list-info">
-            <span class="contacts-list-name">
-              Count Dracula
-              <small class="contacts-list-date pull-right">2/28/2015</small>
-            </span>
-            <span class="contacts-list-msg">How have you been? I was...</span>
-          </div><!-- /.contacts-list-info -->
-        </a>
-      </li><!-- End Contact Item -->
-    </ul><!-- /.contatcts-list -->
-  </div><!-- /.direct-chat-pane -->
-</div><!-- /.box-body -->
-<div class="box-footer">
-  <form action="#" method="post">
-    <div class="input-group">
-      <input type="text" name="message" placeholder="Type Message ..." class="form-control msg">
-      <span class="input-group-btn">
-        <button type="submit" class="btn-circle-chat mt-2" id="enviaDdos"><i class="fa fa-paper-plane fa-x text-white ml-10"></i></button>
-      </span>
-    </div>
-  </form>
-</div><!-- /.box-footer-->
-</div>
-
+}
+</style>
 
 
 <section class="page-title page-title-overlay bg-cover" data-background="images/background/about.jpg">
@@ -673,6 +590,114 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
   if ($alunosCadastrados != null) {
    foreach ($alunosCadastrados as $alunoAtual) { ?>
+
+    <div class="box box-primary direct-chat direct-chat-primary sumido" id="chat<?php echo $alunoAtual[2]; ?>" >
+  <div class="box-header with-border">
+    <h3 class="box-title"><?php echo $alunoAtual[0]; ?></h3><span data-toggle="tooltip" title="3 New Messages" class="badge bg-light-blue">3</span>
+    <div class="box-tools pull-right">
+      
+      <i class="fas fa-times-circle text-primary" id="fecharChat<?php echo $alunoAtual[2]; ?>" onclick="FechaChat(<?php echo $alunoAtual[2]; ?>);"></i>
+
+    </div>
+  </div><!-- /.box-header -->
+  <div class="box-body">
+    <!-- Conversations are loaded here -->
+    <div class="direct-chat-messages messages">
+      <!-- Message. Default to the left -->
+      <div class="direct-chat-msg text-right">
+        <div class="direct-chat-info clearfix">
+         
+          <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
+        </div><!-- /.direct-chat-info -->
+        <?php 
+        if ($alunoAtual[3] != null) { ?>
+
+          <img src="mostra_imagem_aluno.php?idAluno=<?php echo $alunoAtual[2];?>" class="img-circle img-pequena-chat direct-chat-img">
+
+        <?php }else{
+          ?>
+          <i class="fa-4x fas fa-globe-americas" ></i>
+          <?php 
+        }
+
+        ?>
+
+      <!-- /.direct-chat-img -->
+        <div class="direct-chat-text text-left">
+          Bom dia!
+        </div><!-- /.direct-chat-text -->
+      </div><!-- /.direct-chat-msg -->
+
+      <!-- Message to the right -->
+      <div class="direct-chat-msg right">
+        <div class="direct-chat-info clearfix">
+          
+          <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
+        </div><!-- /.direct-chat-info -->
+         <?php 
+              if ($professor->getImagem() != null) {
+               ?>
+               <img src="mostra_imagem.php"  class="img-circle img-pequena-chat direct-chat-img">
+               <?php 
+
+
+
+             }else{
+              ?>
+              <img src="images/icon/man.png"   class="img-circle img-pequena">
+              <?php 
+            }
+            ?> 
+        <div class="direct-chat-text text-right" style="border:none;  background:linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%);">
+          Bom dia!
+        </div><!-- /.direct-chat-text -->
+      </div><!-- /.direct-chat-msg -->
+    </div><!--/.direct-chat-messages-->
+
+    <!-- Contacts are loaded here -->
+    <div class="direct-chat-contacts">
+      <ul class="contacts-list">
+        <li>
+          <a href="#">
+           <?php 
+              if ($professor->getImagem() != null) {
+               ?>
+               <img src="mostra_imagem.php"  class="img-circle img-pequena" >
+               <?php 
+
+
+
+             }else{
+              ?>
+              <img src="images/icon/man.png"   class="img-circle img-pequena">
+              <?php 
+            }
+            ?>
+          <div class="contacts-list-info">
+            <span class="contacts-list-name">
+              Count Dracula
+              <small class="contacts-list-date pull-right">2/28/2015</small>
+            </span>
+            <span class="contacts-list-msg">How have you been? I was...</span>
+          </div><!-- /.contacts-list-info -->
+        </a>
+      </li><!-- End Contact Item -->
+    </ul><!-- /.contatcts-list -->
+  </div><!-- /.direct-chat-pane -->
+</div><!-- /.box-body -->
+<div class="box-footer">
+  <form action="#" method="post">
+    <div class="input-group">
+      <input type="text" name="message" placeholder="Type Message ..." class="form-control msg">
+      <span class="input-group-btn">
+        <button type="submit" class="btn-circle-chat mt-2" id="enviaDdos"><i class="fa fa-paper-plane fa-x text-white ml-10"></i></button>
+      </span>
+    </div>
+  </form>
+  
+</div><!-- /.box-footer-->
+</div>
+
     <div class="col-lg-12 bg-white p-4 rounded shadow my-3">
       <div class="media align-items-center flex-column flex-sm-row">
         <?php 
@@ -694,7 +719,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
         </div>
         
-         <i class="fas fa-comments fa-2x text-primary" id="chamaChat" onclick="ChamaChat();"></i><span class="badge badge-danger badge-counter">4</span>
+         <i class="fas fa-comments fa-2x text-primary" id="chamaChat<?php echo $alunoAtual[2]; ?>" onclick="ChamaChat(<?php echo $alunoAtual[2]; ?>);"></i><span class="badge badge-danger badge-counter">4</span>
           
           <button name="op" value="remove" class="btn btn-danger btn-circle btn-circle btn-lg"><i class="fas fa-user-times"></i></button>         
 
@@ -918,9 +943,26 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
 </div>
 <div class="col-lg-4">
-  <div class="rounded-sm shadow bg-white pb-4">
+  <div class="rounded-sm shadow bg-white pb-4 chat-global" style="width: 100%;">
     <div class="widget">
-      <h4 class="text-success">Online</h4>
+      <i class="fas fa-expand text-right" style="float: right;"></i>
+      <h4 class="text-primary"> <?php 
+
+
+              if ($turma->getImagem() != null) {
+                echo '<img  src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'" style="width: 60px; height:60px; object-fit: cover; border-radius: 80px;"/>';
+                ?>
+                <?php echo $turma->getNome(); ?>
+
+              <?php }else{
+                ?>
+                <img src="images/icon/man.png"  id="output" width="300px" height="300px" style="width: 40px; height:40px; object-fit: cover; border-radius: 60px;"><br><br>
+                <?php 
+              }
+
+
+
+              ?></h4>
       <form action="#">
         <div class="position-relative">
           <input type="text" placeholder="Buscar" class="border-bottom form-control rounded-0 px-0">
@@ -928,17 +970,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
         </div>
       </form>
     </div>
-    <div class="widget">
-      <h4>Alunos da turma online</h4>
-      <ul class=" text-success text-bold list-bordered" style="font-size: 1.2em;">
-        <li class="online"><a class="text-color d-block py-3" href="blog-details.html">Aluno</a></li>
-        <li class="online"><a class="text-color d-block py-3" href="blog-details.html">Aluno</a></li>
-        <li class="online"><a class="text-color d-block py-3" href="blog-details.html">Aluno</a></li>
-        <li class="online"><a class="text-color d-block py-3" href="blog-details.html">Aluno</a></li>
-        <li class="online"><a class="text-color d-block py-3" href="blog-details.html">Aluno</a></li>
-        <li class="online"><a class="text-color d-block py-3" href="blog-details.html">Aluno</a></li>
-      </ul>
-    </div>
+    
 
   </div>
 </section>
@@ -993,16 +1025,7 @@ function editarText() {
   $('.i2').fadeIn(1000);
 }
 
-  function ChamaChat() {
-     $("#chamaChat").click(function(){
-      $("#chat").slideDown(500);
-    });
-    }
-  function FechaChat() {
-   $("#fecharChat").click(function(){
-      $("#chat").fadeOut(500);
-    });
-  }
+  
 
 
 
@@ -1054,6 +1077,28 @@ function editarText() {
     calendar.render();
   });
 
+</script>
+<script type="text/javascript">
+
+  var ultimo;
+
+    function ChamaChat(id) {
+     $("#chamaChat"+id).click(function(){
+      FechaTodoChat(id);
+
+      $("#chat"+id).slideDown(500);
+    });
+    }
+  function FechaChat(id) {
+   $("#fecharChat"+id).click(function(){
+      $("#chat"+id).fadeOut(500);
+    });
+  }
+   function FechaTodoChat(id) {
+   
+      $("#chat"+ultimo).hide();
+      ultimo = id;
+  }
 </script>
 
   

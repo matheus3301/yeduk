@@ -36,7 +36,13 @@ $professor->CapturarProfessor($conexao);
 
 
 
+<style type="text/css">
+  .img-post{
+  width: 100%;
+  border-radius: 30px;
 
+}
+</style>
 <section class="page-title page-title-overlay bg-cover" data-background="images/background/about.jpg">
   <div class="container">
     <div class="row">
@@ -183,7 +189,7 @@ $professor->CapturarProfessor($conexao);
                       <h4 class="text-center"><?php echo $posts[3]; ?></h4>
                       <?php 
                       if ($posts[8] != null) {
-                        echo '<img class=" img-post-modal" src="data:'.$posts[7].';base64,'.base64_encode( $posts[8] ).'" data-toggle="modal" data-target="#'.$posts[0].'ver"/>';
+                        echo '<img class=" img-post" src="data:'.$posts[7].';base64,'.base64_encode( $posts[8] ).'" data-toggle="modal" data-target="#'.$posts[0].'ver"/>';
                       }else{?>
                         <img class=" img-post" src="images/defaultpost.png" alt="Photo"><?php 
                       }
