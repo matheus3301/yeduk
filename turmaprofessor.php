@@ -49,17 +49,34 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 }
 
 
-@media screen and (min-width: 414px){
+@media screen and (min-width: 320px) {
   .direct-chat{
-    width:100%;
-    height:100%;
-    top:10%;
+  margin-right:1%;
   }
-  .direct-chat .messages{
-    height:100%;
-  }
-
 }
+@media screen and (min-width: 375px) {
+  .direct-chat{
+  right:10%;
+  }
+}
+@media screen and (min-width: 411px) {
+  .direct-chat{
+  margin-right:4%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .direct-chat{
+  margin-right:1%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .direct-chat{
+  right:3%;
+  }
+}
+
+
+
 </style>
 
 
@@ -688,7 +705,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
   if ($alunosCadastrados != null) {
    foreach ($alunosCadastrados as $alunoAtual) { ?>
 
-    <div class="box box-primary direct-chat direct-chat-primary sumido" id="chat<?php echo $alunoAtual[2]; ?>" >
+    <div class="box box-primary direct-chat box-chat direct-chat-primary sumido" id="chat<?php echo $alunoAtual[2]; ?>" >
       <div class="box-header with-border">
         <h3 class="box-title"><?php echo $alunoAtual[0]; ?></h3><span data-toggle="tooltip" title="3 New Messages" class="badge bg-light-blue">3</span>
         <div class="box-tools pull-right">
