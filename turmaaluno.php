@@ -37,7 +37,7 @@ $professor->CapturarProfessor($conexao);
 
 
 <style type="text/css">
-  .img-post{
+.img-post{
   width: 100%;
   border-radius: 30px;
 
@@ -213,13 +213,13 @@ $professor->CapturarProfessor($conexao);
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
                             <div class="modal-header">
-                              
+
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                               </button>
                             </div>
                             <div class="row col-md-12">
-                             
+
                               <div class="col-md-6 ">
                                <p class="text-left text-dark" ><?php echo $posts[2]; ?></p>
                                <?php 
@@ -266,7 +266,7 @@ $professor->CapturarProfessor($conexao);
 
 
                                   <div class="box-comment ">
-                                   
+
                                     <?php 
                                     if ($alunoComentario->getImagem() != null) {
                                      ?>
@@ -303,7 +303,7 @@ $professor->CapturarProfessor($conexao);
 
 
                              <div class="box-comment">
-                              
+
                               <?php 
                               if ($professorComentario->getImagem() != null) {
                                ?>
@@ -554,11 +554,97 @@ $professor->CapturarProfessor($conexao);
   <div class="row">
     <div class="col-md-12">
 
+      <h4>Questões</h4>
+      <?php 
+      $questoes = $turma->ListarQuestoesTurma($conexao);
+      ?>
+
+
+      <?php 
+
+      foreach ($questoes as $questaoAtual) { ?>
+        <div class="box box-widget">
+          <div class="box-header with-border">
+            <div class="user-block">
+             <?php 
+             if ($professor->getImagem() != null) {
+               ?>
+               <img src="mostra_imagem.php?idProf=<?php echo $professor->getId(); ?>"   class="img-circle img-pequena" >
+               <?php 
 
 
 
-    </div>
+             }else{
+              ?>
+              <img src="images/icon/man.png"   class="img-circle img-pequena">
+              <?php 
+            }
+
+
+            ?>
+            <span class="username"><a href="#"><?php echo $professor->getNome(); ?></a></span>
+
+          </div>
+          <!-- /.user-block -->
+
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <h4><?php echo $questaoAtual[1]; ?></h4>
+
+          <form >
+            <div class="custom-control custom-radio">
+              <input type="radio" id="customRadio<?php echo $questaoAtual[0]; ?>1" name="customRadio" class="custom-control-input">
+              <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>1"><?php echo $questaoAtual[3]; ?></label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="customRadio<?php echo $questaoAtual[0]; ?>2" name="customRadio" class="custom-control-input">
+              <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>2"><?php echo $questaoAtual[4]; ?></label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="customRadio<?php echo $questaoAtual[0]; ?>3" name="customRadio" class="custom-control-input">
+              <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>3"><?php echo $questaoAtual[5]; ?></label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="customRadio<?php echo $questaoAtual[0]; ?>4" name="customRadio" class="custom-control-input">
+              <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>4"><?php echo $questaoAtual[6]; ?></label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="customRadio<?php echo $questaoAtual[0]; ?>5" name="customRadio" class="custom-control-input">
+              <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>5"><?php echo $questaoAtual[7]; ?></label>
+            </div>
+
+          </form>
+
+
+
+        </div>
+
+      </div>
+
+
+
+
+      <?php 
+    }
+
+    ?>
+
+
+
+    <!-- /.box-body -->
+
+
+
+
+
+
+
+
+
+
   </div>
+</div>
 </div>
 
 
@@ -733,7 +819,7 @@ function editarText() {
 
 $( "#exibir" ).click(function() {
   $( ".box-coment" ).slideDown( "slow", function() {
-    
+
   });
 });
 
