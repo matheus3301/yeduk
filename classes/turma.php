@@ -247,6 +247,17 @@ class Turma{
 
 		return $result;
 	}
+
+
+	public function ListarQuestoesTurma($conexao){
+		$sth = $conexao->prepare("SELECT * FROM tb_questoes WHERE tb_turma_idtb_turma = $this->id");
+		$sth->execute();
+
+		$result = $sth->fetchAll();
+
+		return $result;
+	}
+	
 	
 	
 

@@ -13,7 +13,8 @@ $redir = '#comentar';
 
 
 echo $comentario->getComentario()."<br>";
-
+echo $comentario->getId_professor()."<br>";
+echo $comentario->getId_post()."<br>";
 
 $comentario->ComentarPostProfessor($conexao);
 
