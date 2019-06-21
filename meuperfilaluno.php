@@ -3,6 +3,7 @@ session_start();
 include 'header_aluno.php';
 
 ?>
+
 <section class="page-title page-title-overlay " data-background="images/background/about.jpg" style=" background-repeat: no-repeat; background-size: cover;">
   <div class="container">
     <div class="row">
@@ -152,7 +153,7 @@ include 'header_aluno.php';
 
   <input type="hidden" name="MAX_FILE_SIZE" value="99999999"/>
   <br><br>
-  <button type="submit" class="btn btn-outline-primary text-dark text-center" style="width:250px;" >Salvar</button>
+  <button type="submit" class="btn btn-outline-primary text-dark text-center btn-salvar" style="width:250px;" >Salvar</button>
 
 </div>
 </form>

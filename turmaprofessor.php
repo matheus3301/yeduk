@@ -49,31 +49,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 }
 
 
-@media screen and (min-width: 320px) {
-  .direct-chat{
-  margin-right:1%;
-  }
-}
-@media screen and (min-width: 375px) {
-  .direct-chat{
-  right:10%;
-  }
-}
-@media screen and (min-width: 411px) {
-  .direct-chat{
-  margin-right:4%;
-  }
-}
-@media screen and (min-width: 768px) {
-  .direct-chat{
-  margin-right:1%;
-  }
-}
-@media screen and (min-width: 1024px) {
-  .direct-chat{
-  right:3%;
-  }
-}
+
 
 
 
