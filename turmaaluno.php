@@ -42,6 +42,15 @@ $professor->CapturarProfessor($conexao);
   border-radius: 30px;
 
 }
+
+.certo{
+  color: green;
+}
+
+.errado{
+  color:red;
+
+}
 </style>
 <section class="page-title page-title-overlay bg-cover" data-background="images/background/about.jpg">
   <div class="container">
@@ -592,58 +601,69 @@ $professor->CapturarProfessor($conexao);
         <div class="box-body">
           <h4><?php echo $questaoAtual[1]; ?></h4>
 
-          <form >
-            <div class="custom-control custom-radio">
-              <input type="radio" id="customRadio<?php echo $questaoAtual[0]; ?>1" name="customRadio" class="custom-control-input">
-              <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>1"><?php echo $questaoAtual[3]; ?></label>
-            </div>
-            <div class="custom-control custom-radio">
-              <input type="radio" id="customRadio<?php echo $questaoAtual[0]; ?>2" name="customRadio" class="custom-control-input">
-              <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>2"><?php echo $questaoAtual[4]; ?></label>
-            </div>
-            <div class="custom-control custom-radio">
-              <input type="radio" id="customRadio<?php echo $questaoAtual[0]; ?>3" name="customRadio" class="custom-control-input">
-              <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>3"><?php echo $questaoAtual[5]; ?></label>
-            </div>
-            <div class="custom-control custom-radio">
-              <input type="radio" id="customRadio<?php echo $questaoAtual[0]; ?>4" name="customRadio" class="custom-control-input">
-              <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>4"><?php echo $questaoAtual[6]; ?></label>
-            </div>
-            <div class="custom-control custom-radio">
-              <input type="radio" id="customRadio<?php echo $questaoAtual[0]; ?>5" name="customRadio" class="custom-control-input">
-              <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>5"><?php echo $questaoAtual[7]; ?></label>
-            </div>
+          
+          <div class="custom-control custom-radio">
+            <input type="radio" id="customRadio<?php echo $questaoAtual[0]; ?>1" name="itens<?php echo $questaoAtual[0]; ?>" value="<?php if($questaoAtual[8] == 1){ echo '1';}else{ echo '0';} ?>" class="custom-control-input">
+            <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>1"><?php echo $questaoAtual[3]; ?></label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input type="radio" id="customRadio<?php echo $questaoAtual[0]; ?>2" name="itens<?php echo $questaoAtual[0]; ?>" value="<?php if($questaoAtual[8] == 2){ echo '1';}else{ echo '0';} ?>" class="custom-control-input">
+            <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>2"><?php echo $questaoAtual[4]; ?></label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input type="radio" id="customRadio<?php echo $questaoAtual[0]; ?>3" name="itens<?php echo $questaoAtual[0]; ?>" value="<?php if($questaoAtual[8] == 3){ echo '1';}else{ echo '0';} ?>" class="custom-control-input">
+            <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>3"><?php echo $questaoAtual[5]; ?></label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input type="radio" id="customRadio<?php echo $questaoAtual[0]; ?>4" name="itens<?php echo $questaoAtual[0]; ?>" value="<?php if($questaoAtual[8] == 4){ echo '1';}else{ echo '0';} ?>" class="custom-control-input">
+            <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>4"><?php echo $questaoAtual[6]; ?></label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input type="radio" id="customRadio<?php echo $questaoAtual[0]; ?>5" name="itens<?php echo $questaoAtual[0]; ?>" value="<?php if($questaoAtual[8] == 5){ echo '1';}else{ echo '0';} ?>" class="custom-control-input">
+            <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>5"><?php echo $questaoAtual[7]; ?></label>
+          </div>
+          <div class="form-group row">
+           <p id="resposta<?php echo $questaoAtual[0]; ?>"></p>
+           <div class="col-sm-10 text-left" style="margin-top: 10%">
+            <button type="button" id="btnRes<?php echo $questaoAtual[0]; ?>" onclick="ResponderQuestao(value)"  value="<?php echo $questaoAtual[0]; ?>" class="btn btn-primary">Responder</button>
 
-          </form>
 
 
 
+
+          </div>
         </div>
+
+
+
+
 
       </div>
 
-
-
-
-      <?php 
-    }
-
-    ?>
-
-
-
-    <!-- /.box-body -->
+    </div>
 
 
 
 
+    <?php 
+  }
+
+  ?>
+
+
+
+  <!-- /.box-body -->
 
 
 
 
 
 
-  </div>
+
+
+
+
+</div>
 </div>
 </div>
 
@@ -873,6 +893,40 @@ $( "#exibir" ).click(function() {
 
     calendar.render();
   });
+
+</script>
+
+<script type="text/javascript">
+
+  function ResponderQuestao(value){
+
+    console.log("Respondendo....");
+
+    var selValue = $('input[name=itens'+value+']:checked').val(); 
+
+
+
+    if (selValue == '1') {
+      console.log("Acertou");
+      $('#resposta'+value).removeClass("errado");
+      $('#resposta'+value).addClass("certo");
+      $('#resposta'+value).html('<br><i class="far fa-check-circle"></i><b>Parabéns, você acertou! ;) </b><br>');
+
+    }else{
+      console.log("Errou");
+      $('#resposta'+value).removeClass("certo");
+      $('#resposta'+value).addClass("errado");
+      $('#resposta'+value).html('<br><i class="far fa-times-circle"></i><b>Você errou!  :( </b><br>');
+    }
+
+  }
+
+
+
+
+
+
+
 
 </script>
 
