@@ -44,11 +44,11 @@ $professor->CapturarProfessor($conexao);
 }
 
 .certo{
-  color: green;
+  color: #00FF7F;
 }
 
 .errado{
-  color:red;
+  color:  #B22222;
 
 }
 </style>
@@ -598,12 +598,15 @@ $professor->CapturarProfessor($conexao);
 
         </div>
         <!-- /.box-header -->
+
         <div class="box-body">
+
           <h4><?php echo $questaoAtual[1]; ?></h4>
 
           
           <div class="custom-control custom-radio">
             <input type="radio" id="customRadio<?php echo $questaoAtual[0]; ?>1" name="itens<?php echo $questaoAtual[0]; ?>" value="<?php if($questaoAtual[8] == 1){ echo '1';}else{ echo '0';} ?>" class="custom-control-input">
+
             <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>1"><?php echo $questaoAtual[3]; ?></label>
           </div>
           <div class="custom-control custom-radio">
@@ -623,14 +626,11 @@ $professor->CapturarProfessor($conexao);
             <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>5"><?php echo $questaoAtual[7]; ?></label>
           </div>
           <div class="form-group row">
-           <p id="resposta<?php echo $questaoAtual[0]; ?>"></p>
+         <strong style="margin-left: 3%;" id="resposta<?php echo $questaoAtual[0]; ?>"></strong>
+           
            <div class="col-sm-10 text-left" style="margin-top: 10%">
             <button type="button" id="btnRes<?php echo $questaoAtual[0]; ?>" onclick="ResponderQuestao(value)"  value="<?php echo $questaoAtual[0]; ?>" class="btn btn-primary">Responder</button>
-
-
-
-
-
+            
           </div>
         </div>
 
