@@ -910,13 +910,13 @@ $( "#exibir" ).click(function() {
       console.log("Acertou");
       $('#resposta'+value).removeClass("errado");
       $('#resposta'+value).addClass("certo");
-      $('#resposta'+value).html('<br><i class="far fa-check-circle"></i><b>Parabéns, você acertou! ;) </b><br>');
+      $('#resposta'+value).html('<br><i class="far fa-check-circle"></i><b>Parabéns, você acertou! ;) </b>');
 
     }else{
       console.log("Errou");
       $('#resposta'+value).removeClass("certo");
       $('#resposta'+value).addClass("errado");
-      $('#resposta'+value).html('<br><i class="far fa-times-circle"></i><b>Você errou!  :( </b><br>');
+      $('#resposta'+value).html('<br><i class="far fa-times-circle"></i><b>Você errou!  :( </b>');
     }
 
   }
