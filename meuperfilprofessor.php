@@ -161,7 +161,7 @@ include 'header_professor.php';
 
   <input type="hidden" name="MAX_FILE_SIZE" value="99999999"/>
   <br><br>
-  <button type="submit" class="btn btn-outline-primary text-dark text-center" style="width:250px;" >Salvar</button>
+  <button type="submit" class="btn btn-outline-primary text-dark text-center btn-salvar" style="width:250px;" >Salvar</button>
 
 
 </center>

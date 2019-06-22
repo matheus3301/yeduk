@@ -299,32 +299,106 @@
   .direct-chat{
   margin-right:1%;
   }
+  .foto-perfil{
+    margin-right: 10px;
+  }
+  #output{
+    margin-right:5px;
+  }
+  .btn-file{
+    margin-left: 8%;
+  }
+  .btn-salvar{
+    margin-left: 8%;
+  }
 }
 @media screen and (min-width: 360px) {
   .direct-chat{
   margin-right:2%;
   }
+  .foto-perfil{
+    margin-left: 4%;
+  }
+  #output{
+    margin-left: 4%;
+  }
+  .btn-file{
+    margin-left: 12%;
+  }
+  .btn-salvar{
+    margin-left: 12%;
+  }
+  
+
 }
 @media screen and (min-width: 375px) {
   .direct-chat{
   right:10%;
+  }
+  .foto-perfil{
+    margin-left: 6%;
+  }
+  #output{
+    margin-left: 6%;
+  }
+  .btn-file{
+    margin-left: 15%;
+  }
+  .btn-salvar{
+    margin-left: 15%;
   }
 }
 @media screen and (min-width: 411px) {
   .direct-chat{
   margin-right:4%;
   }
+  .foto-perfil{
+    margin-left: 10%;
+  }
+  #output{
+    margin-left: 10%;
+  }
+  .btn-file{
+    margin-left: 20%;
+  }
+  .btn-salvar{
+    margin-left: 20%;
+  }
 }
 @media screen and (min-width: 768px) {
   .direct-chat{
   margin-right:1%;
+  }
+  .foto-perfil{
+    margin-left:0 ;
+  }
+  #output{
+    margin-left: 90px;
+  }
+  .btn-file{
+    margin-left: 110px;
+  }
+  .btn-salvar{
+    margin-left: 110px;
   }
 }
 @media screen and (min-width: 1024px) {
   .direct-chat{
   right:3%;
   }
+
+  #output{
+    position: relative;
+    right:60px;
+  }
+  .btn-file{
+    right: 30%;
+  }
+  .btn-salvar{
+    right: 30%;
+  }
 }
+ 
 
 
 
