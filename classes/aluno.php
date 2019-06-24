@@ -148,6 +148,18 @@
 
 
 		}
+		public function ConsultarAluno($conexao){
+			$sth = $conexao->prepare("SELECT * FROM tb_aluno ORDER BY idtb_aluno ASC");
+			$sth->execute();
+
+			$result = $sth->fetchAll();
+
+			return $result;
+
+
+		
+		}
+
 		public function CapturarAluno($conexao){
 			$sql = "SELECT * FROM tb_aluno WHERE idtb_aluno = $this->id";
 
