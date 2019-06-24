@@ -62,6 +62,8 @@ $professor->CapturarProfessor($conexao);
   <link href='fullcalendar/timegrid/main.css' rel='stylesheet' />
   <script src='fullcalendar/timegrid/main.js'></script>
 
+  <script src="js/jquery.min.js"></script>
+
   
   <meta charset="utf-8">
   <style type="text/css">

@@ -1,4 +1,11 @@
 <?php 
+if (!isset($_GET['id'])) {
+  header('location:minhasturmasprofessor.php');
+}
+
+
+
+
 session_start();
 include 'classes/posts.php';
 
@@ -508,106 +515,106 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
       <h4>Questões <button type="button" class="btn btn-primary text-center btn-circle " data-toggle="modal" data-target="#modal_questao">+</button></h4>
 
       <table class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Enunciado</th>
-              <th scope="col">Resposta Certa</th>
-              <th scope="col">Ações</th>
-              
-            </tr>
-          </thead>
-          <tbody>
-             <?php 
-              $questoes = $turma->ListarQuestoesTurma($conexao);
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Enunciado</th>
+            <th scope="col">Resposta Certa</th>
+            <th scope="col">Ações</th>
 
-              ?>
+          </tr>
+        </thead>
+        <tbody>
+         <?php 
+         $questoes = $turma->ListarQuestoesTurma($conexao);
 
-            <?php 
-            foreach ($questoes as $questaoAtual) { ?>
-              <tr>
-               <th scope="row"><?php echo $questaoAtual[0]; ?></th>
-               <td><?php echo $questaoAtual[1]; ?></td>
-               <td><?php 
-                  if ($questaoAtual[8] == 1) {
-                    echo $questaoAtual[3];
-                  }
-                   if ($questaoAtual[8] == 2) {
-                    echo $questaoAtual[4];
-                  }
-                   if ($questaoAtual[8] == 3) {
-                    echo $questaoAtual[5];
-                  }
-                   if ($questaoAtual[8] == 4) {
-                    echo $questaoAtual[6];
-                  }
-                   if ($questaoAtual[8] == 5) {
-                    echo $questaoAtual[7];
-                  }
+         ?>
 
-                ?></td>
-               <td><a  class="btn btn-outline-primary text-dark text-center" data-toggle="modal" data-target='#evento<?php echo $eventoAtual[0]."alterar"; ?>'>Editar</a>
-                <a  class="btn btn-outline-danger text-dark text-center" data-toggle="modal" data-target='#questao<?php echo $questaoAtual[0]."excluir"; ?>'>Excluir</a></td>
-              </tr>
+         <?php 
+         foreach ($questoes as $questaoAtual) { ?>
+          <tr>
+           <th scope="row"><?php echo $questaoAtual[0]; ?></th>
+           <td><?php echo $questaoAtual[1]; ?></td>
+           <td><?php 
+           if ($questaoAtual[8] == 1) {
+            echo $questaoAtual[3];
+          }
+          if ($questaoAtual[8] == 2) {
+            echo $questaoAtual[4];
+          }
+          if ($questaoAtual[8] == 3) {
+            echo $questaoAtual[5];
+          }
+          if ($questaoAtual[8] == 4) {
+            echo $questaoAtual[6];
+          }
+          if ($questaoAtual[8] == 5) {
+            echo $questaoAtual[7];
+          }
 
-
+          ?></td>
+          <td><a  class="btn btn-outline-primary text-dark text-center" data-toggle="modal" data-target='#evento<?php echo $eventoAtual[0]."alterar"; ?>'>Editar</a>
+            <a  class="btn btn-outline-danger text-dark text-center" data-toggle="modal" data-target='#questao<?php echo $questaoAtual[0]."excluir"; ?>'>Excluir</a></td>
+          </tr>
 
 
-              <div class="modal fade" id="questao<?php echo $questaoAtual[0]."excluir"; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLongTitle">Deseja Excluir Esta Questão?</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body text-dark">
-                     <p><?php echo $questaoAtual[1];?></p>
-                   </div>
-                   <div class="modal-footer">
 
-                    <a class="btn btn-outline-primary " href="valida_delete/excluir_evento.php?id=<?php echo $questaoAtual[0]; ?>&idT=<?php echo $turma->getId(); ?>">Excluir</a>
-                  </div>
+
+          <div class="modal fade" id="questao<?php echo $questaoAtual[0]."excluir"; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Deseja Excluir Esta Questão?</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
                 </div>
-              </div>
-            </div>
-            <div class="modal fade bd-example-modal-lg" id="evento<?php echo $eventoAtual[0].'alterar';?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Faça a Alteração no Evento</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12" style="padding:5%;">
-                     <form action="valida_alt/altera_evento.php?idTurma=<?php echo $turma->getId(); ?>&idE=<?php echo $eventoAtual[0]; ?>" method="POST">
-                      <label class="lbls text-center">Título</label>
-                      <input type="text" id="inpt" name="titulo" class="form-control" value="<?php echo $eventoAtual[1]; ?>" >
-                      <br>
-                      <label class="lbls text-center">Data</label>
-                      <input type="date" id="inpt" name="data" class="form-control" value="<?php echo $eventoAtual[2]; ?>" ><br><br>
-                      <button type="submit" class="btn btn-outline-primary">Alterar</button>
-                    </form>
-                  </div>
-                </div>
+                <div class="modal-body text-dark">
+                 <p><?php echo $questaoAtual[1];?></p>
+               </div>
+               <div class="modal-footer">
+
+                <a class="btn btn-outline-primary " href="valida_delete/excluir_evento.php?id=<?php echo $questaoAtual[0]; ?>&idT=<?php echo $turma->getId(); ?>">Excluir</a>
               </div>
             </div>
           </div>
-        <?php }
-        ?>
-      </tbody>
-    </table>
+        </div>
+        <div class="modal fade bd-example-modal-lg" id="evento<?php echo $eventoAtual[0].'alterar';?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Faça a Alteração no Evento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-md-12" style="padding:5%;">
+                 <form action="valida_alt/altera_evento.php?idTurma=<?php echo $turma->getId(); ?>&idE=<?php echo $eventoAtual[0]; ?>" method="POST">
+                  <label class="lbls text-center">Título</label>
+                  <input type="text" id="inpt" name="titulo" class="form-control" value="<?php echo $eventoAtual[1]; ?>" >
+                  <br>
+                  <label class="lbls text-center">Data</label>
+                  <input type="date" id="inpt" name="data" class="form-control" value="<?php echo $eventoAtual[2]; ?>" ><br><br>
+                  <button type="submit" class="btn btn-outline-primary">Alterar</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <?php }
+    ?>
+  </tbody>
+</table>
 
 
 
 
 
 
-    </div>
-  </div>
+</div>
+</div>
 </div>
 
 
@@ -676,6 +683,15 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
   <?php }?>
 
   <h4>Alunos da Turma</h4>
+
+  <audio id="audio">
+    
+    <source src="chat/toque-sms.mp3" type="audio/mpeg">
+    Seu navegador não possui suporte ao elemento audio
+</audio>
+
+
+
   <?php 
 
   if ($alunosCadastrados != null) {
@@ -690,105 +706,142 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
         </div>
       </div><!-- /.box-header -->
+
+
+
+
+
+
+
+      <!-- COMEÇA O ATUALIZADOR DE CHAT  _-->
+
+      <script type="text/javascript">
+        var resposta<?php echo $alunoAtual[2]; ?> = null;
+
+
+        function AtualizaChat<?php echo $alunoAtual[2]; ?>(){
+          var req = new XMLHttpRequest();
+
+          req.open('GET', 'chat/chat_professor_aluno.php?idAluno=<?php echo $alunoAtual[2]; ?>', true);
+          req.send();
+
+          req.onreadystatechange = function(){
+            if (req.readyState == 4 && req.status == 200) {
+              if (resposta<?php echo $alunoAtual[2]; ?> != req.responseText) {
+                  audio.play();
+                  resposta<?php echo $alunoAtual[2]; ?> = req.responseText;
+
+                  //alert(req.responseText);
+                  //alert(document.getElementById('chatContent<?php echo $alunoAtual[2]; ?>').innerHTML);
+
+                 document.getElementById('chatContent<?php echo $alunoAtual[2]; ?>').innerHTML = req.responseText;
+                 $('#chatContent<?php echo $alunoAtual[2]; ?>').scrollTop($('#chatContent<?php echo $alunoAtual[2]; ?>')[0].scrollHeight);
+              }
+             
+            }
+          }
+
+          
+        }
+
+        //LOOP PARA ATUALIZAR A DIV 
+        setInterval(function(){AtualizaChat<?php echo $alunoAtual[2]; ?>();}, 750);
+      </script>
+
+
+
+
+
+
+      <!-- TERMINA O ATUALIZADOR DE CHAT  _-->
+
+
+      <!-- COMEÇA O CHAT! _-->
+
       <div class="box-body">
         <!-- Conversations are loaded here -->
-        <div class="direct-chat-messages messages">
-          <!-- Message. Default to the left -->
-          <div class="direct-chat-msg text-right">
-            <div class="direct-chat-info clearfix">
+        <div class="direct-chat-messages messages" id="chatContent<?php echo $alunoAtual[2]; ?>"></div><!--/.direct-chat-messages-->
 
-              <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
-            </div><!-- /.direct-chat-info -->
-            <?php 
-            if ($alunoAtual[3] != null) { ?>
-
-              <img src="mostra_imagem_aluno.php?idAluno=<?php echo $alunoAtual[2];?>" class="img-circle img-pequena-chat direct-chat-img">
-
-            <?php }else{
-              ?>
-              <i class="fa-4x fas fa-globe-americas" ></i>
-              <?php 
-            }
-
-            ?>
-
-            <!-- /.direct-chat-img -->
-            <div class="direct-chat-text text-left">
-              Bom dia!
-            </div><!-- /.direct-chat-text -->
-          </div><!-- /.direct-chat-msg -->
-
-          <!-- Message to the right -->
-          <div class="direct-chat-msg right">
-            <div class="direct-chat-info clearfix">
-
-              <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
-            </div><!-- /.direct-chat-info -->
-            <?php 
-            if ($professor->getImagem() != null) {
-             ?>
-             <img src="mostra_imagem.php"  class="img-circle img-pequena-chat direct-chat-img">
-             <?php 
-
-
-
-           }else{
-            ?>
-            <img src="images/icon/man.png"   class="img-circle img-pequena">
-            <?php 
-          }
-          ?> 
-          <div class="direct-chat-text text-right" style="border:none;  background:linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%);">
-            Bom dia!
-          </div><!-- /.direct-chat-text -->
-        </div><!-- /.direct-chat-msg -->
-      </div><!--/.direct-chat-messages-->
-
-      <!-- Contacts are loaded here -->
-      <div class="direct-chat-contacts">
-        <ul class="contacts-list">
-          <li>
-            <a href="#">
-             <?php 
-             if ($professor->getImagem() != null) {
-               ?>
-               <img src="mostra_imagem.php"  class="img-circle img-pequena" >
+        <!-- Contacts are loaded here -->
+        <div class="direct-chat-contacts">
+          <ul class="contacts-list">
+            <li>
+              <a href="#">
                <?php 
+               if ($professor->getImagem() != null) {
+                 ?>
+                 <img src="mostra_imagem.php"  class="img-circle img-pequena" >
+                 <?php 
 
 
 
-             }else{
+               }else{
+                ?>
+                <img src="images/icon/man.png"   class="img-circle img-pequena">
+                <?php 
+              }
               ?>
-              <img src="images/icon/man.png"   class="img-circle img-pequena">
-              <?php 
-            }
-            ?>
-            <div class="contacts-list-info">
-              <span class="contacts-list-name">
-                Count Dracula
-                <small class="contacts-list-date pull-right">2/28/2015</small>
-              </span>
-              <span class="contacts-list-msg">How have you been? I was...</span>
-            </div><!-- /.contacts-list-info -->
-          </a>
-        </li><!-- End Contact Item -->
-      </ul><!-- /.contatcts-list -->
-    </div><!-- /.direct-chat-pane -->
-  </div><!-- /.box-body -->
-  <div class="box-footer">
-    <form action="#" method="post">
-      <div class="input-group">
-        <input type="text" name="message" placeholder="Type Message ..." class="form-control msg">
-        <span class="input-group-btn">
-          <button type="submit" class="btn-circle-chat mt-2" id="enviaDdos"><i class="fa fa-paper-plane fa-x text-white ml-10"></i></button>
-        </span>
-      </div>
-    </form>
 
-  </div><!-- /.box-footer-->
-</div>
+            </a>
+          </li><!-- End Contact Item -->
+        </ul><!-- /.contatcts-list -->
+      </div><!-- /.direct-chat-pane -->
+    </div><!-- /.box-body -->
+    <div class="box-footer">
+      
+        <div class="input-group">
+          <input type="text" name="mensagem<?php echo $alunoAtual[2]; ?>"  id="mensagem<?php echo $alunoAtual[2]; ?>"  placeholder="Digite aqui ..." class="form-control msg">
+          <span class="input-group-btn">
+            <button type="button" class="btn-circle-chat mt-2" id="enviar<?php echo $alunoAtual[2]; ?>"><i class="fa fa-paper-plane fa-x text-white ml-10"></i></button>
+          </span>
+        </div>
+      
 
-<div class="col-lg-12 bg-white p-4 rounded shadow my-3">
+
+      <!-- ENVIA MENSAGEM INICIO -->
+      <script>
+       $("#enviar<?php echo $alunoAtual[2]; ?>").click(function(){
+        if ($("input[name='mensagem<?php echo $alunoAtual[2]; ?>']").val() != "") {
+           $.ajax({
+           dataType:'html',
+           url:"chat/professor_envia_aluno.php",
+           type:"POST",
+           data:({mensagem:$("input[name='mensagem<?php echo $alunoAtual[2]; ?>']").val(),idAluno: <?php  echo $alunoAtual[2]; ?>}),
+
+           beforeSend: function(data){ 
+              console.log("Mandou mensagem");
+
+
+              $("#mensagem<?php echo $alunoAtual[2]; ?>").val("");
+
+
+           }, success:function(data){
+            
+            
+
+          }, complete: function(data){}
+
+
+        });
+        }
+
+
+
+
+        
+       });
+     </script>
+
+
+     <!-- ENVIA MENSAGEM FIM -->
+
+
+
+
+   </div><!-- /.box-footer-->
+ </div>
+
+ <div class="col-lg-12 bg-white p-4 rounded shadow my-3">
   <div class="media align-items-center flex-column flex-sm-row">
     <?php 
     if ($alunoAtual[3] != null) { ?>
@@ -1236,7 +1289,7 @@ function editarText() {
 
 
         <!---- ITEM 2 ----->
-         <div class="col-lg-12">
+        <div class="col-lg-12">
           <div class="row">
             <div class="col-sm-2">
               <div class="custom-control custom-radio">
@@ -1252,7 +1305,7 @@ function editarText() {
         <!---- FIM ITEM 2 ----->
 
         <!---- ITEM 3 ----->
-         <div class="col-lg-12">
+        <div class="col-lg-12">
           <div class="row">
             <div class="col-sm-2">
               <div class="custom-control custom-radio">
@@ -1269,7 +1322,7 @@ function editarText() {
 
 
         <!---- ITEM 4 ----->
-         <div class="col-lg-12">
+        <div class="col-lg-12">
           <div class="row">
             <div class="col-sm-2">
               <div class="custom-control custom-radio">
@@ -1285,7 +1338,7 @@ function editarText() {
         <!---- FIM ITEM 4 ----->
 
         <!---- ITEM 4 ----->
-         <div class="col-lg-12">
+        <div class="col-lg-12">
           <div class="row">
             <div class="col-sm-2">
               <div class="custom-control custom-radio">
