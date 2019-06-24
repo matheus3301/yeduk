@@ -38,15 +38,16 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
 <style type="text/css">
 
-.img-post{
-  width: 100%;
-  border-radius: 30px;
+  .img-post{
+    width: 100%;
+    border-radius: 30px;
 
-}
+  }
 
-.sumido{
-  display: none;
-}
+  .sumido{
+    display: none;
+  }
+
 
 
 
@@ -96,6 +97,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
 
 
+
 <section class="section section-lg-bottom bg-light ">
   <div class="container">
     <div class="row">
@@ -112,6 +114,9 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
            } ?></span></a>
          </li>
          <li class="nav-item">
+          <a class="nav-link" id="global-tab" data-toggle="tab" href="#global" role="tab" aria-controls="global" aria-selected="false">Chat Global</a>
+        </li>
+         <li class="nav-item">
           <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Eventos</a>
         </li>
         <li class="nav-item">
@@ -120,10 +125,15 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
         <li class="nav-item">
           <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Configurações</a>
         </li>
+      
 
 
       </ul>
 
+
+
+      
+      
       <div class="tab-content" >
         <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
           <div class="row">
@@ -500,6 +510,98 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 </div>
 </div>
 </div>
+  <div class="tab-pane" id="global" role="tabpanel" aria-labelledby="global-tab">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="box box-primary chat-global">
+      <div class="box-header with-border">
+        <h3 class="box-title"> <?php 
+
+
+              if ($turma->getImagem() != null) {
+                echo '<img  class="img-pequena" src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'"/>';
+
+
+
+              }else{
+                ?>
+                <img src="images/icon/man.png"  id="output" width="300px" height="300px"><br><br>
+                <?php 
+              }
+
+
+
+              ?>  <?php echo $turma->getNome(); ?></h3>
+        <div class="box-tools pull-right">
+
+         
+
+        </div>
+      </div><!-- /.box-header -->
+      <div class="box-body">
+        <!-- Conversations are loaded here -->
+        <div class="direct-chat-messages messages">
+          <!-- Message. Default to the left -->
+          <div class="direct-chat-msg text-right">
+            <div class="direct-chat-info clearfix">
+
+             
+            </div><!-- /.direct-chat-info -->
+           
+            <!-- /.direct-chat-img -->
+            <div class="direct-chat-text text-left" style="position: relative; right:7%; width:80%;">
+              <h6 class="text-primary">Nome Aluno</h6>
+              Bom dia!
+               <small class="" style="float: right;" >23 Jan 2:00 pm</small>
+            </div><!-- /.direct-chat-text -->
+          </div><!-- /.direct-chat-msg -->
+
+          <!-- Message to the right -->
+          <div class="direct-chat-msg right">
+            <div class="direct-chat-info clearfix">
+
+             
+            </div><!-- /.direct-chat-info -->
+            <?php 
+            if ($professor->getImagem() != null) {
+             ?>
+             <img src="mostra_imagem.php"  class="img-circle img-pequena-chat direct-chat-img">
+             <?php 
+
+
+
+           }else{
+            ?>
+            <img src="images/icon/man.png"   class="img-circle img-pequena">
+            <?php 
+          }
+          ?> 
+          <div class="direct-chat-text text-right text-white" style="border:none; float:right;  background:linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%); width:50%;">
+            Bom dia!<br>
+             <small  style="float:right;">23 Jan 2:00 pm</small>
+          </div><!-- /.direct-chat-text -->
+        </div><!-- /.direct-chat-msg -->
+      </div><!--/.direct-chat-messages-->
+
+      <!-- Contacts are loaded here -->
+  </div><!-- /.box-body -->
+  <div class="box-footer">
+    <form action="#" method="post">
+      <div class="input-group">
+        <input type="text" name="message" placeholder="Type Message ..." class="form-control msg">
+        <span class="input-group-btn">
+          <button type="submit" class="btn-circle-chat mt-2" id="enviaDdos"><i class="fa fa-paper-plane fa-x text-white ml-10"></i></button>
+        </span>
+      </div>
+    </form>
+
+  </div><!-- /.box-footer-->
+</div>
+              
+              
+            </div>
+          </div>
+        </div>
 
 
 <div class="tab-pane"id="questoes" role="tabpanel" aria-labelledby="questoes-tab">
@@ -508,106 +610,106 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
       <h4>Questões <button type="button" class="btn btn-primary text-center btn-circle " data-toggle="modal" data-target="#modal_questao">+</button></h4>
 
       <table class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Enunciado</th>
-              <th scope="col">Resposta Certa</th>
-              <th scope="col">Ações</th>
-              
-            </tr>
-          </thead>
-          <tbody>
-             <?php 
-              $questoes = $turma->ListarQuestoesTurma($conexao);
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Enunciado</th>
+            <th scope="col">Resposta Certa</th>
+            <th scope="col">Ações</th>
 
-              ?>
+          </tr>
+        </thead>
+        <tbody>
+         <?php 
+         $questoes = $turma->ListarQuestoesTurma($conexao);
 
-            <?php 
-            foreach ($questoes as $questaoAtual) { ?>
-              <tr>
-               <th scope="row"><?php echo $questaoAtual[0]; ?></th>
-               <td><?php echo $questaoAtual[1]; ?></td>
-               <td><?php 
-                  if ($questaoAtual[8] == 1) {
-                    echo $questaoAtual[3];
-                  }
-                   if ($questaoAtual[8] == 2) {
-                    echo $questaoAtual[4];
-                  }
-                   if ($questaoAtual[8] == 3) {
-                    echo $questaoAtual[5];
-                  }
-                   if ($questaoAtual[8] == 4) {
-                    echo $questaoAtual[6];
-                  }
-                   if ($questaoAtual[8] == 5) {
-                    echo $questaoAtual[7];
-                  }
+         ?>
 
-                ?></td>
-               <td><a  class="btn btn-outline-primary text-dark text-center" data-toggle="modal" data-target='#evento<?php echo $eventoAtual[0]."alterar"; ?>'>Editar</a>
-                <a  class="btn btn-outline-danger text-dark text-center" data-toggle="modal" data-target='#questao<?php echo $questaoAtual[0]."excluir"; ?>'>Excluir</a></td>
-              </tr>
+         <?php 
+         foreach ($questoes as $questaoAtual) { ?>
+          <tr>
+           <th scope="row"><?php echo $questaoAtual[0]; ?></th>
+           <td><?php echo $questaoAtual[1]; ?></td>
+           <td><?php 
+           if ($questaoAtual[8] == 1) {
+            echo $questaoAtual[3];
+          }
+          if ($questaoAtual[8] == 2) {
+            echo $questaoAtual[4];
+          }
+          if ($questaoAtual[8] == 3) {
+            echo $questaoAtual[5];
+          }
+          if ($questaoAtual[8] == 4) {
+            echo $questaoAtual[6];
+          }
+          if ($questaoAtual[8] == 5) {
+            echo $questaoAtual[7];
+          }
 
-
+          ?></td>
+          <td><a  class="btn btn-outline-primary text-dark text-center" data-toggle="modal" data-target='#evento<?php echo $eventoAtual[0]."alterar"; ?>'>Editar</a>
+            <a  class="btn btn-outline-danger text-dark text-center" data-toggle="modal" data-target='#questao<?php echo $questaoAtual[0]."excluir"; ?>'>Excluir</a></td>
+          </tr>
 
 
-              <div class="modal fade" id="questao<?php echo $questaoAtual[0]."excluir"; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLongTitle">Deseja Excluir Esta Questão?</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body text-dark">
-                     <p><?php echo $questaoAtual[1];?></p>
-                   </div>
-                   <div class="modal-footer">
 
-                    <a class="btn btn-outline-primary " href="valida_delete/excluir_evento.php?id=<?php echo $questaoAtual[0]; ?>&idT=<?php echo $turma->getId(); ?>">Excluir</a>
-                  </div>
+
+          <div class="modal fade" id="questao<?php echo $questaoAtual[0]."excluir"; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Deseja Excluir Esta Questão?</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
                 </div>
-              </div>
-            </div>
-            <div class="modal fade bd-example-modal-lg" id="evento<?php echo $eventoAtual[0].'alterar';?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Faça a Alteração no Evento</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12" style="padding:5%;">
-                     <form action="valida_alt/altera_evento.php?idTurma=<?php echo $turma->getId(); ?>&idE=<?php echo $eventoAtual[0]; ?>" method="POST">
-                      <label class="lbls text-center">Título</label>
-                      <input type="text" id="inpt" name="titulo" class="form-control" value="<?php echo $eventoAtual[1]; ?>" >
-                      <br>
-                      <label class="lbls text-center">Data</label>
-                      <input type="date" id="inpt" name="data" class="form-control" value="<?php echo $eventoAtual[2]; ?>" ><br><br>
-                      <button type="submit" class="btn btn-outline-primary">Alterar</button>
-                    </form>
-                  </div>
-                </div>
+                <div class="modal-body text-dark">
+                 <p><?php echo $questaoAtual[1];?></p>
+               </div>
+               <div class="modal-footer">
+
+                <a class="btn btn-outline-primary " href="valida_delete/excluir_evento.php?id=<?php echo $questaoAtual[0]; ?>&idT=<?php echo $turma->getId(); ?>">Excluir</a>
               </div>
             </div>
           </div>
-        <?php }
-        ?>
-      </tbody>
-    </table>
+        </div>
+        <div class="modal fade bd-example-modal-lg" id="evento<?php echo $eventoAtual[0].'alterar';?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Faça a Alteração no Evento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="row">
+                <div class="col-md-12" style="padding:5%;">
+                 <form action="valida_alt/altera_evento.php?idTurma=<?php echo $turma->getId(); ?>&idE=<?php echo $eventoAtual[0]; ?>" method="POST">
+                  <label class="lbls text-center">Título</label>
+                  <input type="text" id="inpt" name="titulo" class="form-control" value="<?php echo $eventoAtual[1]; ?>" >
+                  <br>
+                  <label class="lbls text-center">Data</label>
+                  <input type="date" id="inpt" name="data" class="form-control" value="<?php echo $eventoAtual[2]; ?>" ><br><br>
+                  <button type="submit" class="btn btn-outline-primary">Alterar</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <?php }
+    ?>
+  </tbody>
+</table>
 
 
 
 
 
 
-    </div>
-  </div>
+</div>
+</div>
 </div>
 
 
@@ -925,6 +1027,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 </div>
 </div>
 </div>
+
 <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">
   <section class="section section-lg-bottom">
     <div class="container">
@@ -1020,9 +1123,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
 
       </div>
-      <div class="col-lg-5 text-center p-0">
 
-      </div>
     </div>
   </div>
   <br><br><br>
@@ -1032,38 +1133,30 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 </div>
 
 </div>
+
 <div class="col-lg-4">
-  <div class="rounded-sm shadow bg-white pb-4 chat-global" style="width: 100%;">
+  <div class="rounded-sm shadow bg-white pb-4">
     <div class="widget">
-      <i class="fas fa-expand text-right" style="float: right;"></i>
-      <h4 class="text-primary"> <?php 
+      <h4 class="text-success">Postagens</h4>
 
-
-      if ($turma->getImagem() != null) {
-        echo '<img  src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'" style="width: 60px; height:60px; object-fit: cover; border-radius: 80px;"/>';
-        ?>
-        <?php echo $turma->getNome(); ?>
-
-      <?php }else{
-        ?>
-        <img src="images/icon/man.png"  id="output" width="300px" height="300px" style="width: 40px; height:40px; object-fit: cover; border-radius: 60px;"><br><br>
-        <?php 
-      }
-
-
-
-      ?></h4>
-      <form action="#">
-        <div class="position-relative">
-          <input type="text" placeholder="Buscar" class="border-bottom form-control rounded-0 px-0">
-          <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
-        </div>
-      </form>
     </div>
-    
+    <div class="widget">
+      <ul class=" list-bordered" style="font-size: 1.2em;">
+        <li class="online"><a class="text-color d-block py-3" href="blog-details.html">Post 1</a></li>
+        <li class="online"><a class="text-color d-block py-3" href="blog-details.html">Post 2</a></li>
+        <li class="online"><a class="text-color d-block py-3" href="blog-details.html">Post 2</a></li>
+        <li class="online"><a class="text-color d-block py-3" href="blog-details.html">Post 2</a></li>
+        <li class="online"><a class="text-color d-block py-3" href="blog-details.html">Post 2</a></li>
+        <li class="online"><a class="text-color d-block py-3" href="blog-details.html">Post 2</a></li>
+      </ul>
+    </div>
 
   </div>
+
 </section>
+
+
+
 
 <script>
   $(function () {
@@ -1189,6 +1282,17 @@ function editarText() {
   $("#chat"+ultimo).hide();
   ultimo = id;
 }
+
+function ExpandChat() {
+ $("#expand").click(function(){
+  $(".chat-expand").fadeIn(500);
+});
+}
+function NormalChatGlobal() {
+ $("#exitChat").click(function(){
+  $(".chat-expand").fadeOut(500);
+});
+}
 </script>
 
 
@@ -1236,7 +1340,7 @@ function editarText() {
 
 
         <!---- ITEM 2 ----->
-         <div class="col-lg-12">
+        <div class="col-lg-12">
           <div class="row">
             <div class="col-sm-2">
               <div class="custom-control custom-radio">
@@ -1252,7 +1356,7 @@ function editarText() {
         <!---- FIM ITEM 2 ----->
 
         <!---- ITEM 3 ----->
-         <div class="col-lg-12">
+        <div class="col-lg-12">
           <div class="row">
             <div class="col-sm-2">
               <div class="custom-control custom-radio">
@@ -1269,7 +1373,7 @@ function editarText() {
 
 
         <!---- ITEM 4 ----->
-         <div class="col-lg-12">
+        <div class="col-lg-12">
           <div class="row">
             <div class="col-sm-2">
               <div class="custom-control custom-radio">
@@ -1285,7 +1389,7 @@ function editarText() {
         <!---- FIM ITEM 4 ----->
 
         <!---- ITEM 4 ----->
-         <div class="col-lg-12">
+        <div class="col-lg-12">
           <div class="row">
             <div class="col-sm-2">
               <div class="custom-control custom-radio">

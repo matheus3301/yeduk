@@ -110,6 +110,17 @@ class Turma{
 		
 	}
 
+	public function ConsultarTurma($conexao){
+			$sth = $conexao->prepare("SELECT * FROM tb_turma ORDER BY idtb_turma ASC");
+			$sth->execute();
+
+			$result = $sth->fetchAll();
+
+			return $result;
+
+
+		
+		}
 	
 	public function CapturarTurma($conexao){
 		$sql = "SELECT * FROM tb_turma WHERE idtb_turma = $this->id";

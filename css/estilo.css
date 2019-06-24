@@ -7,6 +7,7 @@
 #biografia{
   resize: none;
 }
+
 .lbls{
   font-size: 1em;
   font-weight: bold;
@@ -124,6 +125,25 @@
   box-shadow: 0px 0px 5px #909090;
 
 }
+.tb-restrito{
+      
+      border-radius:0px 0px 5px 5px;
+      
+    }
+
+    
+    .btn-ex{
+      background-color:#FF6347  ;
+      border:none;
+      border-radius: 5px;
+      color:#fff !important;
+      width:80px;
+      height:40px;
+      text-align:center;
+    }
+    th{
+      cursor: pointer;
+      } 
 
 .bio:disabled{
   background-color: transparent;
@@ -232,7 +252,6 @@
 .img-post{
   width: 100%;
   border-radius: 30px;
-
 }
 .comentar{
   width: 100%;
@@ -257,6 +276,19 @@
 
   background:linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%);
 }
+.msges{
+  border:none;
+  color:#fff;
+  width:60px;
+  height:60px;
+  border-radius: 80px;
+  background:linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%);
+
+}
+.comment-icon{
+  font-size: 1.5em;
+}
+
 .direct-chat{
   position:fixed;
   z-index: 10;
@@ -265,10 +297,10 @@
   width:300px;
 
 }
-#chat{
+.sumido{
   display: none;
-
 }
+
 
 .fc-title{
   color: white;
@@ -283,9 +315,23 @@
   overflow: auto;
 
 }
-
-
+.chat-expand{
+  background-color: rgba(0,0,0,.8);
+  position:absolute;
+  z-index:3;
+  width:100% !important;
+  height: 100% !important;
+  display:none;
 }
+.btn-circle {
+    width: 60px;
+    height: 60px;
+    padding: 6px 0px;
+    border-radius: 30-px;
+    text-align: center;
+}
+
+
 .img-turma-chat{
   width:40px;
   height:40px;
@@ -331,6 +377,7 @@
   
 
 }
+
 @media screen and (min-width: 375px) {
   .direct-chat{
   right:10%;

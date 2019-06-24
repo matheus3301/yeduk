@@ -37,20 +37,20 @@ $professor->CapturarProfessor($conexao);
 
 
 <style type="text/css">
-.img-post{
-  width: 100%;
-  border-radius: 30px;
+  .img-post{
+    width: 100%;
+    border-radius: 30px;
 
-}
+  }
 
-.certo{
-  color: #00FF7F;
-}
+  .certo{
+    color: #00FF7F;
+  }
 
-.errado{
-  color:  #B22222;
+  .errado{
+    color:  #B22222;
 
-}
+  }
 </style>
 <section class="page-title page-title-overlay bg-cover" data-background="images/background/about.jpg">
   <div class="container">
@@ -59,9 +59,69 @@ $professor->CapturarProfessor($conexao);
         <h1 class="text-white position-relative"><?php echo($turma->getNome()); ?></h1>
         <small class="text-light">Turma Criada em: <?php echo $turma->getData_criacao(); ?></small>
         <p class="text-white pt-4 pb-4"><?php echo($turma->getDescricao()); ?></p>
-        <h5 class="text-white">Professor: <?php echo $professor->getNome(); ?></h5>
+        <h5 class="text-white">Professor: <?php echo $professor->getNome(); ?> 
+        <button class="btn btn-circle msges" id="chamaChat" onclick="ChamaChat();"><i class="fas fa-comments comment-icon fa2x" ></i>
+        <span class="badge badge-danger badge-counter">4</span></button></h5>
 
       </div>
+      <div class="box box-primary direct-chat box-chat direct-chat-primary sumido" id="chat" >
+      <div class="box-header with-border">
+        <h3 class="box-title"><?php echo $professor->getNome(); ?></h3><span data-toggle="tooltip" title="3 New Messages" class="badge bg-light-blue">3</span>
+        <div class="box-tools pull-right">
+
+          <i class="fas fa-times-circle text-primary" id="fecharChat" onclick="FechaChat();"></i>
+
+        </div>
+      </div><!-- /.box-header -->
+      <div class="box-body">
+        <!-- Conversations are loaded here -->
+        <div class="direct-chat-messages messages">
+          
+          
+        </div>
+      <!-- Contacts are loaded here -->
+      <div class="direct-chat-contacts">
+        <ul class="contacts-list">
+          <li>
+            <a href="#">
+             <?php 
+             if ($professor->getImagem() != null) {
+               ?>
+               <img src="mostra_imagem.php"  class="img-circle img-pequena" >
+               <?php 
+
+
+
+             }else{
+              ?>
+              <img src="images/icon/man.png"   class="img-circle img-pequena">
+              <?php 
+            }
+            ?>
+            <div class="contacts-list-info">
+              <span class="contacts-list-name">
+                Count Dracula
+                <small class="contacts-list-date pull-right">2/28/2015</small>
+              </span>
+              <span class="contacts-list-msg">How have you been? I was...</span>
+            </div><!-- /.contacts-list-info -->
+          </a>
+        </li><!-- End Contact Item -->
+      </ul><!-- /.contatcts-list -->
+    </div><!-- /.direct-chat-pane -->
+  </div><!-- /.box-body -->
+  <div class="box-footer">
+    <form action="#" method="post">
+      <div class="input-group">
+        <input type="text" name="message" placeholder="Type Message ..." class="form-control msg">
+        <span class="input-group-btn">
+          <button type="submit" class="btn-circle-chat mt-2" id="enviaDdos"><i class="fa fa-paper-plane fa-x text-white ml-10"></i></button>
+        </span>
+      </div>
+    </form>
+
+  </div><!-- /.box-footer-->
+</div>
       <div class="col-md-4 m-auto ">
 
 
@@ -111,6 +171,9 @@ $professor->CapturarProfessor($conexao);
           <li class="nav-item">
             <a class="nav-link" id="questoes-tab" data-toggle="tab" href="#questoes" role="tab" aria-controls="questoes" aria-selected="false">Questões</a>
           </li>
+          <li class="nav-item">
+          <a class="nav-link" id="global-tab" data-toggle="tab" href="#global" role="tab" aria-controls="global" aria-selected="false">Chat Global</a>
+        </li>
           
           
 
@@ -626,12 +689,13 @@ $professor->CapturarProfessor($conexao);
             <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>5"><?php echo $questaoAtual[7]; ?></label>
           </div>
           <div class="form-group row">
-         <strong style="margin-left: 3%;" id="resposta<?php echo $questaoAtual[0]; ?>"></strong>
+           <strong style="margin-left: 3%;" id="resposta<?php echo $questaoAtual[0]; ?>"></strong>
            
            <div class="col-sm-10 text-left" style="margin-top: 10%">
             <button type="button" id="btnRes<?php echo $questaoAtual[0]; ?>" onclick="ResponderQuestao(value)"  value="<?php echo $questaoAtual[0]; ?>" class="btn btn-primary">Responder</button>
             
           </div>
+          
         </div>
 
 
@@ -667,20 +731,98 @@ $professor->CapturarProfessor($conexao);
 </div>
 </div>
 
+<div class="tab-pane" id="global" role="tabpanel" aria-labelledby="global-tab">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="box box-primary chat-global">
+      <div class="box-header with-border">
+        <h3 class="box-title"> <?php 
+
+
+              if ($turma->getImagem() != null) {
+                echo '<img  class="img-pequena" src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'"/>';
 
 
 
+              }else{
+                ?>
+                <img src="images/icon/man.png"  id="output" width="300px" height="300px"><br><br>
+                <?php 
+              }
 
 
 
+              ?>  <?php echo $turma->getNome(); ?></h3>
+        <div class="box-tools pull-right">
+
+         
+
+        </div>
+      </div><!-- /.box-header -->
+      <div class="box-body">
+        <!-- Conversations are loaded here -->
+        <div class="direct-chat-messages messages">
+          <!-- Message. Default to the left -->
+          <div class="direct-chat-msg text-right">
+            <div class="direct-chat-info clearfix">
+
+             
+            </div><!-- /.direct-chat-info -->
+           
+            <!-- /.direct-chat-img -->
+            <div class="direct-chat-text text-left" style="position: relative; right:7%; width:80%;">
+              <h6 class="text-primary">Nome Aluno/Professor</h6>
+              Bom dia!
+               <small class="" style="float: right;" >23 Jan 2:00 pm</small>
+            </div><!-- /.direct-chat-text -->
+          </div><!-- /.direct-chat-msg -->
+
+          <!-- Message to the right -->
+          <div class="direct-chat-msg right">
+            <div class="direct-chat-info clearfix">
+
+             
+            </div><!-- /.direct-chat-info -->
+            <?php 
+            if ($aluno->getImagem() != null) {
+             ?>
+             <img src="mostra_imagem_aluno.php"  class="img-circle img-pequena-chat direct-chat-img">
+             <?php 
 
 
 
+           }else{
+            ?>
+            <img src="images/icon/man.png"   class="img-circle img-pequena">
+            <?php 
+          }
+          ?> 
+          <div class="direct-chat-text text-right text-white" style="border:none; float:right;  background:linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%); width:50%;">
+            Bom dia!<br>
+             <small  style="float:right;">23 Jan 2:00 pm</small>
+          </div><!-- /.direct-chat-text -->
+        </div><!-- /.direct-chat-msg -->
+      </div><!--/.direct-chat-messages-->
 
+      <!-- Contacts are loaded here -->
+  </div><!-- /.box-body -->
+  <div class="box-footer">
+    <form action="#" method="post">
+      <div class="input-group">
+        <input type="text" name="message" placeholder="Type Message ..." class="form-control msg">
+        <span class="input-group-btn">
+          <button type="submit" class="btn-circle-chat mt-2" id="enviaDdos"><i class="fa fa-paper-plane fa-x text-white ml-10"></i></button>
+        </span>
+      </div>
+    </form>
 
-
-
-
+  </div><!-- /.box-footer-->
+</div>
+              
+              
+            </div>
+          </div>
+        </div>
 
 
 <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
@@ -761,16 +903,10 @@ $professor->CapturarProfessor($conexao);
 <div class="col-lg-4">
   <div class="rounded-sm shadow bg-white pb-4">
     <div class="widget">
-      <h4 class="text-success">Online</h4>
-      <form action="#">
-        <div class="position-relative">
-          <input type="text" placeholder="Buscar" class="border-bottom form-control rounded-0 px-0">
-          <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
-        </div>
-      </form>
+      <h4 class="text-success">Posts</h4>
+     
     </div>
     <div class="widget">
-      <h4>Alunos da turma online</h4>
       <ul class=" text-success text-bold list-bordered" style="font-size: 1.2em;">
         <li class="online"><a class="text-color d-block py-3" href="blog-details.html">Aluno</a></li>
         <li class="online"><a class="text-color d-block py-3" href="blog-details.html">Aluno</a></li>
@@ -843,7 +979,16 @@ $( "#exibir" ).click(function() {
   });
 });
 
-
+function ChamaChat() {
+   $("#chamaChat").click(function(){
+    $("#chat").show(100);
+  });
+ }
+ function FechaChat() {
+   $("#fecharChat").click(function(){
+    $("#chat").hide(100);
+  });
+ }
 
 
 
