@@ -158,6 +158,17 @@ class Professor{
 
 
 	}
+	public function ConsultarProfessor($conexao){
+			$sth = $conexao->prepare("SELECT * FROM tb_professor ORDER BY idtb_professor ASC");
+			$sth->execute();
+
+			$result = $sth->fetchAll();
+
+			return $result;
+
+
+		
+		}
 	public function CapturarProfessor($conexao){
 	 	$sql = "SELECT * FROM tb_professor WHERE  idtb_professor = $this->id";
 

@@ -90,7 +90,9 @@ $professor->CapturarProfessor($conexao);
 
 </head>
 
+
 <body>
+
   <!-- preloader start --> 
 
   <!-- preloader end -->

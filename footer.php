@@ -43,7 +43,7 @@
         </div>
         <div class="col-md-6 text-md-right text-center">
           <ul class="list-inline">
-            
+            <li><a href="restrito/loginrestrito.php" class="text-light">Restrito</a></li>
           </ul>
         </div>
       </div>
