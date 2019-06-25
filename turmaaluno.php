@@ -64,6 +64,20 @@ $professor->CapturarProfessor($conexao);
         <span class="badge badge-danger badge-counter">4</span></button></h5>
 
       </div>
+
+
+      <audio id="audio">
+    
+        <source src="chat/toque-sms.mp3" type="audio/mpeg">
+        Seu navegador não possui suporte ao elemento audio
+    </audio>
+  
+
+      <!-- COMEÇA CAIXA CHAT -->
+
+
+
+
       <div class="box box-primary direct-chat box-chat direct-chat-primary sumido" id="chat" >
       <div class="box-header with-border">
         <h3 class="box-title"><?php echo $professor->getNome(); ?></h3><span data-toggle="tooltip" title="3 New Messages" class="badge bg-light-blue">3</span>
@@ -73,55 +87,151 @@ $professor->CapturarProfessor($conexao);
 
         </div>
       </div><!-- /.box-header -->
+
+
+
+
+
+
+
+      <!-- COMEÇA O ATUALIZADOR DE CHAT  _-->
+
+      <script type="text/javascript">
+        var resposta = null;
+
+
+        function AtualizaChat(){
+          var req = new XMLHttpRequest();
+
+          req.open('GET', 'chat/chat_aluno_professor.php?idProf=<?php echo $professor->getId(); ?>', true);
+          req.send();
+
+          req.onreadystatechange = function(){
+            if (req.readyState == 4 && req.status == 200) {
+              //alert("Rodando");
+
+
+
+
+              if (resposta != req.responseText) {
+
+                  audio.play();
+                  resposta = req.responseText;
+
+                 
+
+                 document.getElementById('chatContent').innerHTML = req.responseText;
+                 $('#chatContent').scrollTop($('#chatContent')[0].scrollHeight);
+              }
+             
+            }
+          }
+
+          
+        }
+
+        //LOOP PARA ATUALIZAR A DIV 
+        setInterval(function(){AtualizaChat();}, 750);
+      </script>
+
+
+
+
+
+
+      <!-- TERMINA O ATUALIZADOR DE CHAT  _-->
+
+
+      <!-- COMEÇA O CHAT! _-->
+
       <div class="box-body">
         <!-- Conversations are loaded here -->
-        <div class="direct-chat-messages messages">
-          
-          
-        </div>
-      <!-- Contacts are loaded here -->
-      <div class="direct-chat-contacts">
-        <ul class="contacts-list">
-          <li>
-            <a href="#">
-             <?php 
-             if ($professor->getImagem() != null) {
-               ?>
-               <img src="mostra_imagem.php"  class="img-circle img-pequena" >
+        <div class="direct-chat-messages messages" id="chatContent" ></div><!--/.direct-chat-messages-->
+
+        <!-- Contacts are loaded here -->
+        <div class="direct-chat-contacts">
+          <ul class="contacts-list">
+            <li>
+              <a href="#">
                <?php 
+               if ($aluno->getImagem() != null) {
+                 ?>
+                 <img src="mostra_imagem_aluno.php"  class="img-circle img-pequena" >
+                 <?php 
 
 
 
-             }else{
+               }else{
+                ?>
+                <img src="images/icon/man.png"   class="img-circle img-pequena">
+                <?php 
+              }
               ?>
-              <img src="images/icon/man.png"   class="img-circle img-pequena">
-              <?php 
-            }
-            ?>
-            <div class="contacts-list-info">
-              <span class="contacts-list-name">
-                Count Dracula
-                <small class="contacts-list-date pull-right">2/28/2015</small>
-              </span>
-              <span class="contacts-list-msg">How have you been? I was...</span>
-            </div><!-- /.contacts-list-info -->
-          </a>
-        </li><!-- End Contact Item -->
-      </ul><!-- /.contatcts-list -->
-    </div><!-- /.direct-chat-pane -->
-  </div><!-- /.box-body -->
-  <div class="box-footer">
-    <form action="#" method="post">
-      <div class="input-group">
-        <input type="text" name="message" placeholder="Type Message ..." class="form-control msg">
-        <span class="input-group-btn">
-          <button type="submit" class="btn-circle-chat mt-2" id="enviaDdos"><i class="fa fa-paper-plane fa-x text-white ml-10"></i></button>
-        </span>
-      </div>
-    </form>
 
-  </div><!-- /.box-footer-->
+            </a>
+          </li><!-- End Contact Item -->
+        </ul><!-- /.contatcts-list -->
+      </div><!-- /.direct-chat-pane -->
+    </div><!-- /.box-body -->
+    <div class="box-footer">
+      
+        <div class="input-group">
+          <input type="text" name="mensagem"  id="mensagem"  placeholder="Digite aqui ..." class="form-control msg">
+          <span class="input-group-btn">
+            <button type="button" class="btn-circle-chat mt-2" id="enviar"><i class="fa fa-paper-plane fa-x text-white ml-10"></i></button>
+          </span>
+        </div>
+      
+
+
+      <!-- ENVIA MENSAGEM INICIO -->
+      <script>
+       $("#enviar").click(function(){
+        if ($("input[name='mensagem']").val() != "") {
+           $.ajax({
+           dataType:'html',
+           url:"chat/aluno_envia_professor.php",
+           type:"POST",
+           data:({mensagem:$("input[name='mensagem']").val(),idProf: <?php  echo $professor->getId(); ?>}),
+
+           beforeSend: function(data){ 
+              console.log("Mandou mensagem");
+
+
+              $("#mensagem").val("");
+
+
+           }, success:function(data){
+            
+            
+
+          }, complete: function(data){}
+
+
+        });
+        }
+
+
+
+
+        
+       });
+     </script>
+
+
+     <!-- ENVIA MENSAGEM FIM -->
+
+
+
+
+   </div><!-- /.box-footer-->
 </div>
+
+<!-- TERMINA CAIXA CHAT -->
+
+
+
+
       <div class="col-md-4 m-auto ">
 
 
@@ -1055,13 +1165,13 @@ function ChamaChat() {
       console.log("Acertou");
       $('#resposta'+value).removeClass("errado");
       $('#resposta'+value).addClass("certo");
-      $('#resposta'+value).html('<br><i class="far fa-check-circle"></i><b>Parabéns, você acertou! ;) </b><br>');
+      $('#resposta'+value).html('<br><i class="far fa-check-circle"></i><b>Parabéns, você acertou! ;) </b>');
 
     }else{
       console.log("Errou");
       $('#resposta'+value).removeClass("certo");
       $('#resposta'+value).addClass("errado");
-      $('#resposta'+value).html('<br><i class="far fa-times-circle"></i><b>Você errou!  :( </b><br>');
+      $('#resposta'+value).html('<br><i class="far fa-times-circle"></i><b>Você errou!  :( </b>');
     }
 
   }

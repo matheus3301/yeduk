@@ -67,6 +67,7 @@ $notificacoes = $aluno->ListarMatriculasLimitado($conexao);
 </head>
 
 <body>
+  <script src="js/jquery.min.js"></script>
   <!-- preloader start --> 
 
   <!-- preloader end -->

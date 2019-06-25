@@ -51,7 +51,7 @@
 </footer>
 
 <!-- jQuery -->
-<script src="js/jquery.min.js"></script>
+
 
 <!-- Bootstrap JS -->
 <script src="js/bootstrap.min.js"></script>

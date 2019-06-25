@@ -1,4 +1,11 @@
 <?php 
+if (!isset($_GET['id'])) {
+  header('location:minhasturmasprofessor.php');
+}
+
+
+
+
 session_start();
 include 'classes/posts.php';
 
@@ -778,10 +785,20 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
   <?php }?>
 
   <h4>Alunos da Turma</h4>
+
+  <audio id="audio">
+    
+    <source src="chat/toque-sms.mp3" type="audio/mpeg">
+    Seu navegador não possui suporte ao elemento audio
+</audio>
+
+
+
   <?php 
 
   if ($alunosCadastrados != null) {
    foreach ($alunosCadastrados as $alunoAtual) { ?>
+    
 
     <div class="box box-primary direct-chat box-chat direct-chat-primary sumido" id="chat<?php echo $alunoAtual[2]; ?>" >
       <div class="box-header with-border">
@@ -792,105 +809,142 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
         </div>
       </div><!-- /.box-header -->
+
+
+
+
+
+
+
+      <!-- COMEÇA O ATUALIZADOR DE CHAT  _-->
+
+      <script type="text/javascript">
+        var resposta<?php echo $alunoAtual[2]; ?> = null;
+
+
+        function AtualizaChat<?php echo $alunoAtual[2]; ?>(){
+          var req = new XMLHttpRequest();
+
+          req.open('GET', 'chat/chat_professor_aluno.php?idAluno=<?php echo $alunoAtual[2]; ?>', true);
+          req.send();
+
+          req.onreadystatechange = function(){
+            if (req.readyState == 4 && req.status == 200) {
+              if (resposta<?php echo $alunoAtual[2]; ?> != req.responseText) {
+                  audio.play();
+                  resposta<?php echo $alunoAtual[2]; ?> = req.responseText;
+
+                  //alert(req.responseText);
+                  //alert(document.getElementById('chatContent<?php echo $alunoAtual[2]; ?>').innerHTML);
+
+                 document.getElementById('chatContent<?php echo $alunoAtual[2]; ?>').innerHTML = req.responseText;
+                 $('#chatContent<?php echo $alunoAtual[2]; ?>').scrollTop($('#chatContent<?php echo $alunoAtual[2]; ?>')[0].scrollHeight);
+              }
+             
+            }
+          }
+
+          
+        }
+
+        //LOOP PARA ATUALIZAR A DIV 
+        setInterval(function(){AtualizaChat<?php echo $alunoAtual[2]; ?>();}, 750);
+      </script>
+
+
+
+
+
+
+      <!-- TERMINA O ATUALIZADOR DE CHAT  _-->
+
+
+      <!-- COMEÇA O CHAT! _-->
+
       <div class="box-body">
         <!-- Conversations are loaded here -->
-        <div class="direct-chat-messages messages">
-          <!-- Message. Default to the left -->
-          <div class="direct-chat-msg text-right">
-            <div class="direct-chat-info clearfix">
+        <div class="direct-chat-messages messages" id="chatContent<?php echo $alunoAtual[2]; ?>"></div><!--/.direct-chat-messages-->
 
-              <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
-            </div><!-- /.direct-chat-info -->
-            <?php 
-            if ($alunoAtual[3] != null) { ?>
-
-              <img src="mostra_imagem_aluno.php?idAluno=<?php echo $alunoAtual[2];?>" class="img-circle img-pequena-chat direct-chat-img">
-
-            <?php }else{
-              ?>
-              <i class="fa-4x fas fa-globe-americas" ></i>
-              <?php 
-            }
-
-            ?>
-
-            <!-- /.direct-chat-img -->
-            <div class="direct-chat-text text-left">
-              Bom dia!
-            </div><!-- /.direct-chat-text -->
-          </div><!-- /.direct-chat-msg -->
-
-          <!-- Message to the right -->
-          <div class="direct-chat-msg right">
-            <div class="direct-chat-info clearfix">
-
-              <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
-            </div><!-- /.direct-chat-info -->
-            <?php 
-            if ($professor->getImagem() != null) {
-             ?>
-             <img src="mostra_imagem.php"  class="img-circle img-pequena-chat direct-chat-img">
-             <?php 
-
-
-
-           }else{
-            ?>
-            <img src="images/icon/man.png"   class="img-circle img-pequena">
-            <?php 
-          }
-          ?> 
-          <div class="direct-chat-text text-right" style="border:none;  background:linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%);">
-            Bom dia!
-          </div><!-- /.direct-chat-text -->
-        </div><!-- /.direct-chat-msg -->
-      </div><!--/.direct-chat-messages-->
-
-      <!-- Contacts are loaded here -->
-      <div class="direct-chat-contacts">
-        <ul class="contacts-list">
-          <li>
-            <a href="#">
-             <?php 
-             if ($professor->getImagem() != null) {
-               ?>
-               <img src="mostra_imagem.php"  class="img-circle img-pequena" >
+        <!-- Contacts are loaded here -->
+        <div class="direct-chat-contacts">
+          <ul class="contacts-list">
+            <li>
+              <a href="#">
                <?php 
+               if ($professor->getImagem() != null) {
+                 ?>
+                 <img src="mostra_imagem.php"  class="img-circle img-pequena" >
+                 <?php 
 
 
 
-             }else{
+               }else{
+                ?>
+                <img src="images/icon/man.png"   class="img-circle img-pequena">
+                <?php 
+              }
               ?>
-              <img src="images/icon/man.png"   class="img-circle img-pequena">
-              <?php 
-            }
-            ?>
-            <div class="contacts-list-info">
-              <span class="contacts-list-name">
-                Count Dracula
-                <small class="contacts-list-date pull-right">2/28/2015</small>
-              </span>
-              <span class="contacts-list-msg">How have you been? I was...</span>
-            </div><!-- /.contacts-list-info -->
-          </a>
-        </li><!-- End Contact Item -->
-      </ul><!-- /.contatcts-list -->
-    </div><!-- /.direct-chat-pane -->
-  </div><!-- /.box-body -->
-  <div class="box-footer">
-    <form action="#" method="post">
-      <div class="input-group">
-        <input type="text" name="message" placeholder="Type Message ..." class="form-control msg">
-        <span class="input-group-btn">
-          <button type="submit" class="btn-circle-chat mt-2" id="enviaDdos"><i class="fa fa-paper-plane fa-x text-white ml-10"></i></button>
-        </span>
-      </div>
-    </form>
 
-  </div><!-- /.box-footer-->
-</div>
+            </a>
+          </li><!-- End Contact Item -->
+        </ul><!-- /.contatcts-list -->
+      </div><!-- /.direct-chat-pane -->
+    </div><!-- /.box-body -->
+    <div class="box-footer">
+      
+        <div class="input-group">
+          <input type="text" name="mensagem<?php echo $alunoAtual[2]; ?>"  id="mensagem<?php echo $alunoAtual[2]; ?>"  placeholder="Digite aqui ..." class="form-control msg">
+          <span class="input-group-btn">
+            <button type="button" class="btn-circle-chat mt-2" id="enviar<?php echo $alunoAtual[2]; ?>"><i class="fa fa-paper-plane fa-x text-white ml-10"></i></button>
+          </span>
+        </div>
+      
 
-<div class="col-lg-12 bg-white p-4 rounded shadow my-3">
+
+      <!-- ENVIA MENSAGEM INICIO -->
+      <script>
+       $("#enviar<?php echo $alunoAtual[2]; ?>").click(function(){
+        if ($("input[name='mensagem<?php echo $alunoAtual[2]; ?>']").val() != "") {
+           $.ajax({
+           dataType:'html',
+           url:"chat/professor_envia_aluno.php",
+           type:"POST",
+           data:({mensagem:$("input[name='mensagem<?php echo $alunoAtual[2]; ?>']").val(),idAluno: <?php  echo $alunoAtual[2]; ?>}),
+
+           beforeSend: function(data){ 
+              console.log("Mandou mensagem");
+
+
+              $("#mensagem<?php echo $alunoAtual[2]; ?>").val("");
+
+
+           }, success:function(data){
+            
+            
+
+          }, complete: function(data){}
+
+
+        });
+        }
+
+
+
+
+        
+       });
+     </script>
+
+
+     <!-- ENVIA MENSAGEM FIM -->
+
+
+
+
+   </div><!-- /.box-footer-->
+ </div>
+
+ <div class="col-lg-12 bg-white p-4 rounded shadow my-3">
   <div class="media align-items-center flex-column flex-sm-row">
     <?php 
     if ($alunoAtual[3] != null) { ?>
@@ -1269,12 +1323,12 @@ function editarText() {
    $("#chamaChat"+id).click(function(){
     FechaTodoChat(id);
 
-    $("#chat"+id).slideDown(500);
+    $("#chat"+id).slideDown(100);
   });
  }
  function FechaChat(id) {
    $("#fecharChat"+id).click(function(){
-    $("#chat"+id).fadeOut(500);
+    $("#chat"+id).fadeOut(100);
   });
  }
  function FechaTodoChat(id) {
@@ -1285,12 +1339,12 @@ function editarText() {
 
 function ExpandChat() {
  $("#expand").click(function(){
-  $(".chat-expand").fadeIn(500);
+  $(".chat-expand").fadeIn(100);
 });
 }
 function NormalChatGlobal() {
  $("#exitChat").click(function(){
-  $(".chat-expand").fadeOut(500);
+  $(".chat-expand").fadeOut(100);
 });
 }
 </script>
