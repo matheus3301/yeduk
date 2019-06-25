@@ -78,6 +78,20 @@ class MensagemProfessor{
 
 	}
 
+	public function  AlunoEnviarProfessor($conexao){
+		$sql = "INSERT INTO tb_chat_aluno_professor(conteudo, remetente, tb_professor_idtb_professor, tb_aluno_idtb_aluno) VALUES ('$this->conteudo' , 'aluno', $this->id_professor, $this->id_aluno)";
+
+
+			try {
+				$conexao->query($sql);
+				echo "Foi";
+
+			} catch (Exception $ex) {
+				$ex->getMessage();
+			}
+
+	}
+
 }
 
 

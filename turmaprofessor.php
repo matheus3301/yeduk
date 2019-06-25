@@ -798,6 +798,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
   if ($alunosCadastrados != null) {
    foreach ($alunosCadastrados as $alunoAtual) { ?>
+    
 
     <div class="box box-primary direct-chat box-chat direct-chat-primary sumido" id="chat<?php echo $alunoAtual[2]; ?>" >
       <div class="box-header with-border">
@@ -1322,12 +1323,12 @@ function editarText() {
    $("#chamaChat"+id).click(function(){
     FechaTodoChat(id);
 
-    $("#chat"+id).slideDown(500);
+    $("#chat"+id).slideDown(100);
   });
  }
  function FechaChat(id) {
    $("#fecharChat"+id).click(function(){
-    $("#chat"+id).fadeOut(500);
+    $("#chat"+id).fadeOut(100);
   });
  }
  function FechaTodoChat(id) {
@@ -1338,12 +1339,12 @@ function editarText() {
 
 function ExpandChat() {
  $("#expand").click(function(){
-  $(".chat-expand").fadeIn(500);
+  $(".chat-expand").fadeIn(100);
 });
 }
 function NormalChatGlobal() {
  $("#exitChat").click(function(){
-  $(".chat-expand").fadeOut(500);
+  $(".chat-expand").fadeOut(100);
 });
 }
 </script>
