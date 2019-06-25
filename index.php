@@ -130,7 +130,7 @@
       
       <div class="col-md-6 px-4">
         <p class="subtitle">Esborde Conhecimento!</p>
-        <h2 class="section-title">Veja um vídeo feito pelos desenvolvedores!</h2>
+        <h2 class="section-title">Veja um vídeo</h2>
         <p class="mb-4">No sistema de recmendações, os professores disponibilizarão mídias para melhorar o seu aprendizado, o professor, por meio de vídeo aulas do YouTube, colocarão na página para você.</p>
         
       </div>

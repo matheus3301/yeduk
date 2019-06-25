@@ -61,6 +61,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
 
 
+
 </style>
 
 
@@ -1324,6 +1325,8 @@ function editarText() {
     FechaTodoChat(id);
 
     $("#chat"+id).slideDown(100);
+    
+
   });
  }
  function FechaChat(id) {
