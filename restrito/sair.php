@@ -3,5 +3,5 @@ session_start();
 session_destroy();
 
 
-header('location:loginresgistro.php');
+header('location:loginrestrito.php');
  ?>

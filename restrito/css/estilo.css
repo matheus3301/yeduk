@@ -2,4 +2,51 @@
 	background: linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%);
 	color: rgba(0,0,0,.4);
 }
+input{
+	background-color:transparent;
+	border:none;
+	border:1px solid #009afa;
+	border-radius:20px;
+	margin: 5%;
+	height:50px;
+	padding:10px;
+	color:#009afa;
+}
+
+select{
+	background-color:transparent;
+	border:none;
+	border:1px solid #009afa;
+	border-radius:20px;
+	color:#000;
+	
+}
+.current{
+	padding:3%;
+	font-size: 1em;
+	color:#009afa;
+	font-weight: bold;
+}
+.current:hover{
+	opacity: .4;
+	color:#009afa;
+}
+.previous{
+	font-size: 1em;
+	color:#009afa;
+	font-weight: bold;
+}
+.previous:hover{
+	opacity: .4;
+	color:#009afa;
+}
+.next{
+	font-size: 1em;
+	color:#009afa;
+	font-weight: bold;
+}
+.next:hover{
+	opacity: .4;
+	color:#009afa;
+}
 

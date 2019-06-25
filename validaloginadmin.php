@@ -15,7 +15,7 @@
 		session_start();
 		$_SESSION['idadmin'] = $resultado;
 		echo "Foi";
-		//header('location:restrito/restrito.php');
+		header('location:restrito/restrito.php');
 
 	}
 ?>

@@ -6,6 +6,46 @@ class Admin{
 	private $email;
 	private $senha;
 
+	private $nome_imagem;
+	private $tamanho_imagem;
+	private $tipo_imagem;
+	private $imagem;
+
+
+
+	public function getNome_imagem(){
+		return $this->nome_imagem;
+	}
+
+	public function setNome_imagem($nome_imagem){
+		$this->nome_imagem = $nome_imagem;
+	}
+
+	public function getTamanho_imagem(){
+		return $this->tamanho_imagem;
+	}
+
+	public function setTamanho_imagem($tamanho_imagem){
+		$this->tamanho_imagem = $tamanho_imagem;
+	}
+
+	public function getTipo_imagem(){
+		return $this->tipo_imagem;
+	}
+
+	public function setTipo_imagem($tipo_imagem){
+		$this->tipo_imagem = $tipo_imagem;
+	}
+
+	public function getImagem(){
+		return $this->imagem;
+	}
+
+	public function setImagem($imagem){
+		$this->imagem = $imagem;
+	}
+
+
 
 
 	public function getId(){
@@ -69,6 +109,23 @@ class Admin{
 			$this->email = $return[2];
 		}
 	}
+
+		public function AlterarFoto($conexao){
+
+			$sql = "UPDATE tb_admin SET nome_imagem = '$this->nome_imagem', tamanho_imagem = '$this->tamanho_imagem', tipo_imagem = '$this->tipo_imagem', imagem = '$this->imagem' WHERE idtb_admin = $this->id";
+			
+			try {
+				$conexao->query($sql);
+				echo "Foi";
+
+			} catch (Exception $ex) {
+				$ex->getMessage();
+			}			
+
+
+
+			}
+
 
 
 
