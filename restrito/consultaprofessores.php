@@ -15,7 +15,7 @@
     <div class="container-fluid">
      
       <!-- DataTales Example -->
-      <div class="card shadow mb-4">
+      <div class="card shadow mb-4" id="table-content">
         <div class="card-header py-3">
           <h6 class="m-0 font-weight-bold text-primary"><img src="../images/icon/logo (2).png" width="40px" height="40px">Professores Cadastrados No Sistema</h6>
 
@@ -23,7 +23,7 @@
         <div class="card-body tb-restrito">
          
           <div class="table-responsive ">
-             <button class="btn btn-success" style="float:left;margin-right: 50%;" onclick="document.print();"><i class="fas fa-print"></i></button>
+             <button class="btn btn-success" style="float:left;margin-right: 50%;" onclick="Imprimir();"><i class="fas fa-print"></i></button>
             <table id="example1" class="table  table-striped ">
                   <thead>
                     <th>#</th>
@@ -186,6 +186,21 @@
       "autoWidth": false
     });
   });
+
+  function Imprimir() {
+    //Get the HTML of div
+            var divElements = document.getElementById('table-content').innerHTML;
+            //Get the HTML of whole page
+            var oldPage = document.body.innerHTML;
+
+           
+
+            //Print Page
+            window.print();
+
+            //Restore orignal HTML
+            document.body.innerHTML = oldPage;
+  }
 </script>
 </body>
 

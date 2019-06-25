@@ -60,8 +60,8 @@
               <div class="col-lg-6 conteudo">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4  mb-4 text-primary">Bem Vindo Admnistrador!</h1>
-                    <img src="../images/icon/manager.png" height="150px" width="150px">
+                    <h1 class="h4 text-primary">Bem Vindo Administrador!</h1>
+                    <img src="../images/icon/manager.png" height="100px" width="100px">
                     <br><br>
                   </div>
                   <form class="user" action="../validaloginadmin.php" method="POST">
@@ -74,12 +74,17 @@
                    
                     <button type="submit" class="btn btn-primary btn-user btn-block">
                       Login
-                    </button>
+                    </button><br>
+                    <a href="../index.php"><button type="button" class="btn btn-danger btn-user btn-block">
+                      Voltar
+                    </button></a>
                   </form>
                   <hr>
                   <div class="text-center">
                     
-                    <small class="text-success">Developed by Rocha's Dev</small>
+                    <small class="text-success">Developed by Rocha's Dev</small><br>
+
+                    
                   </div>
                 </div>
               </div>

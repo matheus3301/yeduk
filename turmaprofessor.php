@@ -56,12 +56,6 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
   }
 
 
-
-
-
-
-
-
 </style>
 
 
@@ -82,7 +76,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
        
        if ($turma->getImagem() != null) {
-        echo '<img class="img-turma" src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'"/>';
+        echo '<img class="img-turma mr-1" src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'"/>';
 
 
 
@@ -1143,7 +1137,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
 
               if ($turma->getImagem() != null) {
-                echo '<img id="output" class="img-turma" src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'"/>';
+                echo '<img id="output" class="img-turma-setting "style="margin-right:4%;" src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'"/>';
 
 
 
@@ -1325,7 +1319,7 @@ function editarText() {
     FechaTodoChat(id);
 
     $("#chat"+id).slideDown(100);
-    
+
 
   });
  }
