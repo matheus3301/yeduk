@@ -48,7 +48,7 @@ $admin->CapturarAdmin($conexao);
 
 <!-- Ionicons -->
 <!-- DataTables -->
-<link rel="stylesheet" href="css/dataTables.bootstrap.css">
+
 <!-- Theme style -->
 
     <!-- AdminLTE Skins. Choose a skin from the css/skins

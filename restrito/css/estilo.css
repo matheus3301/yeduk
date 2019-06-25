@@ -2,6 +2,9 @@
 	background: linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%);
 	color: rgba(0,0,0,.4);
 }
+.i{
+  display: none;
+}
 input{
 	background-color:transparent;
 	border:none;
@@ -31,6 +34,9 @@ select{
 	opacity: .4;
 	color:#009afa;
 }
+.lbls{
+	margin-left:6%;
+}
 .previous{
 	font-size: 1em;
 	color:#009afa;
@@ -44,9 +50,60 @@ select{
 	font-size: 1em;
 	color:#009afa;
 	font-weight: bold;
+	margin-left:  3%;
 }
 .next:hover{
 	opacity: .4;
 	color:#009afa;
+}
+@media print {
+.nav{
+	display:none;
+}
+.table-responsive{
+	top:5%;
+}
+body{
+	color: #fff;
+}
+@page{
+	margin:5%;
+}
+  input{
+	display: none;
+}
+.tb-restrito{
+	height:50%;
+}
+
+select{
+	display: none;
+}
+.img-yeduk{
+	display: none;
+}
+.current{
+	display: none;
+}
+
+.previous{
+	display: none;
+}
+
+.next{
+	display: none;
+}
+#foto{
+	display: none;
+}
+.btn-success{
+	display: none;
+}
+label{
+display: none;
+}
+
+
+
 }
 

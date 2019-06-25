@@ -238,6 +238,7 @@ th{
   border:3px solid #009afa;
   border-radius: 100%;
   object-fit: cover;
+
 }
 .box-coment{
   overflow: hidden;
@@ -347,22 +348,21 @@ th{
     height:100%;
     top:12%;
     right: 0 !important;
-    z-index:11;
+    z-index:100;
   }
-  .messages{
-    height: 360px;
-  }
+
+  
   .foto-perfil{
     margin-right: 10px;
   }
-  #output{
-    margin-right:5px;
+  .img-turma-setting{
+    margin-right:3%;
   }
   .btn-file{
-    margin-left: 8%;
+    margin-left: 9%;
   }
   .btn-salvar{
-    margin-left: 8%;
+    margin-left: 12%;
   }
 }
 @media only screen and (min-width: 360px) {
@@ -373,9 +373,7 @@ th{
     right: 0 !important;
     z-index:11;
   }
-  .messages{
-    height: 430px;
-  }
+  
   .foto-perfil{
     margin-left: 4%;
   }
@@ -400,9 +398,7 @@ th{
     right: 0 !important;
     z-index:11;
   }
-  .messages{
-    height: 440px;
-  }
+  
   .foto-perfil{
     margin-left: 6%;
   }
@@ -415,6 +411,7 @@ th{
   .btn-salvar{
     margin-left: 15%;
   }
+  
 }
 @media only screen and (min-width: 411px) {
    .direct-chat{
@@ -424,9 +421,7 @@ th{
     right: 0 !important;
     z-index:11;
   }
-  .messages{
-    height: 500px;
-  }
+  
   .foto-perfil{
     margin-left: 10%;
   }
@@ -439,6 +434,7 @@ th{
   .btn-salvar{
     margin-left: 20%;
   }
+  
 }
 @media only screen and (min-width: 768px) {
    .direct-chat{
@@ -448,9 +444,7 @@ th{
     right: 0 !important;
     z-index:11;
   }
-  .messages{
-    height: 750px;
-  }
+  
   .foto-perfil{
     margin-left:0 ;
   }
@@ -463,6 +457,7 @@ th{
   .btn-salvar{
     margin-left: 110px;
   }
+  
 }
 @media screen and (min-width: 1024px) {
   .direct-chat{

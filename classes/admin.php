@@ -109,22 +109,19 @@ class Admin{
 			$this->email = $return[2];
 		}
 	}
+	public function Alterar($conexao){
+		 	$sql = "UPDATE tb_admin SET nome = '$this->nome', email = '$this->email' WHERE  idtb_admin = $this->id";
 
-		public function AlterarFoto($conexao){
+		 	
 
-			$sql = "UPDATE tb_admin SET nome_imagem = '$this->nome_imagem', tamanho_imagem = '$this->tamanho_imagem', tipo_imagem = '$this->tipo_imagem', imagem = '$this->imagem' WHERE idtb_admin = $this->id";
-			
-			try {
+		 	try {
 				$conexao->query($sql);
 				echo "Foi";
 
 			} catch (Exception $ex) {
 				$ex->getMessage();
-			}			
-
-
-
 			}
+		}
 
 
 
