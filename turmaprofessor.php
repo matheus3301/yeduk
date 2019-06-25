@@ -45,15 +45,15 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
 <style type="text/css">
 
-  .img-post{
-    width: 100%;
-    border-radius: 30px;
+.img-post{
+  width: 100%;
+  border-radius: 30px;
 
-  }
+}
 
-  .sumido{
-    display: none;
-  }
+.sumido{
+  display: none;
+}
 
 
 
@@ -124,7 +124,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
          <li class="nav-item">
           <a class="nav-link" id="global-tab" data-toggle="tab" href="#global" role="tab" aria-controls="global" aria-selected="false">Chat Global</a>
         </li>
-         <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Eventos</a>
         </li>
         <li class="nav-item">
@@ -133,7 +133,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
         <li class="nav-item">
           <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Configurações</a>
         </li>
-      
+
 
 
       </ul>
@@ -518,98 +518,146 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 </div>
 </div>
 </div>
-  <div class="tab-pane" id="global" role="tabpanel" aria-labelledby="global-tab">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="box box-primary chat-global">
-      <div class="box-header with-border">
-        <h3 class="box-title"> <?php 
+<div class="tab-pane" id="global" role="tabpanel" aria-labelledby="global-tab">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary chat-global">
+        <div class="box-header with-border">
+          <h3 class="box-title"> <?php 
 
 
-              if ($turma->getImagem() != null) {
-                echo '<img  class="img-pequena" src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'"/>';
-
-
-
-              }else{
-                ?>
-                <img src="images/icon/man.png"  id="output" width="300px" height="300px"><br><br>
-                <?php 
-              }
+          if ($turma->getImagem() != null) {
+            echo '<img  class="img-pequena" src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'"/>';
 
 
 
-              ?>  <?php echo $turma->getNome(); ?></h3>
-        <div class="box-tools pull-right">
-
-         
-
-        </div>
-      </div><!-- /.box-header -->
-      <div class="box-body">
-        <!-- Conversations are loaded here -->
-        <div class="direct-chat-messages messages">
-          <!-- Message. Default to the left -->
-          <div class="direct-chat-msg text-right">
-            <div class="direct-chat-info clearfix">
-
-             
-            </div><!-- /.direct-chat-info -->
-           
-            <!-- /.direct-chat-img -->
-            <div class="direct-chat-text text-left" style="position: relative; right:7%; width:80%;">
-              <h6 class="text-primary">Nome Aluno</h6>
-              Bom dia!
-               <small class="" style="float: right;" >23 Jan 2:00 pm</small>
-            </div><!-- /.direct-chat-text -->
-          </div><!-- /.direct-chat-msg -->
-
-          <!-- Message to the right -->
-          <div class="direct-chat-msg right">
-            <div class="direct-chat-info clearfix">
-
-             
-            </div><!-- /.direct-chat-info -->
-            <?php 
-            if ($professor->getImagem() != null) {
-             ?>
-             <img src="mostra_imagem.php"  class="img-circle img-pequena-chat direct-chat-img">
-             <?php 
-
-
-
-           }else{
+          }else{
             ?>
-            <img src="images/icon/man.png"   class="img-circle img-pequena">
+            <img src="images/icon/man.png"  id="output" width="300px" height="300px"><br><br>
             <?php 
           }
-          ?> 
-          <div class="direct-chat-text text-right text-white" style="border:none; float:right;  background:linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%); width:50%;">
-            Bom dia!<br>
-             <small  style="float:right;">23 Jan 2:00 pm</small>
-          </div><!-- /.direct-chat-text -->
-        </div><!-- /.direct-chat-msg -->
-      </div><!--/.direct-chat-messages-->
+
+
+
+          ?>  <?php echo $turma->getNome(); ?></h3>
+          <div class="box-tools pull-right">
+
+
+
+          </div>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+
+          <script type="text/javascript">
+            var resposta = null;
+
+
+            function AtualizaChatGlobal(){
+              var req = new XMLHttpRequest();
+
+              req.open('GET', 'chat/chat_global_professor.php?idTurma=<?php echo $turma->getId(); ?>', true);
+              req.send();
+
+              req.onreadystatechange = function(){
+                if (req.readyState == 4 && req.status == 200) {
+              //alert("Rodando");
+
+
+
+
+              if (resposta != req.responseText) {
+
+                audio.play();
+                resposta = req.responseText;
+
+
+
+                document.getElementById('chatGlobal').innerHTML = req.responseText;
+                $('#chatGlobal').scrollTop($('#chatGlobal')[0].scrollHeight);
+              }
+
+            }
+          }
+
+          
+        }
+
+        //LOOP PARA ATUALIZAR A DIV 
+        setInterval(function(){AtualizaChatGlobal();}, 750);
+      </script>
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- Conversations are loaded here -->
+      <div class="direct-chat-messages messages" id="chatGlobal"></div><!--/.direct-chat-messages-->
 
       <!-- Contacts are loaded here -->
-  </div><!-- /.box-body -->
-  <div class="box-footer">
-    <form action="#" method="post">
+    </div><!-- /.box-body -->
+    <div class="box-footer">
+
       <div class="input-group">
-        <input type="text" name="message" placeholder="Type Message ..." class="form-control msg">
+        <input type="text" name="mensagemGlobal" id="mensagemGlobal" placeholder="Digite aqui..." class="form-control msg">
         <span class="input-group-btn">
-          <button type="submit" class="btn-circle-chat mt-2" id="enviaDdos"><i class="fa fa-paper-plane fa-x text-white ml-10"></i></button>
+          <button type="button" class="btn-circle-chat mt-2" id="enviaGlobal"><i class="fa fa-paper-plane fa-x text-white ml-10"></i></button>
         </span>
       </div>
-    </form>
 
-  </div><!-- /.box-footer-->
+
+      <!-- ENVIA MENSAGEM INICIO -->
+      <script>
+       $("#enviaGlobal").click(function(){
+        if ($("input[name='mensagemGlobal']").val() != "") {
+         $.ajax({
+           dataType:'html',
+           url:"chat/professor_envia_global.php",
+           type:"POST",
+           data:({mensagem:$("input[name='mensagemGlobal']").val(),idTurma: <?php  echo $turma->getId(); ?>}),
+
+           beforeSend: function(data){ 
+            console.log("Mandou mensagem");
+
+
+            $("#mensagemGlobal").val("");
+
+
+          }, success:function(data){
+
+
+
+          }, complete: function(data){}
+
+
+        });
+       }
+
+
+
+
+
+     });
+   </script>
+
+
+   <!-- ENVIA MENSAGEM FIM -->
+
+
+
+ </div><!-- /.box-footer-->
 </div>
-              
-              
-            </div>
-          </div>
-        </div>
+
+
+</div>
+</div>
+</div>
 
 
 <div class="tab-pane"id="questoes" role="tabpanel" aria-labelledby="questoes-tab">
@@ -788,65 +836,65 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
   <h4>Alunos da Turma</h4>
 
   <audio id="audio">
-    
+
     <source src="chat/toque-sms.mp3" type="audio/mpeg">
-    Seu navegador não possui suporte ao elemento audio
-</audio>
+      Seu navegador não possui suporte ao elemento audio
+    </audio>
 
 
 
-  <?php 
+    <?php 
 
-  if ($alunosCadastrados != null) {
-   foreach ($alunosCadastrados as $alunoAtual) { ?>
-    
-
-    <div class="box box-primary direct-chat box-chat direct-chat-primary sumido" id="chat<?php echo $alunoAtual[2]; ?>" >
-      <div class="box-header with-border">
-        <h3 class="box-title"><?php echo $alunoAtual[0]; ?></h3><span data-toggle="tooltip" title="3 New Messages" class="badge bg-light-blue">3</span>
-        <div class="box-tools pull-right">
-
-          <i class="fas fa-times-circle text-primary" id="fecharChat<?php echo $alunoAtual[2]; ?>" onclick="FechaChat(<?php echo $alunoAtual[2]; ?>);"></i>
-
-        </div>
-      </div><!-- /.box-header -->
+    if ($alunosCadastrados != null) {
+     foreach ($alunosCadastrados as $alunoAtual) { ?>
 
 
+      <div class="box box-primary direct-chat box-chat direct-chat-primary sumido" id="chat<?php echo $alunoAtual[2]; ?>" >
+        <div class="box-header with-border">
+          <h3 class="box-title"><?php echo $alunoAtual[0]; ?></h3><span data-toggle="tooltip" title="3 New Messages" class="badge bg-light-blue">3</span>
+          <div class="box-tools pull-right">
+
+            <i class="fas fa-times-circle text-primary" id="fecharChat<?php echo $alunoAtual[2]; ?>" onclick="FechaChat(<?php echo $alunoAtual[2]; ?>);"></i>
+
+          </div>
+        </div><!-- /.box-header -->
 
 
 
 
 
-      <!-- COMEÇA O ATUALIZADOR DE CHAT  _-->
-
-      <script type="text/javascript">
-        var resposta<?php echo $alunoAtual[2]; ?> = null;
 
 
-        function AtualizaChat<?php echo $alunoAtual[2]; ?>(){
-          var req = new XMLHttpRequest();
+        <!-- COMEÇA O ATUALIZADOR DE CHAT  _-->
 
-          req.open('GET', 'chat/chat_professor_aluno.php?idAluno=<?php echo $alunoAtual[2]; ?>', true);
-          req.send();
+        <script type="text/javascript">
+          var resposta<?php echo $alunoAtual[2]; ?> = null;
 
-          req.onreadystatechange = function(){
-            if (req.readyState == 4 && req.status == 200) {
-              if (resposta<?php echo $alunoAtual[2]; ?> != req.responseText) {
+
+          function AtualizaChat<?php echo $alunoAtual[2]; ?>(){
+            var req = new XMLHttpRequest();
+
+            req.open('GET', 'chat/chat_professor_aluno.php?idAluno=<?php echo $alunoAtual[2]; ?>', true);
+            req.send();
+
+            req.onreadystatechange = function(){
+              if (req.readyState == 4 && req.status == 200) {
+                if (resposta<?php echo $alunoAtual[2]; ?> != req.responseText) {
                   audio.play();
                   resposta<?php echo $alunoAtual[2]; ?> = req.responseText;
 
                   //alert(req.responseText);
                   //alert(document.getElementById('chatContent<?php echo $alunoAtual[2]; ?>').innerHTML);
 
-                 document.getElementById('chatContent<?php echo $alunoAtual[2]; ?>').innerHTML = req.responseText;
-                 $('#chatContent<?php echo $alunoAtual[2]; ?>').scrollTop($('#chatContent<?php echo $alunoAtual[2]; ?>')[0].scrollHeight);
-              }
-             
-            }
-          }
+                  document.getElementById('chatContent<?php echo $alunoAtual[2]; ?>').innerHTML = req.responseText;
+                  $('#chatContent<?php echo $alunoAtual[2]; ?>').scrollTop($('#chatContent<?php echo $alunoAtual[2]; ?>')[0].scrollHeight);
+                }
 
-          
-        }
+              }
+            }
+
+
+          }
 
         //LOOP PARA ATUALIZAR A DIV 
         setInterval(function(){AtualizaChat<?php echo $alunoAtual[2]; ?>();}, 750);
@@ -892,13 +940,13 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
       </div><!-- /.direct-chat-pane -->
     </div><!-- /.box-body -->
     <div class="box-footer">
-      
-        <div class="input-group">
-          <input type="text" name="mensagem<?php echo $alunoAtual[2]; ?>"  id="mensagem<?php echo $alunoAtual[2]; ?>"  placeholder="Digite aqui ..." class="form-control msg">
-          <span class="input-group-btn">
-            <button type="button" class="btn-circle-chat mt-2" id="enviar<?php echo $alunoAtual[2]; ?>"><i class="fa fa-paper-plane fa-x text-white ml-10"></i></button>
-          </span>
-        </div>
+
+      <div class="input-group">
+        <input type="text" name="mensagem<?php echo $alunoAtual[2]; ?>"  id="mensagem<?php echo $alunoAtual[2]; ?>"  placeholder="Digite aqui ..." class="form-control msg">
+        <span class="input-group-btn">
+          <button type="button" class="btn-circle-chat mt-2" id="enviar<?php echo $alunoAtual[2]; ?>"><i class="fa fa-paper-plane fa-x text-white ml-10"></i></button>
+        </span>
+      </div>
       
 
 
@@ -906,46 +954,46 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
       <script>
        $("#enviar<?php echo $alunoAtual[2]; ?>").click(function(){
         if ($("input[name='mensagem<?php echo $alunoAtual[2]; ?>']").val() != "") {
-           $.ajax({
+         $.ajax({
            dataType:'html',
            url:"chat/professor_envia_aluno.php",
            type:"POST",
            data:({mensagem:$("input[name='mensagem<?php echo $alunoAtual[2]; ?>']").val(),idAluno: <?php  echo $alunoAtual[2]; ?>}),
 
            beforeSend: function(data){ 
-              console.log("Mandou mensagem");
+            console.log("Mandou mensagem");
 
 
-              $("#mensagem<?php echo $alunoAtual[2]; ?>").val("");
+            $("#mensagem<?php echo $alunoAtual[2]; ?>").val("");
 
 
-           }, success:function(data){
-            
-            
+          }, success:function(data){
+
+
 
           }, complete: function(data){}
 
 
         });
-        }
+       }
 
 
 
 
-        
-       });
-     </script>
+
+     });
+   </script>
 
 
-     <!-- ENVIA MENSAGEM FIM -->
+   <!-- ENVIA MENSAGEM FIM -->
 
 
 
 
-   </div><!-- /.box-footer-->
- </div>
+ </div><!-- /.box-footer-->
+</div>
 
- <div class="col-lg-12 bg-white p-4 rounded shadow my-3">
+<div class="col-lg-12 bg-white p-4 rounded shadow my-3">
   <div class="media align-items-center flex-column flex-sm-row">
     <?php 
     if ($alunoAtual[3] != null) { ?>

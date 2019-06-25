@@ -37,20 +37,20 @@ $professor->CapturarProfessor($conexao);
 
 
 <style type="text/css">
-  .img-post{
-    width: 100%;
-    border-radius: 30px;
+.img-post{
+  width: 100%;
+  border-radius: 30px;
 
-  }
+}
 
-  .certo{
-    color: #00FF7F;
-  }
+.certo{
+  color: #00FF7F;
+}
 
-  .errado{
-    color:  #B22222;
+.errado{
+  color:  #B22222;
 
-  }
+}
 </style>
 <section class="page-title page-title-overlay bg-cover" data-background="images/background/about.jpg">
   <div class="container">
@@ -61,32 +61,32 @@ $professor->CapturarProfessor($conexao);
         <p class="text-white pt-4 pb-4"><?php echo($turma->getDescricao()); ?></p>
         <h5 class="text-white">Professor: <?php echo $professor->getNome(); ?> 
         <button class="btn btn-circle msges" id="chamaChat" onclick="ChamaChat();"><i class="fas fa-comments comment-icon fa2x" ></i>
-        <span class="badge badge-danger badge-counter">4</span></button></h5>
-
-      </div>
-
-
-      <audio id="audio">
-    
-        <source src="chat/toque-sms.mp3" type="audio/mpeg">
-        Seu navegador não possui suporte ao elemento audio
-    </audio>
-  
-
-      <!-- COMEÇA CAIXA CHAT -->
-
-
-
-
-      <div class="box box-primary direct-chat box-chat direct-chat-primary sumido" id="chat" >
-      <div class="box-header with-border">
-        <h3 class="box-title"><?php echo $professor->getNome(); ?></h3><span data-toggle="tooltip" title="3 New Messages" class="badge bg-light-blue">3</span>
-        <div class="box-tools pull-right">
-
-          <i class="fas fa-times-circle text-primary" id="fecharChat" onclick="FechaChat();"></i>
+          <span class="badge badge-danger badge-counter">4</span></button></h5>
 
         </div>
-      </div><!-- /.box-header -->
+
+
+        <audio id="audio">
+
+          <source src="chat/toque-sms.mp3" type="audio/mpeg">
+            Seu navegador não possui suporte ao elemento audio
+          </audio>
+
+
+          <!-- COMEÇA CAIXA CHAT -->
+
+
+
+
+          <div class="box box-primary direct-chat box-chat direct-chat-primary sumido" id="chat" >
+            <div class="box-header with-border">
+              <h3 class="box-title"><?php echo $professor->getNome(); ?></h3><span data-toggle="tooltip" title="3 New Messages" class="badge bg-light-blue">3</span>
+              <div class="box-tools pull-right">
+
+                <i class="fas fa-times-circle text-primary" id="fecharChat" onclick="FechaChat();"></i>
+
+              </div>
+            </div><!-- /.box-header -->
 
 
 
@@ -94,20 +94,20 @@ $professor->CapturarProfessor($conexao);
 
 
 
-      <!-- COMEÇA O ATUALIZADOR DE CHAT  _-->
+            <!-- COMEÇA O ATUALIZADOR DE CHAT  _-->
 
-      <script type="text/javascript">
-        var resposta = null;
+            <script type="text/javascript">
+              var resposta = null;
 
 
-        function AtualizaChat(){
-          var req = new XMLHttpRequest();
+              function AtualizaChat(){
+                var req = new XMLHttpRequest();
 
-          req.open('GET', 'chat/chat_aluno_professor.php?idProf=<?php echo $professor->getId(); ?>', true);
-          req.send();
+                req.open('GET', 'chat/chat_aluno_professor.php?idProf=<?php echo $professor->getId(); ?>', true);
+                req.send();
 
-          req.onreadystatechange = function(){
-            if (req.readyState == 4 && req.status == 200) {
+                req.onreadystatechange = function(){
+                  if (req.readyState == 4 && req.status == 200) {
               //alert("Rodando");
 
 
@@ -115,15 +115,15 @@ $professor->CapturarProfessor($conexao);
 
               if (resposta != req.responseText) {
 
-                  audio.play();
-                  resposta = req.responseText;
+                audio.play();
+                resposta = req.responseText;
 
-                 
 
-                 document.getElementById('chatContent').innerHTML = req.responseText;
-                 $('#chatContent').scrollTop($('#chatContent')[0].scrollHeight);
+
+                document.getElementById('chatContent').innerHTML = req.responseText;
+                $('#chatContent').scrollTop($('#chatContent')[0].scrollHeight);
               }
-             
+
             }
           }
 
@@ -174,13 +174,13 @@ $professor->CapturarProfessor($conexao);
       </div><!-- /.direct-chat-pane -->
     </div><!-- /.box-body -->
     <div class="box-footer">
-      
-        <div class="input-group">
-          <input type="text" name="mensagem"  id="mensagem"  placeholder="Digite aqui ..." class="form-control msg">
-          <span class="input-group-btn">
-            <button type="button" class="btn-circle-chat mt-2" id="enviar"><i class="fa fa-paper-plane fa-x text-white ml-10"></i></button>
-          </span>
-        </div>
+
+      <div class="input-group">
+        <input type="text" name="mensagem"  id="mensagem"  placeholder="Digite aqui ..." class="form-control msg">
+        <span class="input-group-btn">
+          <button type="button" class="btn-circle-chat mt-2" id="enviar"><i class="fa fa-paper-plane fa-x text-white ml-10"></i></button>
+        </span>
+      </div>
       
 
 
@@ -188,43 +188,43 @@ $professor->CapturarProfessor($conexao);
       <script>
        $("#enviar").click(function(){
         if ($("input[name='mensagem']").val() != "") {
-           $.ajax({
+         $.ajax({
            dataType:'html',
            url:"chat/aluno_envia_professor.php",
            type:"POST",
            data:({mensagem:$("input[name='mensagem']").val(),idProf: <?php  echo $professor->getId(); ?>}),
 
            beforeSend: function(data){ 
-              console.log("Mandou mensagem");
+            console.log("Mandou mensagem");
 
 
-              $("#mensagem").val("");
+            $("#mensagem").val("");
 
 
-           }, success:function(data){
-            
-            
+          }, success:function(data){
+
+
 
           }, complete: function(data){}
 
 
         });
-        }
+       }
 
 
 
 
-        
-       });
-     </script>
+
+     });
+   </script>
 
 
-     <!-- ENVIA MENSAGEM FIM -->
+   <!-- ENVIA MENSAGEM FIM -->
 
 
 
 
-   </div><!-- /.box-footer-->
+ </div><!-- /.box-footer-->
 </div>
 
 <!-- TERMINA CAIXA CHAT -->
@@ -232,27 +232,27 @@ $professor->CapturarProfessor($conexao);
 
 
 
-      <div class="col-md-4 m-auto ">
+<div class="col-md-4 m-auto ">
 
 
-       <?php 
-
-       
-       if ($turma->getImagem() != null) {
-        echo '<img class="img-turma" src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'"/>';
+ <?php 
 
 
-
-      }else{
-        ?>
-        <img src="images/icon/man.png"   width="300px" height="300px"><br><br>
-        <?php 
-      }
-      ?>
-    </div>
+ if ($turma->getImagem() != null) {
+  echo '<img class="img-turma" src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'"/>';
 
 
-  </div>
+
+}else{
+  ?>
+  <img src="images/icon/man.png"   width="300px" height="300px"><br><br>
+  <?php 
+}
+?>
+</div>
+
+
+</div>
 
 </div>
 </section>
@@ -282,8 +282,8 @@ $professor->CapturarProfessor($conexao);
             <a class="nav-link" id="questoes-tab" data-toggle="tab" href="#questoes" role="tab" aria-controls="questoes" aria-selected="false">Questões</a>
           </li>
           <li class="nav-item">
-          <a class="nav-link" id="global-tab" data-toggle="tab" href="#global" role="tab" aria-controls="global" aria-selected="false">Chat Global</a>
-        </li>
+            <a class="nav-link" id="global-tab" data-toggle="tab" href="#global" role="tab" aria-controls="global" aria-selected="false">Chat Global</a>
+          </li>
           
           
 
@@ -842,97 +842,144 @@ $professor->CapturarProfessor($conexao);
 </div>
 
 <div class="tab-pane" id="global" role="tabpanel" aria-labelledby="global-tab">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="box box-primary chat-global">
-      <div class="box-header with-border">
-        <h3 class="box-title"> <?php 
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary chat-global">
+        <div class="box-header with-border">
+          <h3 class="box-title"> <?php 
 
 
-              if ($turma->getImagem() != null) {
-                echo '<img  class="img-pequena" src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'"/>';
-
-
-
-              }else{
-                ?>
-                <img src="images/icon/man.png"  id="output" width="300px" height="300px"><br><br>
-                <?php 
-              }
+          if ($turma->getImagem() != null) {
+            echo '<img  class="img-pequena" src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'"/>';
 
 
 
-              ?>  <?php echo $turma->getNome(); ?></h3>
-        <div class="box-tools pull-right">
-
-         
-
-        </div>
-      </div><!-- /.box-header -->
-      <div class="box-body">
-        <!-- Conversations are loaded here -->
-        <div class="direct-chat-messages messages">
-          <!-- Message. Default to the left -->
-          <div class="direct-chat-msg text-right">
-            <div class="direct-chat-info clearfix">
-
-             
-            </div><!-- /.direct-chat-info -->
-           
-            <!-- /.direct-chat-img -->
-            <div class="direct-chat-text text-left" style="position: relative; right:7%; width:80%;">
-              <h6 class="text-primary">Nome Aluno/Professor</h6>
-              Bom dia!
-               <small class="" style="float: right;" >23 Jan 2:00 pm</small>
-            </div><!-- /.direct-chat-text -->
-          </div><!-- /.direct-chat-msg -->
-
-          <!-- Message to the right -->
-          <div class="direct-chat-msg right">
-            <div class="direct-chat-info clearfix">
-
-             
-            </div><!-- /.direct-chat-info -->
-            <?php 
-            if ($aluno->getImagem() != null) {
-             ?>
-             <img src="mostra_imagem_aluno.php"  class="img-circle img-pequena-chat direct-chat-img">
-             <?php 
-
-
-
-           }else{
+          }else{
             ?>
-            <img src="images/icon/man.png"   class="img-circle img-pequena">
+            <img src="images/icon/man.png"  id="output" width="300px" height="300px"><br><br>
             <?php 
           }
-          ?> 
-          <div class="direct-chat-text text-right text-white" style="border:none; float:right;  background:linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%); width:50%;">
-            Bom dia!<br>
-             <small  style="float:right;">23 Jan 2:00 pm</small>
-          </div><!-- /.direct-chat-text -->
-        </div><!-- /.direct-chat-msg -->
-      </div><!--/.direct-chat-messages-->
+
+
+
+          ?>  <?php echo $turma->getNome(); ?></h3>
+          <div class="box-tools pull-right">
+
+
+
+          </div>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+
+          <script type="text/javascript">
+            var respostaGlobal = null;
+
+
+            function AtualizaChatGlobal(){
+              var req = new XMLHttpRequest();
+
+              req.open('GET', 'chat/chat_global_aluno.php?idTurma=<?php echo $turma->getId(); ?>', true);
+              req.send();
+
+              req.onreadystatechange = function(){
+                if (req.readyState == 4 && req.status == 200) {
+                  if (respostaGlobal != req.responseText) {
+
+                    
+
+                    
+                    respostaGlobal = req.responseText;
+
+
+
+                    document.getElementById('chatGlobal').innerHTML = req.responseText;
+                    $('#chatGlobal').scrollTop($('#chatGlobal')[0].scrollHeight);
+
+                    audio.play();
+                  }
+
+            }
+          }
+
+          
+        }
+
+        //LOOP PARA ATUALIZAR A DIV 
+        setInterval(function(){AtualizaChatGlobal();}, 750);
+      </script>
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- Conversations are loaded here -->
+      <div class="direct-chat-messages messages" id="chatGlobal"></div><!--/.direct-chat-messages-->
 
       <!-- Contacts are loaded here -->
-  </div><!-- /.box-body -->
-  <div class="box-footer">
-    <form action="#" method="post">
+    </div><!-- /.box-body -->
+    <div class="box-footer">
+
       <div class="input-group">
-        <input type="text" name="message" placeholder="Type Message ..." class="form-control msg">
+        <input type="text" name="mensagemGlobal" id="mensagemGlobal" placeholder="Digite aqui..." class="form-control msg">
         <span class="input-group-btn">
-          <button type="submit" class="btn-circle-chat mt-2" id="enviaDdos"><i class="fa fa-paper-plane fa-x text-white ml-10"></i></button>
+          <button type="button" class="btn-circle-chat mt-2" id="enviaGlobal"><i class="fa fa-paper-plane fa-x text-white ml-10"></i></button>
         </span>
       </div>
-    </form>
 
-  </div><!-- /.box-footer-->
+
+      <!-- ENVIA MENSAGEM INICIO -->
+      <script>
+       $("#enviaGlobal").click(function(){
+        if ($("input[name='mensagemGlobal']").val() != "") {
+         $.ajax({
+           dataType:'html',
+           url:"chat/aluno_envia_global.php",
+           type:"POST",
+           data:({mensagem:$("input[name='mensagemGlobal']").val(),idTurma: <?php  echo $turma->getId(); ?>}),
+
+           beforeSend: function(data){ 
+            console.log("Mandou mensagem");
+
+
+            $("#mensagemGlobal").val("");
+
+
+          }, success:function(data){
+
+
+
+          }, complete: function(data){}
+
+
+        });
+       }
+
+
+
+
+
+     });
+   </script>
+
+
+   <!-- ENVIA MENSAGEM FIM -->
+
+
+
+ </div><!-- /.box-footer-->
 </div>
-              
-              
-            </div>
-          </div>
-        </div>
+
+
+</div>
+</div>
+</div>
 
 
 <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
@@ -1014,7 +1061,7 @@ $professor->CapturarProfessor($conexao);
   <div class="rounded-sm shadow bg-white pb-4">
     <div class="widget">
       <h4 class="text-success">Posts</h4>
-     
+
     </div>
     <div class="widget">
       <ul class=" text-success text-bold list-bordered" style="font-size: 1.2em;">
@@ -1090,15 +1137,15 @@ $( "#exibir" ).click(function() {
 });
 
 function ChamaChat() {
-   $("#chamaChat").click(function(){
-    $("#chat").show(100);
-  });
- }
- function FechaChat() {
-   $("#fecharChat").click(function(){
-    $("#chat").hide(100);
-  });
- }
+ $("#chamaChat").click(function(){
+  $("#chat").show(100);
+});
+}
+function FechaChat() {
+ $("#fecharChat").click(function(){
+  $("#chat").hide(100);
+});
+}
 
 
 
