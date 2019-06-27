@@ -1357,7 +1357,7 @@ small{
 <div class="col-lg-4">
   <div class="rounded-sm shadow bg-white pb-4">
     <div class="widget">
-      <h4 class="text-success">Postagens</h4>
+      <h4 class="text-dark">Postagens</h4>
 
     </div>
     <div class="widget">

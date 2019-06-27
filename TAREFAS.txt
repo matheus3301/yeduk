@@ -13,7 +13,7 @@
 	-(X) CONSERTAR BOTÃO POST
 
 	-( ) COMPRIMIR IMAGENS[foto aluno, foto professor, foto turma, foto post, foto questão]
-	-( ) MASCARA CPF ALTERAR PROFESSOR
+	-(X) MASCARA CPF ALTERAR PROFESSOR
 
 	-( ) NOTIFICAÇÕES ALUNO
 	-( ) NOTIFICAÇÕES PROFESSOR
