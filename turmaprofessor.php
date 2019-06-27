@@ -703,13 +703,13 @@ small{
           }
 
           ?></td>
-          <td><a  class="btn btn-outline-primary text-dark text-center" data-toggle="modal" data-target='#evento<?php echo $eventoAtual[0]."alterar"; ?>'>Editar</a>
+          <td><a  class="btn btn-outline-primary text-dark text-center" data-toggle="modal" data-target='#questao<?php echo $questaoAtual[0]."alterar"; ?>'>Editar</a>
             <a  class="btn btn-outline-danger text-dark text-center" data-toggle="modal" data-target='#questao<?php echo $questaoAtual[0]."excluir"; ?>'>Excluir</a></td>
           </tr>
 
 
 
-
+          <!-- MODAL EXCLUIR QUESTÕES -->
           <div class="modal fade" id="questao<?php echo $questaoAtual[0]."excluir"; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
@@ -729,7 +729,9 @@ small{
             </div>
           </div>
         </div>
-        <div class="modal fade bd-example-modal-lg" id="evento<?php echo $eventoAtual[0].'alterar';?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+
+        <!-- MODAL EDITAR QUESTÕES -->
+        <div class="modal fade bd-example-modal-lg" id="questao<?php echo $questaoAtual[0].'alterar';?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <div class="modal-header">
@@ -740,14 +742,130 @@ small{
               </div>
               <div class="row">
                 <div class="col-md-12" style="padding:5%;">
-                 <form action="valida_alt/altera_evento.php?idTurma=<?php echo $turma->getId(); ?>&idE=<?php echo $eventoAtual[0]; ?>" method="POST">
-                  <label class="lbls text-center">Título</label>
-                  <input type="text" id="inpt" name="titulo" class="form-control" value="<?php echo $eventoAtual[1]; ?>" >
-                  <br>
-                  <label class="lbls text-center">Data</label>
-                  <input type="date" id="inpt" name="data" class="form-control" value="<?php echo $eventoAtual[2]; ?>" ><br><br>
-                  <button type="submit" class="btn btn-outline-primary">Alterar</button>
-                </form>
+                <form class="row" method="post" action="valida_alt/altera_questao.php?id=<?php echo $questaoAtual[0];?>&idT=<?php echo $turma->getId(); ?>">
+          <div class="col-lg-12">
+           <label for="exampleInputtext1" class=" lbls ">Enunciado:</label>
+
+           <textarea  class="form-control mb-4 inpts text-primary" name="enunciado" required=""><?php echo $questaoAtual[1]; ?>
+           </textarea>
+         </div>
+
+         <!---- ITEM 1 ----->
+         <div class="col-lg-12">
+          <div class="row">
+            <div class="col-sm-2">
+              <div class="custom-control custom-radio">
+                <input type="radio" <?php
+                 if($questaoAtual[8] == 1){
+                  echo 'checked';
+                 } 
+
+                 ?> id="customRadio1" name="itemCerto" class="custom-control-input" value="1" required="">
+                <label class="custom-control-label" for="customRadio1"></label>
+              </div>
+            </div>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="itemA" value="<?php echo $questaoAtual[3]; ?>" placeholder="Item A">
+            </div>
+          </div>
+        </div>
+        <!---- FIM ITEM 1 ----->
+
+
+
+        <!---- ITEM 2 ----->
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-sm-2">
+              <div class="custom-control custom-radio">
+                <input type="radio" <?php
+                 if($questaoAtual[8] == 2){
+                  echo 'checked';
+                 } 
+
+                 ?> id="customRadio2" name="itemCerto" class="custom-control-input" value="2" required="">
+                <label class="custom-control-label" for="customRadio2"></label>
+              </div>
+            </div>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="itemB" value="<?php echo $questaoAtual[4]; ?>" placeholder="Item B">
+            </div>
+          </div>
+        </div>
+        <!---- FIM ITEM 2 ----->
+
+        <!---- ITEM 3 ----->
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-sm-2">
+              <div class="custom-control custom-radio">
+                <input type="radio"  id="customRadio3" name="itemCerto" class="custom-control-input" value="3" required="" <?php
+                 if($questaoAtual[8] == 3){
+                  echo 'checked';
+                 } 
+
+                 ?>>
+                <label class="custom-control-label" for="customRadio3"></label>
+              </div>
+            </div>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" value="<?php echo $questaoAtual[5]; ?>" name="itemC" placeholder="Item C">
+            </div>
+          </div>
+        </div>
+        <!---- FIM ITEM 3 ----->
+
+
+        <!---- ITEM 4 ----->
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-sm-2">
+              <div class="custom-control custom-radio">
+                <input type="radio" <?php
+                 if($questaoAtual[8] == 4){
+                  echo 'checked';
+                 } 
+
+                 ?> id="customRadio4" name="itemCerto" class="custom-control-input" value="4" required="">
+                <label class="custom-control-label" for="customRadio4"></label>
+              </div>
+            </div>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="itemD" value="<?php echo $questaoAtual[6]; ?>" placeholder="Item D">
+            </div>
+          </div>
+        </div>
+        <!---- FIM ITEM 4 ----->
+
+        <!---- ITEM 5 ----->
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-sm-2">
+              <div class="custom-control custom-radio">
+                <input type="radio" <?php
+                 if($questaoAtual[8] == 5){
+                  echo 'checked';
+                 } 
+
+                 ?> id="customRadio5" name="itemCerto" class="custom-control-input" value="5" required="">
+                <label class="custom-control-label" for="customRadio5"></label>
+              </div>
+            </div>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" value="<?php echo $questaoAtual[7]; ?>" name="itemE" placeholder="Item E">
+            </div>
+          </div>
+        </div>
+        <!---- FIM ITEM 5 ----->
+
+
+
+        
+        <div class="col-12" style="margin-top: 10%">
+          <button type="submit" class="btn btn-block btn-outline-primary">Alterar</button>
+          <br><br>
+        </div>
+      </form>
               </div>
             </div>
           </div>

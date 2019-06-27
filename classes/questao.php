@@ -109,6 +109,18 @@ class Questao{
 				$ex->getMessage();
 			}
 	}
+	public function Alterar($conexao){
+		$sql = "UPDATE tb_questoes SET enunciado = '$this->enunciado', resposta = '$this->itemCerto', item1 = '$this->item1', item2 = '$this->item2', item3 = '$this->item3', item4 = '$this->item4', item5 = '$this->item5' WHERE idtb_questoes = $this->id";
+
+
+			try {
+				$conexao->query($sql);
+				echo "Foi";
+
+			} catch (Exception $ex) {
+				$ex->getMessage();
+			}
+	}
 
 }
 
