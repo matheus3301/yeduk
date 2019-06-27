@@ -8,9 +8,9 @@
 	-( ) UPLOAD FOTO QUESTÃO
 	-( ) GERAR PDF QUESTÕES
 
-	-( ) LISTAR POSTS [turma-col-direita]
-	-( ) CONSERTAR BOTÃO (+)
-	-( ) CONSERTAR BOTÃO POST
+	-(X) LISTAR POSTS [turma-col-direita]
+	-(X) CONSERTAR BOTÃO (+)
+	-(X) CONSERTAR BOTÃO POST
 
 	-( ) COMPRIMIR IMAGENS[foto aluno, foto professor, foto turma, foto post, foto questão]
 	-( ) MASCARA CPF ALTERAR PROFESSOR
@@ -25,7 +25,7 @@
 	-(X) TIRAR BOTÕES 'LEIA MAIS'[index.php]
 
 	-( ) REMOVER ALUNO DA TURMA
-	-( ) APAGAR POST COM COMENTÁRIOS AO MESMO TEMPO
+	-(X) APAGAR POST COM COMENTÁRIOS AO MESMO TEMPO
 	
 
 

@@ -513,7 +513,7 @@ $professor->CapturarProfessor($conexao);
 
                           </div><!-- /.comment-text -->
                         </div><!-- /.box-comment -->
-                        </section>
+                       
 
                         <?php 
 
@@ -719,7 +719,7 @@ $professor->CapturarProfessor($conexao);
 </div><!-- /.box-footer -->
 </div><!-- /.box -->
 
-
+ </section>
 
 
 

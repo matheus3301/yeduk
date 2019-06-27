@@ -404,7 +404,7 @@ small{
               <?php echo $comentarioAtual[1]; ?>
             </div><!-- /.comment-text -->
           </div><!-- /.box-comment -->
-          </section>
+          
 
           <?php 
 
@@ -415,7 +415,7 @@ small{
 
 
 
-
+        
         <?php 
       }
       ?>
@@ -463,7 +463,7 @@ small{
 </div><!-- /.box -->
 </div>
 
-
+</section>
 
 
 
