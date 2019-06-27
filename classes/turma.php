@@ -111,16 +111,39 @@ class Turma{
 	}
 
 	public function ConsultarTurma($conexao){
-			$sth = $conexao->prepare("SELECT * FROM tb_turma ORDER BY idtb_turma ASC");
-			$sth->execute();
+		$sth = $conexao->prepare("SELECT * FROM tb_turma ORDER BY idtb_turma ASC");
+		$sth->execute();
 
-			$result = $sth->fetchAll();
+		$result = $sth->fetchAll();
 
-			return $result;
+		return $result;
 
 
 		
-		}
+	}
+
+	public function ConsultarTurmaRelatorio($conexao){
+		$sth = $conexao->prepare("SELECT tb_turma.*, tb_professor.nome FROM tb_turma INNER JOIN tb_professor ON tb_professor.idtb_professor = tb_professor_idtb_professor ORDER BY idtb_turma ASC");
+		$sth->execute();
+
+		$result = $sth->fetchAll();
+
+		return $result;
+
+
+		
+	}
+
+
+	public function QuantidadeAlunos($conexao){
+
+		$sql = "SELECT count(tb_aluno_idtb_aluno) FROM tb_matricula WHERE tb_turma_idtb_turma = $this->id";
+
+		$query = $conexao->query($sql);
+
+		$return = $query->fetch();
+		return $return;
+	}	
 	
 	public function CapturarTurma($conexao){
 		$sql = "SELECT * FROM tb_turma WHERE idtb_turma = $this->id";

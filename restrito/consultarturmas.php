@@ -6,7 +6,7 @@
 
 
 
-  $turmas = $turma->ConsultarTurma($conexao);
+  $turmas = $turma->ConsultarTurmaRelatorio($conexao);
 
 
 
@@ -29,15 +29,27 @@
                     <th>#</th>
                     <th>FOTO</th>
                     <th>NOME</th>
+                    <th>PROFESSOR</th>
                     <th>DATA CRIAÇÃO</th>
                     <th>DESCRIÇÃO</th>
+                    <th>QTDE. ALUNOS</th>
 
                     
 
                   </thead>
                   <tbody>
                     <?php 
-                    foreach ($turmas as $turmaatual) { ?>
+                    foreach ($turmas as $turmaatual) { 
+                      $turmaOBJ = new Turma();
+
+                      $turmaOBJ->setId($turmaatual[0]);
+                      $qtd = $turmaOBJ->QuantidadeAlunos($conexao);
+
+
+
+                      ?>
+
+
 
 
                       <tr>
@@ -56,10 +68,12 @@
                         }
 
                         ?></td>
+
                         <td><?php echo $turmaatual[1]; ?></td>
+                        <td><?php echo $turmaatual[9]; ?></td>
                         <td><?php echo $turmaatual[2]; ?></td>
                         <td><?php echo $turmaatual[3]; ?></td>
-
+                        <td><?php echo $qtd[0]; ?></td>
                        
                         
                       </tr>
