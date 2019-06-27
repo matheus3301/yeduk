@@ -127,6 +127,19 @@ class Posts{
 	}
 	public function ExcluirPostagem($conexao)
 	{
+		$sql = "DELETE FROM tb_comentario WHERE tb_post_idtb_post = $this->id";
+
+
+		try {
+			$conexao->query($sql);
+			echo "Foi";
+
+		} catch (Exception $ex) {
+			$ex->getMessage();
+		}
+
+
+
 		$sql = "DELETE FROM tb_post WHERE idtb_post = $this->id";
 
 

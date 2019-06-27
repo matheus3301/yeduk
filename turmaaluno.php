@@ -61,7 +61,7 @@ $professor->CapturarProfessor($conexao);
         <p class="text-white pt-4 pb-4"><?php echo($turma->getDescricao()); ?></p>
         <h5 class="text-white">Professor: <?php echo $professor->getNome(); ?> 
         <button class="btn btn-circle msges" id="chamaChat" onclick="ChamaChat();"><i class="fas fa-comments comment-icon fa2x" ></i>
-          <span class="badge badge-danger badge-counter">4</span></button></h5>
+          </button></h5>
 
         </div>
 
@@ -336,7 +336,7 @@ $professor->CapturarProfessor($conexao);
                 foreach ($capturarPostagem as $posts) { 
 
                   ?>
-
+                  <section id="post<?php echo $posts[0] ?>">
                   <div class="col-md-12 ">
                     <!-- Box Comment -->
                     <div class="post bg-white">
@@ -513,7 +513,7 @@ $professor->CapturarProfessor($conexao);
 
                           </div><!-- /.comment-text -->
                         </div><!-- /.box-comment -->
-
+                       
 
                         <?php 
 
@@ -719,7 +719,7 @@ $professor->CapturarProfessor($conexao);
 </div><!-- /.box-footer -->
 </div><!-- /.box -->
 
-
+ </section>
 
 
 
@@ -1060,17 +1060,20 @@ $professor->CapturarProfessor($conexao);
 <div class="col-lg-4">
   <div class="rounded-sm shadow bg-white pb-4">
     <div class="widget">
-      <h4 class="text-success">Posts</h4>
+      <h4 class="text-dark">Posts</h4>
 
     </div>
     <div class="widget">
-      <ul class=" text-success text-bold list-bordered" style="font-size: 1.2em;">
-        <li class="online"><a class="text-color d-block py-3" href="blog-details.html">Aluno</a></li>
-        <li class="online"><a class="text-color d-block py-3" href="blog-details.html">Aluno</a></li>
-        <li class="online"><a class="text-color d-block py-3" href="blog-details.html">Aluno</a></li>
-        <li class="online"><a class="text-color d-block py-3" href="blog-details.html">Aluno</a></li>
-        <li class="online"><a class="text-color d-block py-3" href="blog-details.html">Aluno</a></li>
-        <li class="online"><a class="text-color d-block py-3" href="blog-details.html">Aluno</a></li>
+      <ul class=" text-primary text-bold list-bordered" style="font-size: 1.2em;">
+        <?php 
+          foreach ($capturarPostagem as $postAtual) { ?>
+              <li class="online"><a class="text-color d-block py-3" href="#post<?php echo $postAtual[0]; ?>"><?php echo $postAtual[3]; ?></a></li>
+          <?php }
+         ?>
+
+
+
+        
       </ul>
     </div>
 
