@@ -70,10 +70,18 @@
   outline: none;   
   cursor: inherit;
   display: block;
-
-
 }
+
+
+
 #output{
+  width:300px;
+  height:300px;
+  border-radius: 100%;
+  border: 6px solid #009afa;
+  object-fit: cover;
+}
+#output-turma{
   width:300px;
   height:300px;
   border-radius: 100%;
@@ -174,6 +182,14 @@ th{
   text-align: center;
   padding:6px 0;
   font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+.btn-circle-content{
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding:6px 0;
   line-height: 1.428571429;
   border-radius: 15px;
 }
@@ -358,12 +374,16 @@ th{
   .img-turma-setting{
     margin-right:3%;
   }
-  .btn-file{
-    margin-left: 9%;
+  #output-turma{
+    position: relative;
+    right: 7.5%;
   }
-  .btn-salvar{
-    margin-left: 12%;
+  .img-top{
+    position: relative;
+    right:1%;
   }
+
+ 
 }
 @media only screen and (min-width: 360px) {
   .direct-chat{
@@ -377,15 +397,19 @@ th{
   .foto-perfil{
     margin-left: 4%;
   }
-  #output{
-    margin-left: 4%;
+   #output-turma{
+    position: relative;
+    right: 0%;
   }
-  .btn-file{
-    margin-left: 12%;
-  }
+  
   .btn-salvar{
     margin-left: 12%;
   }
+  .img-top{
+    position: relative;
+    left:4%;
+  }
+
   
 
 }
@@ -402,14 +426,17 @@ th{
   .foto-perfil{
     margin-left: 6%;
   }
-  #output{
-    margin-left: 6%;
+   #output-turma{
+    position: relative;
+    left: 2%;
   }
-  .btn-file{
-    margin-left: 15%;
-  }
+  
   .btn-salvar{
     margin-left: 15%;
+  }
+  .img-top{
+    position: relative;
+    left:6%;
   }
   
 }
@@ -425,14 +452,17 @@ th{
   .foto-perfil{
     margin-left: 10%;
   }
-  #output{
-    margin-left: 10%;
+  #output-turma{
+    position: relative;
+    left: 2%;
   }
-  .btn-file{
-    margin-left: 20%;
-  }
+  
   .btn-salvar{
     margin-left: 20%;
+  }
+  .img-top{
+    position: relative;
+    left:11%;
   }
   
 }
@@ -451,13 +481,14 @@ th{
   #output{
     margin-left: 90px;
   }
-  .btn-file{
-    margin-left: 110px;
-  }
+  
   .btn-salvar{
     margin-left: 110px;
   }
-  
+  .img-top{
+    position: relative;
+    left:0;
+  }
 }
 @media screen and (min-width: 1024px) {
   .direct-chat{
@@ -469,18 +500,15 @@ th{
   .messages{
     height:300px;
   }
-  
-
   #output{
     position: relative;
-    right:60px;
-  }
-  .btn-file{
-    right: 30%;
+    right:100px;
   }
   .btn-salvar{
-    right: 30%;
+    right: 60%;
   }
+ 
+  
 }
 @media screen and (min-width: 1280px) {
   .direct-chat{
@@ -492,18 +520,13 @@ th{
   .messages{
     height:300px;
   }
+  #output-turma{
+    position: relative;
+    right:6%;
+  }
   
 
-  #output{
-    position: relative;
-    right:60px;
-  }
-  .btn-file{
-    right: 30%;
-  }
-  .btn-salvar{
-    right: 30%;
-  }
+
 }
 
 

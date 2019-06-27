@@ -96,7 +96,6 @@
         <p class="subtitle">Sobre o Yeduk</p>
         <h2 class="section-title">Faça parte de uma comunidade de professores e alunos de todo o Brasil!</h2>
         <p class="mb-4">No yeduk você pode trocar conhecimento das mais variadas matérias e estar em contato direto com seus colegas de turma e professores.</p>
-        <a href="about.html" class="btn btn-outline-primary">Leia Mais</a>
       </div>
       <div class="col-lg-6 col-md-5 text-center text-md-left order-1 order-md-2 mb-4 mb-md-0">
         <img src="images/about/about-2.png" class="img-fluid w-100" alt="about-2">

@@ -76,7 +76,7 @@ $notificacoes = $aluno->ListarMatriculasLimitado($conexao);
   <div class="naviagtion fixed-top transition">
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-dark p-0">
-        <a class="navbar-brand p-0" href="meuperfilprofessor.php"><img src="images/logo/logo.png" alt="Yeduk"></a>
+        <a class="navbar-brand p-0" href="meuperfilaluno.php"><img src="images/logo/logo.png" alt="Yeduk"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

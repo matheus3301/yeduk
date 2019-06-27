@@ -54,6 +54,9 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 .sumido{
   display: none;
 }
+small{
+  font-size: 0.4em;
+}
 
 
 </style>
@@ -76,7 +79,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
        
        if ($turma->getImagem() != null) {
-        echo '<img class="img-turma mr-1" src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'"/>';
+        echo '<img class="img-turma mr-1 img-top" src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'"/>';
 
 
 
@@ -170,13 +173,14 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
                   <br>
 
-                  <center>
-                    <span class="btn btn-outline-primary btn-file text-primary" style="width:250px; "></i>
-                      <i class="far fa-image"></i> Imagem <input type="file" name="imagem"  accept="image/*" onchange="loadPost(event)">
+                  <center>                    
+                    <span class="btn btn-outline-primary btn-file text-primary mb-2"></i>
+                      <i class="far fa-image"></i> Imagem<input type="file" name="imagem"  accept="image/*" onchange="loadPost(event)"style="float: left; margin-left: 5%;">
                     </span>
-                    <button type="submit" class=" btn btn-outline-primary text-center"><i class="fas fa-check"></i> Publicar</button>
-                    <br><br>
-                  </center>
+                    <button type="submit" class=" btn btn-outline-primary text-center" ><i class="fas fa-check"></i> Publicar</button><br><br>
+                    </center>
+
+                
                 </form>
                 <script>
                   var loadPost = function(event) {
@@ -186,8 +190,9 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
                 </script>
               </div>
               <div class="col-md-4">
-                <img src="images/defaultpost.png " id="outputPost" class="img-post" >
-
+                <center>
+                <img src="images/defaultpost.png " id="outputPost" class="img-post"  >
+                </center>
               </div>
             </div>
 
@@ -657,7 +662,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 <div class="tab-pane"id="questoes" role="tabpanel" aria-labelledby="questoes-tab">
   <div class="row">
     <div class="col-md-12">
-      <h4>Questões <button type="button" class="btn btn-primary text-center btn-circle " data-toggle="modal" data-target="#modal_questao">+</button></h4>
+      <h4>Questões <button type="button" class="btn btn-primary text-center btn-circle-content " data-toggle="modal" data-target="#modal_questao">+</button></h4>
 
       <table class="table table-hover">
         <thead>
@@ -719,7 +724,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
                </div>
                <div class="modal-footer">
 
-                <a class="btn btn-outline-primary " href="valida_delete/excluir_evento.php?id=<?php echo $questaoAtual[0]; ?>&idT=<?php echo $turma->getId(); ?>">Excluir</a>
+                <a class="btn btn-outline-primary " href="valida_delete/excluir_questao.php?id=<?php echo $questaoAtual[0]; ?>&idT=<?php echo $turma->getId(); ?>">Excluir</a>
               </div>
             </div>
           </div>
@@ -1036,7 +1041,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
     <div class="row">
       <div class="col-md-12">
 
-        <h4>Eventos Turma <button type="button" class="btn btn-primary text-center btn-circle " data-toggle="modal" data-target="#modal_add">+</button></h4>
+        <h4>Eventos Turma <button type="button" class="btn btn-primary text-center btn-circle-content " data-toggle="modal" data-target="#modal_add">+</button></h4>
 
         <div id='calendar' ></div><br><br><br>
         <?php 
@@ -1185,7 +1190,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
 
               if ($turma->getImagem() != null) {
-                echo '<img id="output" class="img-turma-setting "style="margin-right:4%;" src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'"/>';
+                echo '<img id="output-turma" class="img-turma-setting " src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'"/>';
 
 
 
@@ -1198,18 +1203,18 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
 
 
               ?>
-              <span class="btn btn-outline-primary btn-file text-dark" style="width:250px; "></i>
+              <div class="btn btn-outline-primary btn-file text-dark mb-2 mt-2" style="width:250px; "></i>
                 Buscar Foto <input type="file" name="imagem"  accept="image/*" onchange="loadFile(event)">
-              </span>
+              </div>
 
 
               <input type="hidden" name="MAX_FILE_SIZE" value="99999999"/>
-              <br><br>
-              <button type="submit" class="btn btn-outline-primary text-dark text-center" style="width:250px;" >Salvar</button>
+              <br>
+              <button type="submit" class="btn btn-outline-primary text-dark text-center " style="width:250px;" >Salvar</button>
 
               <script>
                 var loadFile = function(event) {
-                  var output = document.getElementById('output');
+                  var output = document.getElementById('output-turma');
                   output.src = URL.createObjectURL(event.target.files[0]);
                 };
               </script>

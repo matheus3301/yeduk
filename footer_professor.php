@@ -11,7 +11,6 @@
           <h4 class="text-white mb-4">Serviços</h4>
           <ul class="list-styled list-hover-underline">
             <li class="mb-3 text-light"><a href="meuperfilprofessor.php" class="text-light">Início</a></li>
-             <li class="mb-3 text-light"><a href="cadastrar_turmas.php" class="text-light">Cadastrar Turmas</a></li>
               <li class="mb-3 text-light"><a href="minhasturmasprofessor.php" class="text-light">Consultar Turmas</a></li>
                         
           </ul>

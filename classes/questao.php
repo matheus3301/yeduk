@@ -97,6 +97,18 @@ class Questao{
 				$ex->getMessage();
 			}
 	}
+	public function Excluir($conexao){
+		$sql = "DELETE FROM tb_questoes WHERE idtb_questoes = $this->id ";
+
+
+			try {
+				$conexao->query($sql);
+				echo "Foi";
+
+			} catch (Exception $ex) {
+				$ex->getMessage();
+			}
+	}
 
 }
 

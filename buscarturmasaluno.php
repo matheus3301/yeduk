@@ -212,6 +212,6 @@ $turmas = $turma->CapturarTurmasNome($conexao,$nometurma);
 </div>
 
 <?php 
-include 'footer_professor.php';
+include 'footer_aluno.php';
 
 ?>

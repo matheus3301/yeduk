@@ -2,12 +2,14 @@
 include '../classes/conexao.php';
 include '../classes/questao.php';
 
-$evento = new Questao();
+$questao = new Questao();
 
-$evento->setId($_GET['id']);
+$questao->setId($_GET['id']);
 
 
-$evento->Excluir($conexao);
+ $questao->Excluir($conexao);
+
+
 
 header('location:../turmaprofessor.php?id='.$_GET['idT']);
 

@@ -11,8 +11,8 @@
           <h4 class="text-white mb-4">Serviços</h4>
           <ul class="list-styled list-hover-underline">
             <li class="mb-3 text-light"><a href="meuperfilaluno.php" class="text-light">Início</a></li>
-             <li class="mb-3 text-light"><a href="#" class="text-light">Cadastrar Turmas</a></li>
-              <li class="mb-3 text-light"><a href="#" class="text-light">Consultar Turmas</a></li>
+             <li class="mb-3 text-light"><a href="minhasturmasaluno.php" class="text-light">Minhas Turmas</a></li>
+              <li class="mb-3 text-light"><a href="buscarturmasaluno.php" class="text-light">Buscar Turmas</a></li>
                         
           </ul>
         </div>

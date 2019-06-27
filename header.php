@@ -262,8 +262,6 @@ if (isset($_GET ['op']) && $_GET['op'] == "login_prof" || isset($_GET ['op']) &&
           <li class="nav-item">
             <a class="nav-link text-white text-capitalize" href="cadastro.php">Cadastre-se</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-white text-capitalize" href="turmas.php">Turmas</a>
            <li class="nav-item">
             <a href="#" class="nav-link text-white text-capitalize" data-toggle="modal" data-target="#modal-login-professor" id="prof">Sou um professor</a>
           </li>
