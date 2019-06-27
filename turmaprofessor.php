@@ -237,7 +237,7 @@ small{
             foreach ($capturarPostagem as $posts) { 
 
               ?>
-              
+              <section id="post<?php echo $posts[0]; ?>">
               <div class="col-md-12 ">
                 <!-- Box Comment -->
                 <div class="post bg-white">
@@ -404,7 +404,7 @@ small{
               <?php echo $comentarioAtual[1]; ?>
             </div><!-- /.comment-text -->
           </div><!-- /.box-comment -->
-
+          </section>
 
           <?php 
 
@@ -1243,13 +1243,16 @@ small{
 
     </div>
     <div class="widget">
-      <ul class=" list-bordered" style="font-size: 1.2em;">
-        <li class="online"><a class="text-color d-block py-3" href="blog-details.html">Post 1</a></li>
-        <li class="online"><a class="text-color d-block py-3" href="blog-details.html">Post 2</a></li>
-        <li class="online"><a class="text-color d-block py-3" href="blog-details.html">Post 2</a></li>
-        <li class="online"><a class="text-color d-block py-3" href="blog-details.html">Post 2</a></li>
-        <li class="online"><a class="text-color d-block py-3" href="blog-details.html">Post 2</a></li>
-        <li class="online"><a class="text-color d-block py-3" href="blog-details.html">Post 2</a></li>
+      <ul class=" text-primary text-bold list-bordered" style="font-size: 1.2em;">
+        <?php 
+          foreach ($capturarPostagem as $postAtual) { ?>
+              <li class="online"><a class="text-color d-block py-3" href="#post<?php echo $postAtual[0]; ?>"><?php echo $postAtual[3]; ?></a></li>
+          <?php }
+         ?>
+
+
+
+        
       </ul>
     </div>
 
