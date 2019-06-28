@@ -115,7 +115,7 @@ include 'header_professor.php';
     </div>
     <div class="col-lg-6">
       <label for="exampleInputtext1" class="lbls">CPF:</label>
-      <input type="text" id="inpt" name="cpf" class="form-control" readonly="" value="<?php echo($professor->getCpf());?>">
+      <input type="text" id="inpt" name="cpf" class="form-control cpf" readonly="" value="<?php echo($professor->getCpf());?>">
     </div>
 
 

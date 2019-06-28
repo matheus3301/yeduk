@@ -83,7 +83,7 @@ small{
 
           <div class="box box-primary direct-chat box-chat direct-chat-primary sumido" id="chat" >
             <div class="box-header with-border">
-              <h3 class="box-title"><?php echo $professor->getNome(); ?></h3><span data-toggle="tooltip" title="3 New Messages" class="badge bg-light-blue">3</span>
+              <h3 class="box-title"><?php echo $professor->getNome(); ?></h3>
               <div class="box-tools pull-right">
 
                 <i class="fas fa-times-circle text-primary" id="fecharChat" onclick="FechaChat();"></i>

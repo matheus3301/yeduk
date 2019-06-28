@@ -95,55 +95,27 @@ $notificacoes = $aluno->ListarMatriculasLimitado($conexao);
           </li>
 
 
-
+          <!-- Counter - Messages 
 
           <li class="nav-item dropdown no-arrow mx-1 col-md-">
             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-envelope fa-fw"></i>
-              <!-- Counter - Messages -->
+              
               <span class="badge badge-danger badge-counter">7</span>
             </a>
-            <!-- Dropdown - Messages -->
+            Dropdown - Messages 
             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown" style="width:500px; border-radius:3px; font-size: 0.8em; ">
               <h6 class="dropdown-header">
                 Notificações
               </h6>
 
-              <?php 
-
-
-              foreach ($notificacoes as $notifi) {
-
-                if ($notifi[3] == "Aprovado") {
-                  $classe = "far fa-check-circle text-success fa-2x i2";
-                }
-                if ($notifi[3] == "Reprovado") {
-                  $classe = "far fa-times-circle text-danger fa-2x i2";
-                }
-                if ($notifi[3] == "Pendente") {
-                  $classe = "far fa-check-circle text-warning fa-2x i2";
-                }
-                ?>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-
-                  </div>
-                  <div class="font-weight-bold">
-                    <div class="text-truncate">Solicitação Aceita! <i class="<?php echo($classe); ?>"></i></div>
-                    <div class="small text-gray-500">Emily Fowler · 58m</div>
-                  </div>
-                </a>
-
-
-
-                <?php 
-              }
-              ?>
+             
 
 
               <a class="dropdown-item text-center small text-gray-500" href="notificacoesaluno.php">Ler Todas Notificações</a>
             </div>
           </li>
+          -->
         </ul>
         <li class="nav-item dropdown no-arrow mx-1 col-md-" style="list-style: none;">
           <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

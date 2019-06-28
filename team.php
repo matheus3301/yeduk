@@ -42,8 +42,8 @@
             <h5 class="transition">Cleilton Rocha.</h5>
             <p class="mb-5">Designer e Developer</p>
             <ul class="list-inline">
-              <li class="list-inline-item"><a href="#" class="p-2"><i class="fab fa-facebook-f"></i></a></li>
-              <li class="list-inline-item"><a href="#" class="p-2"><i class="fab fa-instagram"></i></i></a></li>
+              <li class="list-inline-item"><a href="https://www.facebook.com/cleiltonrocha.viana" class="p-2"><i class="fab fa-facebook-f"></i></a></li>
+              <li class="list-inline-item"><a href="https://www.instagram.com/cleiltonrocha16/" class="p-2"><i class="fab fa-instagram"></i></i></a></li>
               
             </ul>
           </div>
@@ -54,10 +54,10 @@
           <img src="images/team/team-member-2.jpeg" class="img-fluid w-100 rounded-sm" alt="">
           <div class="team-member-content transition p-4">
             <h5 class="transition">Matheus Rocha</h5>
-            <p class="mb-5">Developer</p>
+            <p class="mb-5">Developer e Idealizer</p>
             <ul class="list-inline">
-              <li class="list-inline-item"><a href="#" class="p-2"><i class="fab fa-facebook-f"></i></a></li>
-              <li class="list-inline-item"><a href="#" class="p-2"><i class="fab fa-instagram"></i></i></a></li>
+              <li class="list-inline-item"><a href="https://www.facebook.com/matheus.rochamonteiro" class="p-2"><i class="fab fa-facebook-f"></i></a></li>
+              <li class="list-inline-item"><a href="https://www.instagram.com/mrocha_oficial/" class="p-2"><i class="fab fa-instagram"></i></i></a></li>
              
             </ul>
           </div>
