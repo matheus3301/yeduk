@@ -968,7 +968,7 @@ small{
 
       <div class="box box-primary direct-chat box-chat direct-chat-primary sumido" id="chat<?php echo $alunoAtual[2]; ?>" >
         <div class="box-header with-border">
-          <h3 class="box-title"><?php echo $alunoAtual[0]; ?></h3><span data-toggle="tooltip" title="3 New Messages" class="badge bg-light-blue">3</span>
+          <h3 class="box-title"><?php echo $alunoAtual[0]; ?></h3>
           <div class="box-tools pull-right">
 
             <i class="fas fa-times-circle text-primary" id="fecharChat<?php echo $alunoAtual[2]; ?>" onclick="FechaChat(<?php echo $alunoAtual[2]; ?>);"></i>
@@ -1131,7 +1131,7 @@ small{
 
     </div>
 
-    <i class="fas fa-comments fa-2x text-primary" id="chamaChat<?php echo $alunoAtual[2]; ?>" onclick="ChamaChat(<?php echo $alunoAtual[2]; ?>);"></i><span class="badge badge-danger badge-counter">4</span>
+    <i class="fas fa-comments fa-2x text-primary" id="chamaChat<?php echo $alunoAtual[2]; ?>" onclick="ChamaChat(<?php echo $alunoAtual[2]; ?>);"></i>
 
     <button name="op" value="remove" class="btn btn-danger btn-circle btn-circle btn-lg"><i class="fas fa-user-times"></i></button>         
 
