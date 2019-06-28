@@ -760,8 +760,8 @@ small{
                   echo 'checked';
                  } 
 
-                 ?> id="customRadio1" name="itemCerto" class="custom-control-input" value="1" required="">
-                <label class="custom-control-label" for="customRadio1"></label>
+                 ?> id="customRadio<?php echo $questaoAtual[0];?>1" name="itemCerto" class="custom-control-input" value="1" required="">
+                <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0];?>1"></label>
               </div>
             </div>
             <div class="col-sm-10">
@@ -783,8 +783,8 @@ small{
                   echo 'checked';
                  } 
 
-                 ?> id="customRadio2" name="itemCerto" class="custom-control-input" value="2" required="">
-                <label class="custom-control-label" for="customRadio2"></label>
+                 ?> id="customRadio<?php echo $questaoAtual[0];?>2" name="itemCerto" class="custom-control-input" value="2" required="">
+                <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0];?>2"></label>
               </div>
             </div>
             <div class="col-sm-10">
@@ -799,13 +799,13 @@ small{
           <div class="row">
             <div class="col-sm-2">
               <div class="custom-control custom-radio">
-                <input type="radio"  id="customRadio3" name="itemCerto" class="custom-control-input" value="3" required="" <?php
+                <input type="radio"  id="customRadio<?php echo $questaoAtual[0];?>3" name="itemCerto" class="custom-control-input" value="3" required="" <?php
                  if($questaoAtual[8] == 3){
                   echo 'checked';
                  } 
 
                  ?>>
-                <label class="custom-control-label" for="customRadio3"></label>
+                <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0];?>3"></label>
               </div>
             </div>
             <div class="col-sm-10">
@@ -826,8 +826,8 @@ small{
                   echo 'checked';
                  } 
 
-                 ?> id="customRadio4" name="itemCerto" class="custom-control-input" value="4" required="">
-                <label class="custom-control-label" for="customRadio4"></label>
+                 ?> id="customRadio<?php echo $questaoAtual[0];?>4" name="itemCerto" class="custom-control-input" value="4" required="">
+                <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0];?>4"></label>
               </div>
             </div>
             <div class="col-sm-10">
@@ -847,8 +847,8 @@ small{
                   echo 'checked';
                  } 
 
-                 ?> id="customRadio5" name="itemCerto" class="custom-control-input" value="5" required="">
-                <label class="custom-control-label" for="customRadio5"></label>
+                 ?> id="customRadio<?php echo $questaoAtual[0];?>5" name="itemCerto" class="custom-control-input" value="5" required="">
+                <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0];?>5"></label>
               </div>
             </div>
             <div class="col-sm-10">

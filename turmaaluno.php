@@ -51,6 +51,9 @@ $professor->CapturarProfessor($conexao);
   color:  #B22222;
 
 }
+small{
+  font-size: 0.4em;
+}
 </style>
 <section class="page-title page-title-overlay bg-cover" data-background="images/background/about.jpg">
   <div class="container">
@@ -734,9 +737,26 @@ $professor->CapturarProfessor($conexao);
 
 <div class="tab-pane"id="questoes" role="tabpanel" aria-labelledby="questoes-tab">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12" >
+      <h3 class="name-turma"><?php 
 
-      <h4>Questões</h4>
+
+          if ($turma->getImagem() != null) {
+            echo '<img  class="img-pequena" src="data:'.$turma->getTipo_imagem().';base64,'.base64_encode( $turma->getImagem() ).'"/>';
+
+
+
+          }else{
+            ?>
+            <img src="images/icon/man.png"  id="output" class="img-pequena" width="300px" height="300px"><br><br>
+            <?php 
+          }
+
+
+
+          ?>  <?php echo $turma->getNome(); ?></h3>
+      <h4>Questões <i class="fas fa-print text-dark text-right" style="float: right;" onclick="Imprimir();" ></i></h4>
+
       <?php 
       $questoes = $turma->ListarQuestoesTurma($conexao);
       ?>
@@ -745,7 +765,7 @@ $professor->CapturarProfessor($conexao);
       <?php 
 
       foreach ($questoes as $questaoAtual) { ?>
-        <div class="box box-widget">
+        <div class="box box-widget " id="questoes">
           <div class="box-header with-border">
             <div class="user-block">
              <?php 
@@ -772,7 +792,7 @@ $professor->CapturarProfessor($conexao);
         </div>
         <!-- /.box-header -->
 
-        <div class="box-body">
+        <div class="box-body"  id="questoes">
 
           <h4><?php echo $questaoAtual[1]; ?></h4>
 
@@ -780,23 +800,23 @@ $professor->CapturarProfessor($conexao);
           <div class="custom-control custom-radio">
             <input type="radio" id="customRadio<?php echo $questaoAtual[0]; ?>1" name="itens<?php echo $questaoAtual[0]; ?>" value="<?php if($questaoAtual[8] == 1){ echo '1';}else{ echo '0';} ?>" class="custom-control-input">
 
-            <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>1"><?php echo $questaoAtual[3]; ?></label>
+            <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>1">a) <?php echo  $questaoAtual[3]; ?></label>
           </div>
           <div class="custom-control custom-radio">
             <input type="radio" id="customRadio<?php echo $questaoAtual[0]; ?>2" name="itens<?php echo $questaoAtual[0]; ?>" value="<?php if($questaoAtual[8] == 2){ echo '1';}else{ echo '0';} ?>" class="custom-control-input">
-            <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>2"><?php echo $questaoAtual[4]; ?></label>
+            <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>2">b) <?php echo $questaoAtual[4]; ?></label>
           </div>
           <div class="custom-control custom-radio">
             <input type="radio" id="customRadio<?php echo $questaoAtual[0]; ?>3" name="itens<?php echo $questaoAtual[0]; ?>" value="<?php if($questaoAtual[8] == 3){ echo '1';}else{ echo '0';} ?>" class="custom-control-input">
-            <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>3"><?php echo $questaoAtual[5]; ?></label>
+            <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>3">c) <?php echo $questaoAtual[5]; ?></label>
           </div>
           <div class="custom-control custom-radio">
             <input type="radio" id="customRadio<?php echo $questaoAtual[0]; ?>4" name="itens<?php echo $questaoAtual[0]; ?>" value="<?php if($questaoAtual[8] == 4){ echo '1';}else{ echo '0';} ?>" class="custom-control-input">
-            <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>4"><?php echo $questaoAtual[6]; ?></label>
+            <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>4">d) <?php echo $questaoAtual[6]; ?></label>
           </div>
           <div class="custom-control custom-radio">
             <input type="radio" id="customRadio<?php echo $questaoAtual[0]; ?>5" name="itens<?php echo $questaoAtual[0]; ?>" value="<?php if($questaoAtual[8] == 5){ echo '1';}else{ echo '0';} ?>" class="custom-control-input">
-            <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>5"><?php echo $questaoAtual[7]; ?></label>
+            <label class="custom-control-label" for="customRadio<?php echo $questaoAtual[0]; ?>5">e) <?php echo $questaoAtual[7]; ?></label>
           </div>
           <div class="form-group row">
            <strong style="margin-left: 3%;" id="resposta<?php echo $questaoAtual[0]; ?>"></strong>
@@ -1149,6 +1169,23 @@ function FechaChat() {
   $("#chat").hide(100);
 });
 }
+
+
+
+ function Imprimir() {
+    //Get the HTML of div
+            var divElements = document.getElementById('questoes').innerHTML;
+            //Get the HTML of whole page
+            var oldPage = document.body.innerHTML;
+
+           
+
+            //Print Page
+            window.print();
+
+            //Restore orignal HTML
+            document.body.innerHTML = oldPage;
+  }
 
 
 

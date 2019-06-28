@@ -51,14 +51,14 @@ foreach ($mensagens as $mensagemAtual ) {
 
 
 			<!-- Message. Default to the left -->
-			<div class="direct-chat-msg text-right">
+			<div class="direct-chat-msg right">
 				<div class="direct-chat-info clearfix">
 
 
 				</div><!-- /.direct-chat-info -->
 
 				<!-- /.direct-chat-img -->
-				<div class="direct-chat-text text-left" style="position: relative; right:7%; width:80%;">
+				<div class="direct-chat-text text-left" style="position: relative; right:7%; width:80%;white-space: nowrap;">
 					<h6 class="text-dark"><?php echo $aluno->getNome(); ?></h6>
 					<?php echo $mensagemAtual[4]; ?>
 					<small class="" style="float: right;" ><?php echo $mensagemAtual[5]; ?></small>

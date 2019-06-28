@@ -529,6 +529,41 @@ th{
 
 }
 
+@media print{
+  footer{
+    display: none;
+  }
+  .nav-link{
+    display: none;
+  }
+  .fa-print{
+    display: none;
+  }
+  .pb-4{
+    display: none;
+  }
+  .btn{
+    display: none;
+  }
+  .page-title{
+    display: none;
+  }
+  i{
+    display: none;
+  }
+  .img-circle{
+    display: none;
+
+  }
+  a{
+    display:none;
+  }
+  .name-turma{
+    display: block;
+  }
+
+}
+
 
 
 

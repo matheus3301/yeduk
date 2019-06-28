@@ -56,20 +56,8 @@ foreach ($mensagens as $mensagemAtual ) {
 
 
 			</div><!-- /.direct-chat-info -->
-			<?php 
-			if ($professor->getImagem() != null) {
-				?>
-				<img src="mostra_imagem.php?idProf=<?php echo $professor->getId(); ?>"  class="img-circle img-pequena-chat direct-chat-img">
-				<?php 
-
-
-			}else{
-				?>
-				<img src="images/icon/man.png"   class="img-circle img-pequena">
-				<?php 
-			}
-			?> 
-			<div class="direct-chat-text text-right text-white" style="border:none; float:right;  background:linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%); width:50%;">
+			
+			<div class="direct-chat-text text-left text-white" style="border:none; float:right;  background:linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%); width:80%;">
 				<?php echo  $mensagemAtual[4]; ?><br>
 				<small  style="float:right;"><?php echo  $mensagemAtual[5]; ?></small>
 			</div><!-- /.direct-chat-text -->
