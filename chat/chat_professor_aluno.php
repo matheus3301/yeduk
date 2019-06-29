@@ -17,13 +17,13 @@
 	foreach ($mensagens as $mensagemAtual ) { 
 		if ($mensagemAtual[2] == "aluno") { $aluno = new Aluno(); $aluno->setId($gerenciador->getId_aluno()); $aluno->CapturarAluno($conexao);?>
 			 <!-- COMEÇA MENSAGEM ALUNO -->
-          <div class="direct-chat-msg text-right">
+          <div class="direct-chat-msg text-right"  style="width: 70%">
             <div class="direct-chat-info clearfix">
 
 
               
 
-              <span class="direct-chat-timestamp pull-right"><?php echo  $mensagemAtual[5]; ?></span>
+              <span class="direct-chat-timestamp text-left" style="float:left;"><?php echo  $mensagemAtual[5]; ?></span>
             </div><!-- /.direct-chat-info -->
             <?php 
             if ($aluno->getImagem() != null) { ?>
@@ -40,7 +40,7 @@
 
             <!-- /.direct-chat-img -->
             <div class="direct-chat-text text-left">
-              <?php echo $mensagemAtual[1]; ?>
+              <div><p class="text-dark" style="word-wrap: break-word;"><?php echo $mensagemAtual[1]; ?></p></div>
             </div><!-- /.direct-chat-text -->
           </div><!-- /.direct-chat-msg -->
 
@@ -60,10 +60,10 @@
 			 <!-- COMEÇA MENSAGEM PROFESSOR -->
 
           <!-- Message to the right -->
-          <div class="direct-chat-msg right">
+          <div class="direct-chat-msg right"  style="width: 70%; margin-left: 100px;">
             <div class="direct-chat-info clearfix">
 
-              <span class="direct-chat-timestamp pull-left"><?php echo  $mensagemAtual[5]; ?></span>
+              <span class="direct-chat-timestamp text-right" style="float:right;"><?php echo  $mensagemAtual[5]; ?></span>
             </div><!-- /.direct-chat-info -->
             <?php 
             if ($professor->getImagem() != null) {
@@ -83,7 +83,7 @@
 
 
           <div class="direct-chat-text text-right" style="border:none;  background:linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%);">
-            <?php echo $mensagemAtual[1]; ?>
+           <div><p class="text-white" style="word-wrap: break-word; text-align: left;"><?php echo $mensagemAtual[1]; ?></p></div> 
           </div><!-- /.direct-chat-text -->
 
         </div><!-- /.direct-chat-msg -->

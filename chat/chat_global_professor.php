@@ -1,4 +1,25 @@
+<style type="text/css">
+	.eu{
+			width:50%;
+			left:5%;
+			
+		}
+		.professor{
+			width:70%;
+		}
+		.date{
 
+		}
+
+	}
+	@media screen and (min-width: 320px){
+		.eu{
+			width: 70%;
+			right: 10% !important;
+		}
+
+	}
+</style>
 <?php 
 include '../classes/conexao.php';
 include '../classes/aluno.php';
@@ -30,10 +51,11 @@ foreach ($mensagens as $mensagemAtual ) {
 			</div><!-- /.direct-chat-info -->
 
 			<!-- /.direct-chat-img -->
-			<div class="direct-chat-text text-left" style="position: relative; right:7%; width:80%;">
+			<div class="direct-chat-text text-left aluno" style="width:70%;right:30px;">
 				<h6 class="text-primary"><?php echo $aluno->getNome(); ?></h6>
-				<?php echo $mensagemAtual[4]; ?>
-				<small class="" style="float: right;" ><?php echo $mensagemAtual[5]; ?></small>
+				<small class="text-right" ><?php echo $mensagemAtual[5]; ?></small>
+				<div><p class="text-dark" style="word-wrap: break-word;"><?php echo $mensagemAtual[4]; ?></p></div>
+				
 			</div><!-- /.direct-chat-text -->
 		</div><!-- /.direct-chat-msg -->
 
@@ -57,9 +79,10 @@ foreach ($mensagens as $mensagemAtual ) {
 
 			</div><!-- /.direct-chat-info -->
 			
-			<div class="direct-chat-text text-left text-white" style="border:none; float:right;  background:linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%); width:80%;">
-				<?php echo  $mensagemAtual[4]; ?><br>
-				<small  style="float:right;"><?php echo  $mensagemAtual[5]; ?></small>
+			<div class="direct-chat-text text-left text-white eu" style="border:none; margin-left:20%;  background:linear-gradient(45deg, #00a8f4 0%, #02d1a1 100%); width:70%;">
+				<small><?php echo  $mensagemAtual[5]; ?></small>
+				<div><p class="text-white" style="word-wrap: break-word;"><?php echo  $mensagemAtual[4]; ?></p></div>
+				
 			</div><!-- /.direct-chat-text -->
 		</div><!-- /.direct-chat-msg -->
 

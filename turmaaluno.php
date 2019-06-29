@@ -52,7 +52,7 @@ $professor->CapturarProfessor($conexao);
 
 }
 small{
-  font-size: 0.4em;
+  font-size: 0.7em;
 }
 </style>
 <section class="page-title page-title-overlay bg-cover" data-background="images/background/about.jpg">

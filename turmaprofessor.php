@@ -55,7 +55,7 @@ $alunosCadastrados = $turma->ListarAlunosAprovados($conexao);
   display: none;
 }
 small{
-  font-size: 0.4em;
+  font-size: 0.7em;
 }
 
 
@@ -1682,7 +1682,8 @@ function NormalChatGlobal() {
 </div>
 </div>
 
-<!--- Modal Ver Posts -->
+<!--- Script Auto Resize Textarea Messages -->
+
 
 
 

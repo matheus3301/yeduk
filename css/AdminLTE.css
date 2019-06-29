@@ -1923,9 +1923,7 @@ a:focus {
   margin: 0 5px;
 }
 /* Chat widget (DEPRECATED - this will be removed in the next major release. Use Direct Chat instead)*/
-.chat {
-  padding: 5px 20px 5px 10px;
-}
+
 .chat .item {
   margin-bottom: 10px;
 }
