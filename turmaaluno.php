@@ -54,6 +54,10 @@ $professor->CapturarProfessor($conexao);
 small{
   font-size: 0.7em;
 }
+
+iframe{
+  width: 100%;
+}
 </style>
 <section class="page-title page-title-overlay bg-cover" data-background="images/background/about.jpg">
   <div class="container">
@@ -376,7 +380,7 @@ small{
                       if ($posts[8] != null) {
                         echo '<img class=" img-post" src="data:'.$posts[7].';base64,'.base64_encode( $posts[8] ).'" data-toggle="modal" data-target="#'.$posts[0].'ver"/>';
                       }else{?>
-                        <img class=" img-post" src="images/defaultpost.png" alt="Photo"><?php 
+                        <?php 
                       }
 
 

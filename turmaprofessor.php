@@ -58,6 +58,10 @@ small{
   font-size: 0.7em;
 }
 
+iframe{
+  width: 100%;
+}
+
 
 </style>
 
@@ -310,7 +314,7 @@ small{
                     </div>
                   </div>
                 <?php }else{ ?>
-                  <img class=" img-post" src="images/defaultpost.png" alt="Photo"><?php 
+                  <?php 
                 }
 
 
